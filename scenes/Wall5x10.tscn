@@ -1,20 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://wall.obj" type="ArrayMesh" id=1]
-
-[sub_resource type="SpatialMaterial" id=1]
-proximity_fade_enable = true
-proximity_fade_distance = 1.0
-distance_fade_mode = 2
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 5.0
+[ext_resource path="res://meshes/wall.obj" type="ArrayMesh" id=1]
 
 [sub_resource type="ConcavePolygonShape" id=2]
 data = PoolVector3Array( -10, 5, 0.1, 10, 5, 0.1, -10, -5, 0.1, -10, -5, 0.1, 10, 5, 0.1, 10, -5, 0.1, 10, -5, 0.1, 10, -5, -0.1, -10, -5, 0.1, -10, -5, 0.1, 10, -5, -0.1, -10, -5, -0.1, -10, -5, 0.1, -10, -5, -0.1, -10, 5, 0.1, -10, 5, 0.1, -10, -5, -0.1, -10, 5, -0.1, 10, 5, -0.1, -10, 5, -0.1, 10, -5, -0.1, 10, -5, -0.1, -10, 5, -0.1, -10, -5, -0.1, 10, 5, 0.1, 10, 5, -0.1, 10, -5, 0.1, 10, -5, 0.1, 10, 5, -0.1, 10, -5, -0.1, -10, 5, 0.1, -10, 5, -0.1, 10, 5, 0.1, 10, 5, 0.1, -10, 5, -0.1, 10, 5, -0.1 )
 
 [node name="Wall5x10" type="MeshInstance"]
 mesh = ExtResource( 1 )
-material/0 = SubResource( 1 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
