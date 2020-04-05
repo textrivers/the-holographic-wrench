@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.311316
+height = 1.01073
+
+[sub_resource type="CapsuleMesh" id=2]
+
+[node name="Player_Test" type="KinematicBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.39936, 0, 0, 0, -9.05998e-08, 0.556097, 0, -0.422908, -6.89004e-08, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null

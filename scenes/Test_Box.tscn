@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Wall5x10.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Floor10x10.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/BoxSmall.tscn" type="PackedScene" id=3]
+
+[node name="Test_Box" type="Spatial"]
+
+[node name="Floor10x10" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10 )
+
+[node name="Floor10x13" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10 )
+
+[node name="Floor10x11" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10 )
+
+[node name="Floor10x15" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5, -10 )
+
+[node name="Floor10x14" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, 10 )
+
+[node name="Floor10x12" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5, 10 )
+
+[node name="Wall5x10" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, -20 )
+
+[node name="Wall5x13" parent="." instance=ExtResource( 1 )]
+transform = Transform( -8.14603e-08, 0, -1, 0, 1, 0, 0.5, 0, -1.62921e-07, 20, 5, -14.9051 )
+
+[node name="Wall5x11" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 1, -15, 5, 20 )
+
+[node name="Wall5x12" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -20, 5, 10 )
+
+[node name="PinkBoxes" type="Spatial" parent="."]
+
+[node name="BoxSmall" parent="PinkBoxes" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 0.948931, 0.315483, 0, -0.315483, 0.948931, -11.2449, 0, -15.577 )
+
+[node name="BoxSmall3" parent="PinkBoxes" instance=ExtResource( 3 )]
+transform = Transform( 0.736534, -0.213393, 0.641858, -0.271326, 0.776031, 0.569349, -0.619596, -0.593498, 0.513674, -12.1898, 6.10853, -8.9848 )
+
+[node name="BoxSmall2" parent="PinkBoxes" instance=ExtResource( 3 )]
+transform = Transform( 0.957456, 0, -0.288581, 0.271812, 0.335912, 0.901821, 0.0969377, -0.941893, 0.321621, 5.45848, 0, -6.72633 )
+
+[node name="BoxSmall" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.572221, -1.44849, -0.384751, 0.808237, 1.15507, 0.114911, 0.138985, -0.753449, 0.91584, 5.14722, 0, 6.53585 )
+
+[node name="BoxSmall2" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.0489213, 1.51473, -0.651156, 0.870725, 0.703469, 0.343688, 0.489332, -1.10033, -0.676664, -11.4926, 9.19383, 6.53586 )
+
+[node name="BoxSmall3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.984808, -0.347296, 0, 0.173648, 1.96962, 0, 0, 0, 1, 7.14011, 6.57998, 6.53586 )
