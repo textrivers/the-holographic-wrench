@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wastebasket_8x8_.obj-a4fdc887bc030735c13425ebf6dac687.mesh"
+
+[deps]
+
+files=[ "res://.import/wastebasket_8x8_.obj-a4fdc887bc030735c13425ebf6dac687.mesh" ]
+
+source_file="res://meshes/wastebasket_8x8_.obj"
+dest_files=[ "res://.import/wastebasket_8x8_.obj-a4fdc887bc030735c13425ebf6dac687.mesh", "res://.import/wastebasket_8x8_.obj-a4fdc887bc030735c13425ebf6dac687.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

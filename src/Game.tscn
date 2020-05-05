@@ -1,8 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/BoxSmall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/BoxSmall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Box.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/Leia.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Leia.tscn" type="PackedScene" id=3]
+
+
 
 
 [node name="Spatial" type="Spatial"]

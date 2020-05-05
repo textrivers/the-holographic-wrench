@@ -1,19 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/CameraCrane.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://meshes/13073_Combination_Wrench_v1_l3.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://scenes/Eleni_ghost.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.694841
 height = 1.91909
 
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.960784, 0.945098, 0.733333, 1 )
-metallic = 0.38
-metallic_specular = 0.18
-
-[node name="Player" type="KinematicBody" groups=[
+[node name="Eleni" type="KinematicBody" groups=[
 "player",
 ]]
 script = ExtResource( 2 )
@@ -25,10 +20,7 @@ shape = SubResource( 1 )
 [node name="RotationOffset" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.984807, 0.173648, 0, -0.173648, 0.984807, 0, 0, 0 )
 
-[node name="Mesh" type="MeshInstance" parent="RotationOffset"]
-transform = Transform( 0.0116292, 0.393757, 0.0694299, -0.393757, 0.02334, -0.0664153, -0.0694299, -0.0664154, 0.388289, 0, 1.667, 0 )
-mesh = ExtResource( 3 )
-material/0 = SubResource( 2 )
+[node name="Mesh" parent="RotationOffset" instance=ExtResource( 3 )]
 
 [node name="CameraCrane" type="Position3D" parent="."]
 script = ExtResource( 1 )

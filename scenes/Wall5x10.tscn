@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://meshes/wall.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://materials/wall_distance_shader_TEST.tres" type="Material" id=2]
 
-[sub_resource type="ConcavePolygonShape" id=2]
+[sub_resource type="ConcavePolygonShape" id=13]
 data = PoolVector3Array( -10, 5, 0.1, 10, 5, 0.1, -10, -5, 0.1, -10, -5, 0.1, 10, 5, 0.1, 10, -5, 0.1, 10, -5, 0.1, 10, -5, -0.1, -10, -5, 0.1, -10, -5, 0.1, 10, -5, -0.1, -10, -5, -0.1, -10, -5, 0.1, -10, -5, -0.1, -10, 5, 0.1, -10, 5, 0.1, -10, -5, -0.1, -10, 5, -0.1, 10, 5, -0.1, -10, 5, -0.1, 10, -5, -0.1, 10, -5, -0.1, -10, 5, -0.1, -10, -5, -0.1, 10, 5, 0.1, 10, 5, -0.1, 10, -5, 0.1, 10, -5, 0.1, 10, 5, -0.1, 10, -5, -0.1, -10, 5, 0.1, -10, 5, -0.1, 10, 5, 0.1, 10, 5, 0.1, -10, 5, -0.1, 10, 5, -0.1 )
 
 [node name="Wall5x10" type="MeshInstance"]
 mesh = ExtResource( 1 )
-material/0 = null
+material/0 = ExtResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 2 )
+shape = SubResource( 13 )

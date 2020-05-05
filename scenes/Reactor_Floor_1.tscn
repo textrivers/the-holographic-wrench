@@ -1,0 +1,211 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/WallPlane4x4_.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/FloorPlane12x12_.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/WallPlane12x4_.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Wastebasket8x8_.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/WallPlane8x4_.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/Reactor_Floor.gd" type="Script" id=6]
+[ext_resource path="res://scenes/FloorPlane4x4_.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/ItemBox_2x4_.tscn" type="PackedScene" id=8]
+[ext_resource path="res://materials/wall_spatial.tres" type="Material" id=9]
+
+[node name="Reactor_Floor_1" type="Spatial"]
+script = ExtResource( 6 )
+
+[node name="Wastebasket8x8_" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 2.99, 0, 0, 0, 1, 0, -16, 0 )
+
+[node name="Room1" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12 )
+
+[node name="WallPlane12x4_" parent="Room1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="WallPlane8x4_" parent="Room1" instance=ExtResource( 5 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -6, 0, 2 )
+
+[node name="WallPlane4x4_" parent="Room1" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6 )
+
+[node name="WallPlane4x4_4" parent="Room1" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6 )
+
+[node name="WallPlane4x4_5" parent="Room1" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 6, 0, -4 )
+
+[node name="WallPlane4x4_8" parent="Room1" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 6, 0, 4 )
+
+[node name="ItemBox_2x4_" parent="Room1" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.9 )
+
+[node name="ItemBox_2x4_2" parent="Room1" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+
+[node name="Room2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12 )
+
+[node name="WallPlane12x4_" parent="Room2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="WallPlane12x4_4" parent="Room2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
+[node name="WallPlane12x4_6" parent="Room2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="WallPlane12x4_8" parent="Room2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="FloorPlane4x4_" parent="Room2" instance=ExtResource( 7 )]
+transform = Transform( 3.03816, 0.313992, 0, -1.00478, 0.949425, 0, 0, 0, 1, 0.0815754, 1.9791, 4 )
+material/0 = ExtResource( 9 )
+
+[node name="ItemBox_2x4_" parent="Room2" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -0.9 )
+
+[node name="ItemBox_2x4_2" parent="Room2" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 4, 0, 0.9 )
+
+[node name="Room3" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 12, 0, -12 )
+
+[node name="WallPlane12x4_" parent="Room3" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="WallPlane4x4_" parent="Room3" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6 )
+
+[node name="WallPlane4x4_5" parent="Room3" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 6, 0, -4 )
+
+[node name="WallPlane4x4_8" parent="Room3" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 6, 0, 4 )
+
+[node name="WallPlane12x4_3" parent="Room3" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -6, 0, 0 )
+
+[node name="ItemBox_2x4_" parent="Room3" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+
+[node name="ItemBox_2x4_2" parent="Room3" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, -1 )
+
+[node name="Room4" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -12, 0, 0 )
+
+[node name="WallPlane12x4_" parent="Room4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="WallPlane12x4_4" parent="Room4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
+[node name="WallPlane12x4_6" parent="Room4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="WallPlane12x4_8" parent="Room4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="ItemBox_2x4_" parent="Room4" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 4, 0, 0.9 )
+
+[node name="ItemBox_2x4_2" parent="Room4" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -0.9 )
+
+[node name="Room6" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 12, 0, 0 )
+
+[node name="WallPlane12x4_" parent="Room6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="WallPlane12x4_4" parent="Room6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
+[node name="WallPlane12x4_6" parent="Room6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="WallPlane12x4_8" parent="Room6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27374e-13, 0, 6 )
+
+[node name="ItemBox_2x4_" parent="Room6" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 4, 0, 0.9 )
+
+[node name="ItemBox_2x4_2" parent="Room6" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -0.9 )
+
+[node name="Room7" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -12, 0, 12 )
+
+[node name="WallPlane12x4_" parent="Room7" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="WallPlane4x4_" parent="Room7" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6 )
+
+[node name="WallPlane4x4_5" parent="Room7" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 6, 0, -4 )
+
+[node name="WallPlane4x4_8" parent="Room7" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 6, 0, 4 )
+
+[node name="WallPlane12x4_3" parent="Room7" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -6, 0, 0 )
+
+[node name="ItemBox_2x4_" parent="Room7" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, -1 )
+
+[node name="ItemBox_2x4_2" parent="Room7" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+
+[node name="Room8" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12 )
+
+[node name="WallPlane12x4_" parent="Room8" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="WallPlane12x4_4" parent="Room8" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
+[node name="WallPlane12x4_6" parent="Room8" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="WallPlane12x4_8" parent="Room8" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="Ramp" parent="Room8" instance=ExtResource( 7 )]
+transform = Transform( -3.03366, -0.318214, -3.25838e-07, -1.01829, 0.948018, -1.45018e-09, 9.89959e-07, 1.02312e-07, -1, -0.0574052, 1.979, -4 )
+material/0 = ExtResource( 9 )
+
+[node name="ItemBox_2x4_" parent="Room8" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -0.9 )
+
+[node name="ItemBox_2x4_2" parent="Room8" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 4, 0, 0.9 )
+
+[node name="Room9" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 12, 0, 12 )
+
+[node name="WallPlane12x4_" parent="Room9" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="WallPlane8x4_" parent="Room9" instance=ExtResource( 5 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -6, 0, 2 )
+
+[node name="WallPlane4x4_" parent="Room9" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6 )
+
+[node name="WallPlane4x4_4" parent="Room9" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6 )
+
+[node name="WallPlane4x4_5" parent="Room9" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 6, 0, -4 )
+
+[node name="WallPlane4x4_8" parent="Room9" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 6, 0, 4 )
+
+[node name="ItemBox_2x4_" parent="Room9" instance=ExtResource( 8 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -4.9, 0, 0 )
+
+[node name="ItemBox_2x4_2" parent="Room9" instance=ExtResource( 8 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 1, 0, 0 )

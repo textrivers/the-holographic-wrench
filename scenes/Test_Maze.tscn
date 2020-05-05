@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Floor20x20.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Floor10x10.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/BoxSmall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/BoxSmall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Wall5x10.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Leia.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Leia.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/FloorPlane2x2_.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/FloorPlane4x4_.tscn" type="PackedScene" id=7]
 
 [node name="Test_Maze" type="Spatial"]
 
@@ -24,6 +26,21 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 40 )
 
 [node name="Floor10x13" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.2, 20, 6.7961, 40.7391 )
+
+[node name="FloorPlane2x2_" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, 0 )
+
+[node name="FloorPlane2x2_2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, 0 )
+
+[node name="FloorPlane2x2_4" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, -2 )
+
+[node name="FloorPlane2x2_3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, -2 )
+
+[node name="FloorPlane4x4_" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2962, 1.79998, -5.72873 )
 
 [node name="Boxes" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.669751, 0, 0, 0, 1, 22.5557, 3.38419, 30 )
@@ -53,7 +70,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8891, -1.20859, -52.8498 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -30 )
 
 [node name="Wall5x22" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, 10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0241, 5.02935, 10.1102 )
 
 [node name="Wall5x24" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, 30 )
@@ -83,13 +100,13 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 30, 5, 
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 30, 5, 40 )
 
 [node name="Wall5x19" parent="." instance=ExtResource( 4 )]
-transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -9.91241, 5, -20 )
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -10, 5, -20 )
 
 [node name="Wall5x18" parent="." instance=ExtResource( 4 )]
-transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -9.91241, 5, 0 )
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -10, 5, 0 )
 
 [node name="Wall5x17" parent="." instance=ExtResource( 4 )]
-transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -9.91241, 5, 20 )
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -10, 5, 20 )
 
 [node name="Wall5x23" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 5, 20 )
@@ -98,7 +115,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 5, 2
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 20, 5, 20 )
 
 [node name="Wall5x16" parent="." instance=ExtResource( 4 )]
-transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -9.91241, 5, 40 )
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -10, 5, 40 )
 
 [node name="Godette" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.2358 )
