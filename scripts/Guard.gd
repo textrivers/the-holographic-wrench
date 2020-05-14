@@ -12,6 +12,7 @@ var waiting = true
 var guard_destinations = []
 
 func _ready():
+	Signals.connect("initiate_fun", self, "_on_WaitTimer_timeout")
 	randomize()
 	guard_destinations = game_data.guard_waypoints
 
@@ -40,3 +41,5 @@ func _on_WaitTimer_timeout():
 	var new_target_ind = randi() % guard_destinations.size()
 	var new_target_pos = guard_destinations[new_target_ind]
 	move_to(new_target_pos)
+	if $AudioStreamPlayer3D.playing == false:
+		$AudioStreamPlayer3D.play()
