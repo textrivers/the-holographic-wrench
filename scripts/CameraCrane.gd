@@ -8,7 +8,7 @@ onready var parent = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	grid_size = Vector3(12, 4, 12)
+	grid_size = Vector3(12, 1, 12)
 	set_as_toplevel(true)
 	update_grid_position()
 
@@ -21,7 +21,8 @@ func _physics_process(delta):
 
 func update_grid_position():
 	var x = round(parent.translation.x / grid_size.x)
-	var y = round(parent.translation.y / grid_size.y)
+	## var y = round(parent.translation.y / grid_size.y)
+	var y = parent.translation.y
 	var z = round(parent.translation.z / grid_size.z)
 	var new_grid_position = Vector3(x, y, z)
 	if grid_position == new_grid_position:

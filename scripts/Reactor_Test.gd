@@ -1,4 +1,4 @@
-extends Spatial
+extends Navigation
 
 var instance_counter = 1
 var instance_pos = Vector3(-27, 1.667, -7.5)

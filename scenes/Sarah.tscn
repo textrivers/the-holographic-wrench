@@ -30,5 +30,5 @@ script = ExtResource( 3 )
 transform = Transform( 1, 7.05527e-08, -4.83094e-08, -6.10921e-08, 0.984808, 0.173647, 5.98267e-08, -0.173647, 0.984808, 0, 3, 6.2 )
 cull_mask = 1048573
 current = true
-fov = 90.0
+fov = 100.0
 size = 10.0

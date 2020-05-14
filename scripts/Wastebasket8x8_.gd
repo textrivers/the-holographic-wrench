@@ -17,5 +17,5 @@ func _ready():
 
 
 func _on_Area_body_entered(body):
-	if body.has_method("stop_playing"):
-		body.stop_playing()
+	if body.is_in_group("player"):
+		Signals.emit_signal("cease_and_desist_fun")

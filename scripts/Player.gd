@@ -33,6 +33,7 @@ func _ready():
 	new_rot = rotation_degrees.y
 	
 	Signals.connect("initiate_fun", self, "begin_playing")
+	Signals.connect("cease_and_desist_fun", self, "stop_playing")
 	
 	current_frame = 0
 	
