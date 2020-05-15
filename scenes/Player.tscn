@@ -39,3 +39,6 @@ cull_mask = 1048573
 current = true
 fov = 90.0
 size = 10.0
+
+[node name="Listener" type="Listener" parent="."]
+current = true

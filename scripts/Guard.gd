@@ -15,8 +15,11 @@ func _ready():
 	Signals.connect("initiate_fun", self, "_on_WaitTimer_timeout")
 	randomize()
 	guard_destinations = game_data.guard_waypoints
+	var new_target_ind = randi() % guard_destinations.size()
+	translation = guard_destinations[new_target_ind]
 
 func _physics_process(delta):
+	## WAITING ------------------------
 	if waiting == true:
 		return
 	
@@ -27,9 +30,15 @@ func _physics_process(delta):
 			path_ind += 1
 		else:
 			move_and_slide(move_vec.normalized() * MOVE_SPEED, Vector3(0, 1, 0))
-	## WAITING ----------------------
+			look_at(path[path_ind], Vector3(0, 1, 0))
+			rotation_degrees.x = 0
+			rotation_degrees.z = 0
+	
+	## ARRIVING ----------------------
 	else:
 		$WaitTimer.start()
+		$HumPlayer3D.stop()
+		$ArrivePlayer3D.play()
 		waiting = true
 
 func move_to(target_pos):
@@ -41,5 +50,5 @@ func _on_WaitTimer_timeout():
 	var new_target_ind = randi() % guard_destinations.size()
 	var new_target_pos = guard_destinations[new_target_ind]
 	move_to(new_target_pos)
-	if $AudioStreamPlayer3D.playing == false:
-		$AudioStreamPlayer3D.play()
+	if $HumPlayer3D.playing == false:
+		$HumPlayer3D.play()

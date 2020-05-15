@@ -31,58 +31,58 @@ script = null
 [node name="Reactor_Ceiling" parent="NavigationMeshInstance" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0 )
 
-[node name="Guard" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.118, 0, -13.776 )
+[node name="Sidewalk" type="Spatial" parent="NavigationMeshInstance"]
 
-[node name="Sidewalk" type="Spatial" parent="."]
-
-[node name="FloorPlane12x12_" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24 )
 
-[node name="FloorPlane12x12_2" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_2" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 24 )
 
-[node name="FloorPlane12x12_3" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_3" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 24 )
 
-[node name="FloorPlane12x12_15" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_15" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 24 )
 
-[node name="FloorPlane12x12_16" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_16" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 24 )
 
-[node name="FloorPlane12x12_10" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_10" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -24 )
 
-[node name="FloorPlane12x12_9" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_9" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24 )
 
-[node name="FloorPlane12x12_8" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_8" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -24 )
 
-[node name="FloorPlane12x12_4" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_4" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 12 )
 
-[node name="FloorPlane12x12_5" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_5" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0 )
 
-[node name="FloorPlane12x12_7" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_7" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -12 )
 
-[node name="FloorPlane12x12_6" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_6" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -24 )
 
-[node name="FloorPlane12x12_14" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_14" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 12 )
 
-[node name="FloorPlane12x12_13" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_13" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0 )
 
-[node name="FloorPlane12x12_12" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_12" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -12 )
 
-[node name="FloorPlane12x12_11" parent="Sidewalk" instance=ExtResource( 5 )]
+[node name="FloorPlane12x12_11" parent="NavigationMeshInstance/Sidewalk" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -24 )
+
+[node name="Guard" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.118, 0, -13.776 )
 
 [node name="AnyKeyControl" type="Control" parent="."]
 anchor_left = 0.5

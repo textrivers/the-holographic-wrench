@@ -19,10 +19,12 @@ var jump_force = 12.0
 
 var velocity_y := 0.0
 
+export var rotation_snap = false
+
 var feeler
 var rot_offset
 var ROTATION_SPEED = 0.1
-var MOUSE_SENSITIVITY = 0.2
+export var MOUSE_SENSITIVITY = 0.1
 var new_rot
 
 var ghost_pos_dict = {}
@@ -108,8 +110,11 @@ func _physics_process(delta):
 		## 	new_rot += 90
 		
 		## snap RotationHelper's y-rotation to 90-degree intervals
-		new_rot = round(feeler / 90)
-		new_rot *= 90
+		if rotation_snap == true:
+			new_rot = round(feeler / 90)
+			new_rot *= 90
+		else: 
+			new_rot = feeler
 		
 		if new_rot != rotation_degrees.y:
 			var new_rad = deg2rad(new_rot)

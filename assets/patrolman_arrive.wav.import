@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/patrolman_arrive.wav-2cb22a93e125f1d189d6b1bcbc63b32c.sample"
+
+[deps]
+
+source_file="res://assets/patrolman_arrive.wav"
+dest_files=[ "res://.import/patrolman_arrive.wav-2cb22a93e125f1d189d6b1bcbc63b32c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
