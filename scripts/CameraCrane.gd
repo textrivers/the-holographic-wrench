@@ -32,3 +32,4 @@ func update_grid_position():
 
 func update_rotation():
 	rotation_degrees.y = parent.rotation_degrees.y
+	rotation_degrees.x = parent.x_rot

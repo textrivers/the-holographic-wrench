@@ -7,7 +7,6 @@ extends KinematicBody
 const FLOOR_NORMAL = Vector3(0.0, 1.0, 0.0)
 
 var game_in_progress = false
-var world
 
 var velocity = Vector3()
 var dir = Vector3()
@@ -21,8 +20,9 @@ var velocity_y := 0.0
 
 export var rotation_snap = false
 
-var feeler
-var rot_offset
+var y_rot_feeler
+var x_rot_feeler
+var x_rot
 var ROTATION_SPEED = 0.1
 export var MOUSE_SENSITIVITY = 0.1
 var new_rot
@@ -31,15 +31,15 @@ var ghost_pos_dict = {}
 var current_frame
 
 func _ready():
-	feeler = -90
+	y_rot_feeler = -90
+	x_rot_feeler = 0
+	x_rot = 0
 	new_rot = rotation_degrees.y
 	
 	Signals.connect("initiate_fun", self, "begin_playing")
 	Signals.connect("cease_and_desist_fun", self, "stop_playing")
 	
 	current_frame = 0
-	
-	world = get_node("/root/Reactor_Test")
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
@@ -109,12 +109,16 @@ func _physics_process(delta):
 		## if Input.is_action_just_pressed("rotate_right"):
 		## 	new_rot += 90
 		
-		## snap RotationHelper's y-rotation to 90-degree intervals
+		## snap player's y-rotation to 90-degree intervals
 		if rotation_snap == true:
-			new_rot = round(feeler / 90)
+			new_rot = round(y_rot_feeler / 90)
 			new_rot *= 90
+			
 		else: 
-			new_rot = feeler
+			new_rot = y_rot_feeler
+			## x-rot used by CameraCrane
+			x_rot_feeler = clamp(x_rot_feeler, -8, 20)
+			x_rot = x_rot_feeler
 		
 		if new_rot != rotation_degrees.y:
 			var new_rad = deg2rad(new_rot)
@@ -126,7 +130,8 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		feeler += (event.relative.x * MOUSE_SENSITIVITY * -1)
+		y_rot_feeler += (event.relative.x * MOUSE_SENSITIVITY * -1)
+		x_rot_feeler += (event.relative.y * MOUSE_SENSITIVITY * -1)
 
 func begin_playing():
 	game_in_progress = true
@@ -135,5 +140,5 @@ func stop_playing():
 	game_in_progress = false
 	game_data.ghost_pos_dict[game_data.scene_counter] = ghost_pos_dict
 	if game_data.scene_counter < 4:
-		world.increment_player()
+		Signals.emit_signal("reset_level")
 		get_tree().call_group("ghost", "deactivate_ghost_playback")

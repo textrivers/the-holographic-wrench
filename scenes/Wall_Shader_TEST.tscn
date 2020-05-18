@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://meshes/wall_12x12_.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://materials/wall_distance_shader_TEST.tres" type="Material" id=2]
+
+[node name="Node2D" type="MeshInstance"]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )

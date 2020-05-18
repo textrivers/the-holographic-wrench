@@ -7,6 +7,8 @@ func _ready():
 	randomize()
 	
 	Signals.connect("item_found", self, "increment_item_count")
+	Signals.connect("reset_level", self, "increment_player")
+	
 	$GUI/Panel/CenterContainer/Label.set_text(str(game_data.items_found_counter) + " items found")
 	
 	while instance_counter < 5:
@@ -57,10 +59,11 @@ func add_players():
 	return
 
 func increment_player():
-	game_data.scene_counter += 1
-	get_tree().reload_current_scene()
-	game_data.all_boxes.clear()
-	game_data.items_found_counter = 0
+	if game_data.scene_counter < 4: 
+		game_data.scene_counter += 1
+		get_tree().reload_current_scene()
+		game_data.all_boxes.clear()
+		game_data.items_found_counter = 0
 
 func increment_item_count():
 	$GUI/Panel/CenterContainer/Label.set_text(str(game_data.items_found_counter) + " items found")

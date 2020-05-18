@@ -17,9 +17,10 @@ func _ready():
 	if game_data.ghost_pos_dict.has(ghost_ID):
 		data = game_data.ghost_pos_dict[ghost_ID]
 		playback_available = true
+	else: 
+		print("no ghost data")
 
-
-func _physics_process(delta):
+func _physics_process(_delta):
 	if ghost_playback == true && data.has(current_frame):
 		translation = data[current_frame][0]
 		rotation_degrees = data[current_frame][1]

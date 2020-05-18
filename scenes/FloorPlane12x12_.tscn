@@ -1,18 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://meshes/floor_12x12_.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://scenes/NavigationMeshInstance_Basic.tscn" type="PackedScene" id=2]
+[ext_resource path="res://materials/floor_spatial.tres" type="Material" id=3]
 
-[sub_resource type="ConcavePolygonShape" id=1]
+[sub_resource type="ConcavePolygonShape" id=2]
 data = PoolVector3Array( 6, 0, 6, -6, 0, 6, 6, 0, -6, 6, 0, -6, -6, 0, 6, -6, 0, -6 )
 
 [node name="FloorPlane12x12_" type="MeshInstance"]
 mesh = ExtResource( 1 )
-material/0 = null
+material/0 = ExtResource( 3 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="NavigationMeshInstance" parent="." instance=ExtResource( 2 )]

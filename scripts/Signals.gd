@@ -11,3 +11,7 @@ signal item_found
 ## emitted by Wastebasket8x8_.gd
 ## received by GUI, Player, and others?
 signal cease_and_desist_fun
+
+## emitted by Player.gd
+## received by Reactor_Test
+signal reset_level

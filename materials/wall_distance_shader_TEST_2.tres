@@ -1,0 +1,106 @@
+[gd_resource type="VisualShader" load_steps=10 format=2]
+
+[sub_resource type="VisualShaderNodeColorConstant" id=1]
+
+[sub_resource type="VisualShaderNodeTransformVecMult" id=2]
+default_input_values = [ 0, Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ), 1, Vector3( 1, 1, 1 ) ]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=3]
+default_input_values = [ 0, 0.0, 1, 0.1 ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeScalarClamp" id=4]
+default_input_values = [ 0, 0.0, 1, 3.0, 2, 10.0 ]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=5]
+default_input_values = [ 0, 0.0, 1, 2.0 ]
+
+[sub_resource type="VisualShaderNodeInput" id=6]
+input_name = "projection"
+
+[sub_resource type="VisualShaderNodeInput" id=7]
+input_name = "camera"
+
+[sub_resource type="VisualShaderNodeTransformVecMult" id=8]
+default_input_values = [ 0, Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ), 1, Vector3( 1, 1, 1 ) ]
+
+[sub_resource type="VisualShaderNodeVectorDistance" id=9]
+output_port_for_preview = 0
+
+[resource]
+code = "shader_type spatial;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Color:13
+	vec3 n_out13p0 = vec3(1.000000, 1.000000, 1.000000);
+	float n_out13p1 = 1.000000;
+
+// Input:5
+	mat4 n_out5p0 = CAMERA_MATRIX;
+
+// TransformVectorMult:7
+	vec3 n_in7p1 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out7p0 = (n_out5p0 * vec4(n_in7p1, 1.0)).xyz;
+
+// Input:22
+	mat4 n_out22p0 = PROJECTION_MATRIX;
+
+// TransformVectorMult:15
+	vec3 n_in15p1 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out15p0 = (n_out22p0 * vec4(n_in15p1, 1.0)).xyz;
+
+// Distance:8
+	float n_out8p0 = distance(n_out7p0, n_out15p0);
+
+// ScalarOp:21
+	float n_in21p1 = 2.00000;
+	float n_out21p0 = n_out8p0 + n_in21p1;
+
+// ScalarClamp:20
+	float n_in20p1 = 3.00000;
+	float n_in20p2 = 10.00000;
+	float n_out20p0 = clamp(n_out21p0, n_in20p1, n_in20p2);
+
+// ScalarOp:19
+	float n_in19p1 = 0.10000;
+	float n_out19p0 = n_out20p0 * n_in19p1;
+
+// Output:0
+	ALBEDO = n_out13p0;
+	ALPHA = n_out19p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( 0, 120.884 )
+nodes/fragment/0/position = Vector2( 1180, 80 )
+nodes/fragment/5/node = SubResource( 7 )
+nodes/fragment/5/position = Vector2( 60, 100 )
+nodes/fragment/7/node = SubResource( 8 )
+nodes/fragment/7/position = Vector2( 220, 100 )
+nodes/fragment/8/node = SubResource( 9 )
+nodes/fragment/8/position = Vector2( 480, 200 )
+nodes/fragment/13/node = SubResource( 1 )
+nodes/fragment/13/position = Vector2( 880, 80 )
+nodes/fragment/15/node = SubResource( 2 )
+nodes/fragment/15/position = Vector2( 220, 280 )
+nodes/fragment/19/node = SubResource( 3 )
+nodes/fragment/19/position = Vector2( 960, 200 )
+nodes/fragment/20/node = SubResource( 4 )
+nodes/fragment/20/position = Vector2( 800, 200 )
+nodes/fragment/21/node = SubResource( 5 )
+nodes/fragment/21/position = Vector2( 640, 200 )
+nodes/fragment/22/node = SubResource( 6 )
+nodes/fragment/22/position = Vector2( 20, 260 )
+nodes/fragment/connections = PoolIntArray( 5, 0, 7, 0, 13, 0, 0, 0, 20, 0, 19, 0, 19, 0, 0, 1, 7, 0, 8, 0, 15, 0, 8, 1, 8, 0, 21, 0, 21, 0, 20, 0, 22, 0, 15, 0 )

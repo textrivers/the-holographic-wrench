@@ -24,15 +24,27 @@ transform = Transform( 1, 0, 0, 0, 0.984807, 0.173648, 0, -0.173648, 0.984807, 0
 script = null
 
 [node name="CameraCrane" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.990268, 0.139173, 0, -0.139173, 0.990268, 0, 0, 0 )
 script = ExtResource( 3 )
 
 [node name="Camera" type="Camera" parent="CameraCrane"]
-transform = Transform( 1, 7.05527e-08, -4.83094e-08, -6.10921e-08, 0.984808, 0.173647, 5.98267e-08, -0.173647, 0.984808, 0, 3, 6.2 )
+transform = Transform( 1, 7.05527e-08, -4.83094e-08, -6.10921e-08, 0.984808, 0.173647, 5.98267e-08, -0.173647, 0.984808, 0, 3, 6 )
 cull_mask = 1048573
 current = true
 fov = 100.0
-size = 10.0
+size = 12.0
 
 [node name="Listener" type="Listener" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64337, 0 )
 current = true
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.552416 )
+visible = false
+light_energy = 1.69
+light_indirect_energy = 3.24
+shadow_enabled = true
+spot_range = 7.71614
+spot_attenuation = 2.82843
+spot_angle = 13.2363
+spot_angle_attenuation = 2.82843
