@@ -44,6 +44,7 @@ unit_size = 4.9
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43224, 0 )
+visible = false
 light_energy = 3.23
 light_indirect_energy = 3.41
 shadow_enabled = true

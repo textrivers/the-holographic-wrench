@@ -38,7 +38,7 @@ func _physics_process(delta):
 	else:
 		$WaitTimer.start()
 		$HumPlayer3D.stop()
-		$ArrivePlayer3D.play()
+		## $ArrivePlayer3D.play()
 		waiting = true
 
 func move_to(target_pos):
@@ -47,8 +47,15 @@ func move_to(target_pos):
 
 func _on_WaitTimer_timeout():
 	waiting = false
-	var new_target_ind = randi() % guard_destinations.size()
-	var new_target_pos = guard_destinations[new_target_ind]
-	move_to(new_target_pos)
+	var new_dest = get_new_destination()
+	move_to(new_dest)
 	if $HumPlayer3D.playing == false:
 		$HumPlayer3D.play()
+
+func get_new_destination():
+	var new_target_ind = randi() % guard_destinations.size()
+	var new_target_pos = guard_destinations[new_target_ind]
+	if new_target_pos == translation:
+		get_new_destination()
+	else:
+		return new_target_pos

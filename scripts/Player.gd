@@ -117,7 +117,7 @@ func _physics_process(delta):
 		else: 
 			new_rot = y_rot_feeler
 			## x-rot used by CameraCrane
-			x_rot_feeler = clamp(x_rot_feeler, -8, 20)
+			x_rot_feeler = clamp(x_rot_feeler, -8, 24)
 			x_rot = x_rot_feeler
 		
 		if new_rot != rotation_degrees.y:
