@@ -65,3 +65,5 @@ var guard_waypoints = [
 	Vector3(0, 8, 12),
 	Vector3(16, 8, 16),
 ]
+
+var machine_grid = []

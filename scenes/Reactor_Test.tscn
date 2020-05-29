@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Reactor_Floor_1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Reactor_Floor_2.tscn" type="PackedScene" id=2]
@@ -11,14 +11,20 @@
 [ext_resource path="res://navmeshes/reactor_navmesh.tres" type="NavigationMesh" id=9]
 [ext_resource path="res://scenes/Guard.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/star tiles/stars_tile_6.png" type="Texture" id=11]
+[ext_resource path="res://assets/qotsa_guy_2.PNG" type="Texture" id=12]
 
-[sub_resource type="PanoramaSky" id=1]
+[sub_resource type="SpatialMaterial" id=1]
+flags_unshaded = true
+albedo_color = Color( 0.0392157, 0.964706, 0.160784, 1 )
+albedo_texture = ExtResource( 12 )
+
+[sub_resource type="PanoramaSky" id=2]
 radiance_size = 1
 panorama = ExtResource( 11 )
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id=3]
 background_mode = 2
-background_sky = SubResource( 1 )
+background_sky = SubResource( 2 )
 ambient_light_energy = 2.76
 ambient_light_sky_contribution = 0.11
 
@@ -94,6 +100,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -24 )
 
 [node name="Guard" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.118, 0, -13.776 )
+
+[node name="Guard2" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.118, 0, -10.699 )
+
+[node name="MeshInstance" parent="Guard2" index="1"]
+material/0 = SubResource( 1 )
 
 [node name="AnyKeyControl" type="Control" parent="."]
 anchor_left = 0.5
@@ -279,4 +291,6 @@ __meta__ = {
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource( 3 )
+
+[editable path="Guard2"]
