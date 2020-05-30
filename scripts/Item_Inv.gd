@@ -14,10 +14,11 @@ var target_rot
 var parent
 
 var my_grid_pos = Vector2()
-export var connectors = [0, 0, 0, 0]
+var connectors = [0, 0, 0, 0]
 export var lit = false
 
 func _ready():
+	randomize()
 	target_rot = 0
 	parent = get_node("..")
 	drop_targets.append(parent)
@@ -25,8 +26,27 @@ func _ready():
 	update_my_grid_pos()
 	if lit == false:
 		$Sprite.self_modulate = Color(0.5, 0.5, 0.5, 1)
+	
+	if self.name == "Item_Inv_1":
+		connectors = [1, 0, 0, 0]
+	
+	if self.name == "Item_Inv_2a":
+		connectors = [1, 1, 0, 0]
+	
+	if self.name == "Item_Inv_2b":
+		connectors = [1, 0, 1, 0]
+	
+	if self.name == "Item_Inv_3":
+		connectors = [1, 1, 1, 0]
+	
+	if self.name == "Item_Inv_4":
+		connectors = [1, 1, 1, 1]
+	
+	for x in range(randi() % 4):
+		rotate_left()
 
 func _process(_delta):
+	
 	## ROTATE PIECES ------------------------------------
 	if rotation_degrees != target_rot:
 		var curret_rad = deg2rad(rotation_degrees)
@@ -40,6 +60,7 @@ func _process(_delta):
 			drop_target.highlight()
 			dragging = true
 			drag_offset = position - get_viewport().get_mouse_position()
+			print(str(self) + " " + str(connectors))
 	
 	## DRAG ---------------------------------------------
 	if dragging == true:
@@ -48,6 +69,13 @@ func _process(_delta):
 		drag_dest = get_viewport().get_mouse_position() + drag_offset
 		position = lerp(position, drag_dest, 0.5)
 		
+		## GET ROTATION and ROTATE CONNECTORS
+		if Input.is_action_just_pressed("rotate_left"):
+			rotate_left()
+			
+		if Input.is_action_just_pressed("rotate_right"):
+			rotate_right()
+			
 		## DROP --------------------------------------------
 		if Input.is_action_just_released("interact"):
 			## breakpoint
@@ -92,16 +120,6 @@ func _process(_delta):
 				else:
 					lit = false
 					$Sprite.self_modulate = Color(0.5, 0.5, 0.5, 1)
-		
-		## GET ROTATION and ROTATE CONNECTORS
-		if Input.is_action_just_pressed("rotate_left"):
-			target_rot -= 90
-			connectors.push_back(connectors.front())
-			connectors.pop_front()
-		if Input.is_action_just_pressed("rotate_right"):
-			target_rot += 90
-			connectors.push_front(connectors.back())
-			connectors.pop_back()
 	
 	## AS YOU WERE ----------------------------------------------
 	else:
@@ -175,3 +193,13 @@ func check_connectivity():
 func update_my_grid_pos():
 		my_grid_pos.x = abs(int(round(parent.position.x / 64)))
 		my_grid_pos.y = abs(int(round(parent.position.y / 64)))
+
+func rotate_left():
+	target_rot -= 90
+	connectors.push_back(connectors.front())
+	connectors.pop_front()
+
+func rotate_right():
+	target_rot += 90
+	connectors.push_front(connectors.back())
+	connectors.pop_back()

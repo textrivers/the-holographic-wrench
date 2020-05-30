@@ -27,6 +27,7 @@ __meta__ = {
 position = Vector2( -32.5681, 92.3284 )
 
 [node name="Item_Inv_1" parent="Inventory/BoxArea2D17" instance=ExtResource( 1 )]
+position = Vector2( 0, -2.24695 )
 
 [node name="BoxArea2D18" parent="Inventory" instance=ExtResource( 2 )]
 position = Vector2( 31.4319, 92.3284 )
