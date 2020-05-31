@@ -15,7 +15,16 @@ var parent
 
 var my_grid_pos = Vector2()
 var connectors = [0, 0, 0, 0]
+var sources = [0, 0, 0, 0]
+var downstream_neighbors = []
+var four_directions = [
+	Vector2(0, -1),
+	Vector2(1, 0),
+	Vector2(0, 1),
+	Vector2(-1, 0)
+]
 export var lit = false
+var already_propagated = false
 
 func _ready():
 	randomize()
@@ -24,8 +33,9 @@ func _ready():
 	drop_targets.append(parent)
 	drop_target = drop_targets.back()
 	update_my_grid_pos()
+	$CollisionShape2D.scale = Vector2(0.9, 0.9)
 	if lit == false:
-		$Sprite.self_modulate = Color(0.5, 0.5, 0.5, 1)
+		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 	
 	if self.name == "Item_Inv_1":
 		connectors = [1, 0, 0, 0]
@@ -42,10 +52,13 @@ func _ready():
 	if self.name == "Item_Inv_4":
 		connectors = [1, 1, 1, 1]
 	
-	for x in range(randi() % 4):
+	for _x in range(randi() % 4):
 		rotate_left()
 
 func _process(_delta):
+	## READY TO PROPAGATE
+	if already_propagated == true:
+		already_propagated = false
 	
 	## ROTATE PIECES ------------------------------------
 	if rotation_degrees != target_rot:
@@ -56,12 +69,16 @@ func _process(_delta):
 	## CLICK -------------------------------------------
 	if can_click == true:
 		if Input.is_action_just_pressed("interact"):
-			## print("click")
 			drop_target.highlight()
 			dragging = true
 			drag_offset = position - get_viewport().get_mouse_position()
-			print(str(self) + " " + str(connectors))
-	
+			
+			## BREAK CONNECTIVITY
+			lit = false
+			$Sprite.modulate = Color(0.5, 0.5, 0.5)
+			if parent.machine_box == true:
+				propagate_connectivity()
+			
 	## DRAG ---------------------------------------------
 	if dragging == true:
 		$Sprite.modulate = Color(1, 1, 1, 0.5)
@@ -79,6 +96,7 @@ func _process(_delta):
 		## DROP --------------------------------------------
 		if Input.is_action_just_released("interact"):
 			## breakpoint
+			sources = [0, 0, 0, 0]
 			dragging = false
 			drag_offset = Vector2()
 			if can_drop == true:
@@ -94,15 +112,11 @@ func _process(_delta):
 						child.drop_target = parent
 						update_my_grid_pos()
 						if parent.machine_box == true:
-							if child.check_connectivity() == true:
-								child.lit = true
-								$Sprite.self_modulate = Color(1, 1, 1, 1)
-							else:
-								child.lit = false
-								$Sprite.self_modulate = Color(0.5, 0.5, 0.5, 1)
+							child.check_connectivity()
+							propagate_connectivity()
 						
 				## item drop
-				## first line necessary bc Area2D exit signal on reparent
+				## transitional necessary bc Area2D exit signal on reparent
 				var drop_target_transitional = drop_target 
 				parent.remove_child(self)
 				drop_target_transitional.add_child(self)
@@ -114,17 +128,13 @@ func _process(_delta):
 			drop_target.unhighlight()
 			update_my_grid_pos()
 			if parent.machine_box == true:
-				if check_connectivity() == true:
-					lit = true
-					$Sprite.self_modulate = Color(1, 1, 1, 1)
-				else:
-					lit = false
-					$Sprite.self_modulate = Color(0.5, 0.5, 0.5, 1)
+				check_connectivity()
+				propagate_connectivity()
 	
 	## AS YOU WERE ----------------------------------------------
 	else:
-		$Sprite.modulate = Color(1, 1, 1, 1)
-		$CollisionShape2D.scale = Vector2(1, 1)
+		## $Sprite.modulate = Color(1, 1, 1, 1)
+		$CollisionShape2D.scale = Vector2(0.9, 0.9)
 
 func _on_Item_Inv_mouse_entered():
 	can_click = true
@@ -152,44 +162,35 @@ func _on_Item_Inv_area_exited(area):
 
 func check_connectivity():
 	var neighbor
-	var neighbor_item
-	## breakpoint
-	if connectors[0] == 1:
-		if my_grid_pos.y != 0:
-			neighbor = game_data.machine_grid[my_grid_pos.x][(my_grid_pos.y - 1)]
-			for item in neighbor.get_children():
-				if item.is_in_group("item"):
-					neighbor_item = item
-					if neighbor_item.lit == true:
-						return true
-	if connectors[1] == 1:
-		if my_grid_pos.x < game_data.machine_grid.size() - 1:
-			neighbor = game_data.machine_grid[my_grid_pos.x + 1][(my_grid_pos.y)]
-			for item in neighbor.get_children():
-				if item.is_in_group("item"):
-					neighbor_item = item
-					if neighbor_item.lit == true:
-						return true
-	if connectors[2] == 1:
-		if my_grid_pos.y < game_data.machine_grid[my_grid_pos.x].size() - 1:
-			neighbor = game_data.machine_grid[my_grid_pos.x][(my_grid_pos.y + 1)]
-			for item in neighbor.get_children():
-				if item.is_in_group("item"):
-					neighbor_item = item
-					if neighbor_item.lit == true:
-						return true
-	if connectors[3] == 1:
-		## if game_data.machine_grid[my_grid_pos.x - 1][(my_grid_pos.y)] != null:
-		if my_grid_pos.x != 0:
-			neighbor = game_data.machine_grid[my_grid_pos.x - 1][(my_grid_pos.y)]
-			for item in neighbor.get_children():
-				if item.is_in_group("item"):
-					neighbor_item = item
-					if neighbor_item.lit == true:
-						return true
-	## else:
-	return false
-		
+	var counter = 0
+	var connections_counter = 0
+	var opposite = (counter + 2) % 4
+	
+	for connector in connectors:
+		if connector == 1:
+			var target_pos = my_grid_pos + four_directions[counter]
+			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
+				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
+					neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
+					for item in neighbor.get_children():
+						if item.is_in_group("item"):
+							if item.connectors[opposite] == 1:
+								if item.lit == true:
+									item.downstream_neighbors.append(self)
+									connections_counter += 1
+								else:
+									downstream_neighbors.append(item)
+		counter += 1
+		opposite = (counter + 2) % 4
+	
+	print(connections_counter)
+	if connections_counter == 1:
+		lit = true
+		$Sprite.modulate = Color(1, 1, 1, 1)
+	else:
+		lit = false
+		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
+
 func update_my_grid_pos():
 		my_grid_pos.x = abs(int(round(parent.position.x / 64)))
 		my_grid_pos.y = abs(int(round(parent.position.y / 64)))
@@ -203,3 +204,13 @@ func rotate_right():
 	target_rot += 90
 	connectors.push_front(connectors.back())
 	connectors.pop_back()
+
+func propagate_connectivity():
+	for neighbor in downstream_neighbors:
+		neighbor.lit = lit
+		if lit == true:
+			neighbor.get_node("Sprite").modulate = Color(1, 1, 1, 1)
+		else:
+			neighbor.get_node("Sprite").modulate = Color(0.5, 0.5, 0.5, 1)
+			downstream_neighbors.erase(neighbor)
+		neighbor.propagate_connectivity()

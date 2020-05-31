@@ -7,7 +7,7 @@ var y_size = 4
 func _ready():
 	for x in range(x_size):
 		box_grid.append([])
-		for y in range(y_size):
+		for _y in range(y_size):
 			box_grid[x].append(0)
 	var boxes = get_children()
 	for box in boxes:
