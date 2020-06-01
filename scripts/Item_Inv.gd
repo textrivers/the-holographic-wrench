@@ -15,7 +15,6 @@ var parent
 
 var my_grid_pos = Vector2()
 var connectors = [0, 0, 0, 0]
-var sources = [0, 0, 0, 0]
 var downstream_neighbors = []
 var four_directions = [
 	Vector2(0, -1),
@@ -24,6 +23,7 @@ var four_directions = [
 	Vector2(-1, 0)
 ]
 export var lit = false
+var upstream_neighbor = null
 var already_propagated = false
 
 func _ready():
@@ -56,10 +56,10 @@ func _ready():
 		rotate_left()
 
 func _process(_delta):
-	## READY TO PROPAGATE
+	## CLEAR PROPAGATION
 	if already_propagated == true:
 		already_propagated = false
-	
+		
 	## ROTATE PIECES ------------------------------------
 	if rotation_degrees != target_rot:
 		var curret_rad = deg2rad(rotation_degrees)
@@ -77,7 +77,7 @@ func _process(_delta):
 			lit = false
 			$Sprite.modulate = Color(0.5, 0.5, 0.5)
 			if parent.machine_box == true:
-				propagate_connectivity()
+				break_connectivity()
 			
 	## DRAG ---------------------------------------------
 	if dragging == true:
@@ -96,7 +96,6 @@ func _process(_delta):
 		## DROP --------------------------------------------
 		if Input.is_action_just_released("interact"):
 			## breakpoint
-			sources = [0, 0, 0, 0]
 			dragging = false
 			drag_offset = Vector2()
 			if can_drop == true:
@@ -110,10 +109,10 @@ func _process(_delta):
 						child.drop_targets.append(parent)
 						child.parent = parent
 						child.drop_target = parent
-						update_my_grid_pos()
+						child.update_my_grid_pos()
 						if parent.machine_box == true:
-							child.check_connectivity()
-							propagate_connectivity()
+							child.make_connectivity()
+
 						
 				## item drop
 				## transitional necessary bc Area2D exit signal on reparent
@@ -128,8 +127,7 @@ func _process(_delta):
 			drop_target.unhighlight()
 			update_my_grid_pos()
 			if parent.machine_box == true:
-				check_connectivity()
-				propagate_connectivity()
+				make_connectivity()
 	
 	## AS YOU WERE ----------------------------------------------
 	else:
@@ -160,36 +158,84 @@ func _on_Item_Inv_area_exited(area):
 			if dragging == true:
 				drop_target.highlight()
 
-func check_connectivity():
+func make_connectivity():
 	var neighbor
 	var counter = 0
-	var connections_counter = 0
+	var lit_counter = 0
 	var opposite = (counter + 2) % 4
 	
-	for connector in connectors:
-		if connector == 1:
-			var target_pos = my_grid_pos + four_directions[counter]
-			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
-				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
-					neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
-					for item in neighbor.get_children():
-						if item.is_in_group("item"):
-							if item.connectors[opposite] == 1:
-								if item.lit == true:
-									item.downstream_neighbors.append(self)
-									connections_counter += 1
-								else:
-									downstream_neighbors.append(item)
-		counter += 1
-		opposite = (counter + 2) % 4
+	if already_propagated == false:
+		
+		already_propagated = true
+		
+		for connector in connectors:
+			if connector == 1:
+				var target_pos = my_grid_pos + four_directions[counter]
+				if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
+					if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
+						neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
+						for item in neighbor.get_children():
+							if item.is_in_group("item"):
+								if item.connectors[opposite] == 1:
+									## dropping (or dropped), setting upstream neighbor
+									if item.lit == true:
+										lit_counter += 1
+										upstream_neighbor = item
+									else:
+										downstream_neighbors.append(item)
+			counter += 1
+			opposite = (counter + 2) % 4
+		
+		if lit_counter == 0:
+			lit = false
+			$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
+			for item in downstream_neighbors:
+				item.make_connectivity()
+			downstream_neighbors.clear()
+		elif lit_counter == 1:
+			lit = true
+			$Sprite.modulate = Color(1, 1, 1, 1)
+			for item in downstream_neighbors:
+				item.make_connectivity()
+			downstream_neighbors.clear()
+		else: ## too many connections
+			upstream_neighbor = null
+			downstream_neighbors.clear()
+			lit = false
+			$Sprite.modulate = Color(0.5, 0, 0, 1)
+
+func break_connectivity():
+	var neighbor
+	var counter = 0
+	var opposite = (counter + 2) % 4
 	
-	print(connections_counter)
-	if connections_counter == 1:
-		lit = true
-		$Sprite.modulate = Color(1, 1, 1, 1)
-	else:
+	if already_propagated == false:
+		
+		already_propagated = true
+		
+		for connector in connectors:
+			if connector == 1:
+				var target_pos = my_grid_pos + four_directions[counter]
+				if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
+					if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
+						neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
+						for item in neighbor.get_children():
+							if item.is_in_group("item"):
+								if item.connectors[opposite] == 1:
+									## dragging, breaking connectivity except with "upstream_neighbor"
+									if upstream_neighbor != null:
+										if item != upstream_neighbor:
+											downstream_neighbors.append(item)
+			counter += 1
+			opposite = (counter + 2) % 4
+		
 		lit = false
 		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
+		for item in downstream_neighbors:
+			item.make_connectivity()
+		downstream_neighbors.clear()
+		upstream_neighbor = null
+
 
 func update_my_grid_pos():
 		my_grid_pos.x = abs(int(round(parent.position.x / 64)))
