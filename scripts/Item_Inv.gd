@@ -102,7 +102,9 @@ func _process(_delta):
 				## item swap
 				var target_children = drop_target.get_children()
 				for child in target_children:
-					if child.is_in_group("item"):
+					if child.is_in_group("item") && !child.is_in_group("source"):
+						if parent.machine_box == true:
+							child.break_connectivity()
 						drop_target.remove_child(child)
 						parent.add_child(child)
 						child.drop_targets.clear()
@@ -111,7 +113,6 @@ func _process(_delta):
 						child.drop_target = parent
 						child.update_my_grid_pos()
 						if parent.machine_box == true:
-							child.break_connectivity()
 							child.make_connectivity()
 						
 				## item drop

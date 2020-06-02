@@ -153,7 +153,9 @@ machine_box = true
 position = Vector2( 63.9514, 63.968 )
 machine_box = true
 
-[node name="Item_Inv_4" parent="Machine_Grid/BoxArea2D7" instance=ExtResource( 5 )]
+[node name="Item_Inv_4" parent="Machine_Grid/BoxArea2D7" groups=[
+"source",
+] instance=ExtResource( 5 )]
 input_pickable = false
 lit = true
 
