@@ -111,8 +111,8 @@ func _process(_delta):
 						child.drop_target = parent
 						child.update_my_grid_pos()
 						if parent.machine_box == true:
+							child.break_connectivity()
 							child.make_connectivity()
-
 						
 				## item drop
 				## transitional necessary bc Area2D exit signal on reparent
@@ -128,6 +128,8 @@ func _process(_delta):
 			update_my_grid_pos()
 			if parent.machine_box == true:
 				make_connectivity()
+			else:
+				$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 	
 	## AS YOU WERE ----------------------------------------------
 	else:
@@ -232,10 +234,9 @@ func break_connectivity():
 		lit = false
 		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 		for item in downstream_neighbors:
-			item.make_connectivity()
+			item.break_connectivity()
 		downstream_neighbors.clear()
 		upstream_neighbor = null
-
 
 func update_my_grid_pos():
 		my_grid_pos.x = abs(int(round(parent.position.x / 64)))
@@ -250,13 +251,3 @@ func rotate_right():
 	target_rot += 90
 	connectors.push_front(connectors.back())
 	connectors.pop_back()
-
-func propagate_connectivity():
-	for neighbor in downstream_neighbors:
-		neighbor.lit = lit
-		if lit == true:
-			neighbor.get_node("Sprite").modulate = Color(1, 1, 1, 1)
-		else:
-			neighbor.get_node("Sprite").modulate = Color(0.5, 0.5, 0.5, 1)
-			downstream_neighbors.erase(neighbor)
-		neighbor.propagate_connectivity()

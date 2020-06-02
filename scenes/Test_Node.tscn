@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Item_Inv_1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/Item_Inv_4.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Item_Inv_2a.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/Machine_Grid.gd" type="Script" id=7]
+[ext_resource path="res://assets/item_source.png" type="Texture" id=8]
 
 [node name="Node" type="Node"]
 
@@ -156,6 +157,11 @@ machine_box = true
 input_pickable = false
 lit = true
 
+[node name="Sprite" parent="Machine_Grid/BoxArea2D7/Item_Inv_4" index="1"]
+texture = ExtResource( 8 )
+
 [node name="BoxArea2D8" parent="Machine_Grid" instance=ExtResource( 2 )]
 position = Vector2( -0.0486069, 63.968 )
 machine_box = true
+
+[editable path="Machine_Grid/BoxArea2D7/Item_Inv_4"]
