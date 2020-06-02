@@ -102,18 +102,20 @@ func _process(_delta):
 				## item swap
 				var target_children = drop_target.get_children()
 				for child in target_children:
-					if child.is_in_group("item") && !child.is_in_group("source"):
-						if parent.machine_box == true:
-							child.break_connectivity()
-						drop_target.remove_child(child)
-						parent.add_child(child)
-						child.drop_targets.clear()
-						child.drop_targets.append(parent)
-						child.parent = parent
-						child.drop_target = parent
-						child.update_my_grid_pos()
-						if parent.machine_box == true:
-							child.make_connectivity()
+					if child != self:
+						if child.is_in_group("item") && !child.is_in_group("source"):
+							## breakpoint
+							if parent.machine_box == true:
+								child.break_connectivity()
+							drop_target.remove_child(child)
+							parent.add_child(child)
+							child.drop_targets.clear()
+							child.drop_targets.append(parent)
+							child.parent = parent
+							child.drop_target = parent
+							child.update_my_grid_pos()
+							if parent.machine_box == true:
+								child.make_connectivity()
 						
 				## item drop
 				## transitional necessary bc Area2D exit signal on reparent
@@ -162,82 +164,81 @@ func _on_Item_Inv_area_exited(area):
 				drop_target.highlight()
 
 func make_connectivity():
+	## breakpoint
 	var neighbor
 	var counter = 0
 	var lit_counter = 0
 	var opposite = (counter + 2) % 4
 	
-	if already_propagated == false:
+	##if already_propagated == false:
+		## already_propagated = true
 		
-		already_propagated = true
-		
-		for connector in connectors:
-			if connector == 1:
-				var target_pos = my_grid_pos + four_directions[counter]
-				if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
-					if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
-						neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
-						for item in neighbor.get_children():
-							if item.is_in_group("item"):
-								if item.connectors[opposite] == 1:
-									## dropping (or dropped), setting upstream neighbor
-									if item.lit == true:
-										lit_counter += 1
-										upstream_neighbor = item
-									else:
-										downstream_neighbors.append(item)
-			counter += 1
-			opposite = (counter + 2) % 4
-		
-		if lit_counter == 0:
-			lit = false
-			$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
-			for item in downstream_neighbors:
-				item.make_connectivity()
-			downstream_neighbors.clear()
-		elif lit_counter == 1:
-			lit = true
-			$Sprite.modulate = Color(1, 1, 1, 1)
-			for item in downstream_neighbors:
-				item.make_connectivity()
-			downstream_neighbors.clear()
-		else: ## too many connections
-			upstream_neighbor = null
-			downstream_neighbors.clear()
-			lit = false
-			$Sprite.modulate = Color(0.5, 0, 0, 1)
+	for connector in connectors:
+		if connector == 1:
+			var target_pos = my_grid_pos + four_directions[counter]
+			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
+				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
+					neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
+					for item in neighbor.get_children():
+						if item.is_in_group("item"):
+							if item.connectors[opposite] == 1:
+								## dropping (or dropped), setting upstream neighbor
+								if item.lit == true:
+									lit_counter += 1
+									upstream_neighbor = item
+								else:
+									downstream_neighbors.append(item)
+		counter += 1
+		opposite = (counter + 2) % 4
+	
+	if lit_counter == 0:
+		lit = false
+		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
+		## for item in downstream_neighbors:
+			## item.make_connectivity()
+		downstream_neighbors.clear()
+	elif lit_counter == 1:
+		lit = true
+		$Sprite.modulate = Color(1, 1, 1, 1)
+		for item in downstream_neighbors:
+			item.make_connectivity()
+		downstream_neighbors.clear()
+	else: ## too many connections
+		upstream_neighbor = null
+		downstream_neighbors.clear()
+		lit = false
+		$Sprite.modulate = Color(0.5, 0, 0, 1)
 
 func break_connectivity():
 	var neighbor
 	var counter = 0
 	var opposite = (counter + 2) % 4
 	
-	if already_propagated == false:
-		
-		already_propagated = true
-		
-		for connector in connectors:
-			if connector == 1:
-				var target_pos = my_grid_pos + four_directions[counter]
-				if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
-					if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
-						neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
-						for item in neighbor.get_children():
-							if item.is_in_group("item"):
-								if item.connectors[opposite] == 1:
-									## dragging, breaking connectivity except with "upstream_neighbor"
-									if upstream_neighbor != null:
-										if item != upstream_neighbor:
-											downstream_neighbors.append(item)
-			counter += 1
-			opposite = (counter + 2) % 4
-		
-		lit = false
-		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
-		for item in downstream_neighbors:
-			item.break_connectivity()
-		downstream_neighbors.clear()
-		upstream_neighbor = null
+	## if already_propagated == false:
+	## 	already_propagated = true
+	
+	for connector in connectors:
+		if connector == 1:
+			var target_pos = my_grid_pos + four_directions[counter]
+			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
+				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
+					neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
+					for item in neighbor.get_children():
+						if item.is_in_group("item"):
+							if item.connectors[opposite] == 1:
+								## dragging, breaking connectivity except with "upstream_neighbor"
+								if upstream_neighbor != null:
+									if item != upstream_neighbor:
+										downstream_neighbors.append(item)
+		counter += 1
+		opposite = (counter + 2) % 4
+	
+	lit = false
+	$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
+	for item in downstream_neighbors:
+		item.break_connectivity()
+	downstream_neighbors.clear()
+	upstream_neighbor = null
 
 func update_my_grid_pos():
 		my_grid_pos.x = abs(int(round(parent.position.x / 64)))
