@@ -1,0 +1,181 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/GUI.gd" type="Script" id=1]
+[ext_resource path="res://scripts/AnyKeyControl.gd" type="Script" id=2]
+
+[node name="GUI" type="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -180.0
+margin_bottom = 60.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnyKeyControl" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -566.5
+margin_top = 257.0
+margin_right = -277.5
+margin_bottom = 451.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="AnyKeyControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -146.0
+margin_top = -20.0
+margin_right = 146.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AnyKeyControl/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -104.5
+margin_top = -9.0
+margin_right = 104.5
+margin_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -180.0
+margin_bottom = 60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -180.0
+margin_bottom = 60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/CenterContainer"]
+margin_left = 45.0
+margin_top = 23.0
+margin_right = 134.0
+margin_bottom = 37.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0 items found"
+
+[node name="Panel2" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 2.0
+margin_top = 5.0
+margin_bottom = 5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel2"]
+anchor_left = 0.121
+anchor_top = 0.229
+anchor_right = 0.596
+anchor_bottom = 0.27
+margin_right = 52.0
+margin_bottom = 30.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinLabel" type="Label" parent="Panel2/HBoxContainer"]
+margin_left = 28.0
+margin_top = 9.0
+margin_right = 44.0
+margin_bottom = 23.0
+text = "00"
+
+[node name="ColonLabel" type="Label" parent="Panel2/HBoxContainer"]
+margin_left = 48.0
+margin_top = 9.0
+margin_right = 52.0
+margin_bottom = 23.0
+text = ":"
+
+[node name="SecLabel" type="Label" parent="Panel2/HBoxContainer"]
+margin_left = 56.0
+margin_top = 9.0
+margin_right = 72.0
+margin_bottom = 23.0
+text = "00"
+
+[node name="ColonLabel2" type="Label" parent="Panel2/HBoxContainer"]
+margin_left = 76.0
+margin_top = 9.0
+margin_right = 80.0
+margin_bottom = 23.0
+text = ":"
+
+[node name="MSecLabel" type="Label" parent="Panel2/HBoxContainer"]
+margin_left = 84.0
+margin_top = 9.0
+margin_right = 108.0
+margin_bottom = 23.0
+text = "000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="."]
+anchor_top = 2.157
+anchor_right = 1.0
+anchor_bottom = 3.153
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel3"]
+anchor_left = 0.096
+anchor_top = 0.229
+anchor_right = 0.596
+anchor_bottom = 0.27
+margin_right = 52.0
+margin_bottom = 30.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitLabel" type="Label" parent="Panel3/HBoxContainer"]
+margin_top = 9.0
+margin_right = 63.0
+margin_bottom = 23.0
+text = "Exit Time:"
+
+[node name="StrTimeLabel" type="Label" parent="Panel3/HBoxContainer"]
+margin_left = 67.0
+margin_top = 9.0
+margin_right = 147.0
+margin_bottom = 23.0
+text = "00 : 00 : 000"
+__meta__ = {
+"_edit_use_anchors_": false
+}

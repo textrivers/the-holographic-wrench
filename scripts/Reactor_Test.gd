@@ -14,7 +14,7 @@ func _ready():
 	while instance_counter < 5:
 		add_players()
 	
-	$AnyKeyControl/Panel/RichTextLabel.set_text("Press CTRL to begin player " + str(game_data.scene_counter))
+	$GUI/AnyKeyControl/Panel/RichTextLabel.set_text("Press CTRL to begin player " + str(game_data.scene_counter))
 	
 	## POPULATE BOXES ------------------------------
 	## making sure all boxes know their box ID number
