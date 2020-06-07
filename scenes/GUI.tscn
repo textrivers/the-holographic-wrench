@@ -52,6 +52,7 @@ margin_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+text = "Press CTRL to start"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
