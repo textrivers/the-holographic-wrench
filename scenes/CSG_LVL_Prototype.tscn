@@ -14,7 +14,7 @@ distance_fade_max_distance = 5.0
 [node name="CSG_LVL_Prototype" type="Navigation"]
 
 [node name="Sarah" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52599, 37.806 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.7494, 1.52599, 37.806 )
 
 [node name="GUI" parent="." instance=ExtResource( 2 )]
 
@@ -156,9 +156,9 @@ depth = 6.68302
 use_collision = true
 
 [node name="TopKeyOutside" type="CSGBox" parent="TopKeyCombiner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 56.836, 5.584 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 57.4361, 5.584 )
 width = 7.0
-height = 4.0
+height = 5.0
 depth = 17.0
 material = ExtResource( 3 )
 
@@ -169,9 +169,24 @@ radius = 2.95815
 height = 3.50025
 sides = 12
 
-[node name="TopKeyOutside2" type="CSGBox" parent="TopKeyCombiner/TopKeyOutside"]
+[node name="TopKeyInside" type="CSGBox" parent="TopKeyCombiner/TopKeyOutside"]
 operation = 2
 width = 6.0
-height = 3.5
+height = 4.5
 depth = 16.0
 material = ExtResource( 3 )
+
+[node name="SlopeCombiner" type="CSGCombiner" parent="."]
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="SlopeCombiner"]
+transform = Transform( 0.721201, -0.307824, 0.620575, 0.450169, 0.88916, -0.0821137, -0.526514, 0.338584, 0.779836, -31.4582, 7.46155, 27.9613 )
+width = 23.7078
+height = 0.475533
+depth = 7.60433
+
+[node name="CSGBox2" type="CSGBox" parent="SlopeCombiner"]
+transform = Transform( -0.296258, 0.0619729, -0.953095, 0.450169, 0.88916, -0.0821137, 0.842365, -0.453381, -0.291319, -19.7521, 7.46155, 27.9613 )
+width = 23.7078
+height = 0.475533
+depth = 7.60433

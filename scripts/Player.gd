@@ -95,7 +95,7 @@ func _physics_process(delta):
 		velocity.x = hvel.x
 		velocity.z = hvel.z
 		
-		velocity = move_and_slide(velocity, FLOOR_NORMAL)
+		velocity = move_and_slide(velocity, Vector3.UP)
 		if is_on_floor() or is_on_ceiling():
 			velocity_y = 0.0
 		
