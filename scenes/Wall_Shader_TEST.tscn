@@ -3,13 +3,7 @@
 [ext_resource path="res://meshes/wall_12x12_.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://materials/wall_distance_shader_TEST.tres" type="Material" id=2]
 
-[node name="Spatial" type="Spatial"]
-
-[node name="Node2D" type="MeshInstance" parent="."]
+[node name="Node2D" type="MeshInstance"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
 mesh = ExtResource( 1 )
 material/0 = ExtResource( 2 )
-
-[node name="CSGBox" type="CSGBox" parent="."]
-width = 17.103
-height = 0.5
-depth = 17.103

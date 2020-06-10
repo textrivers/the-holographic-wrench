@@ -10,4 +10,5 @@ func _ready():
 
 func _physics_process(delta):
 	shader_material.set_shader_param("PlayerPos", parent.translation)
-	pass
+	## print(shader_material.get_shader_param("PlayerPos"))
+
