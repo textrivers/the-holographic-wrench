@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=10 format=2]
+[gd_resource type="VisualShader" load_steps=15 format=2]
 
 [sub_resource type="VisualShaderNodeColorConstant" id=1]
 
@@ -15,17 +15,29 @@ default_input_values = [ 0, 0.0, 1, 3.0, 2, 10.0 ]
 [sub_resource type="VisualShaderNodeScalarOp" id=5]
 default_input_values = [ 0, 0.0, 1, 2.0 ]
 
-[sub_resource type="VisualShaderNodeInput" id=6]
-input_name = "projection"
+[sub_resource type="VisualShaderNodeTransformUniform" id=7]
+uniform_name = "PlayerPos"
 
-[sub_resource type="VisualShaderNodeInput" id=7]
+[sub_resource type="VisualShaderNodeVectorDecompose" id=10]
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=11]
+
+[sub_resource type="VisualShaderNodeInput" id=12]
 input_name = "camera"
 
-[sub_resource type="VisualShaderNodeTransformVecMult" id=8]
+[sub_resource type="VisualShaderNodeInput" id=13]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeTransformVecMult" id=14]
 default_input_values = [ 0, Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ), 1, Vector3( 1, 1, 1 ) ]
 
-[sub_resource type="VisualShaderNodeVectorDistance" id=9]
-output_port_for_preview = 0
+[sub_resource type="VisualShaderNodeVectorDecompose" id=15]
+
+[sub_resource type="VisualShaderNodeInput" id=8]
+input_name = "camera"
+
+[sub_resource type="VisualShaderNodeTransformVecMult" id=9]
+default_input_values = [ 0, Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ), 1, Vector3( 1, 1, 1 ) ]
 
 [resource]
 code = "shader_type spatial;
@@ -42,26 +54,10 @@ void fragment() {
 	vec3 n_out13p0 = vec3(1.000000, 1.000000, 1.000000);
 	float n_out13p1 = 1.000000;
 
-// Input:5
-	mat4 n_out5p0 = CAMERA_MATRIX;
-
-// TransformVectorMult:7
-	vec3 n_in7p1 = vec3(1.00000, 1.00000, 1.00000);
-	vec3 n_out7p0 = (n_out5p0 * vec4(n_in7p1, 1.0)).xyz;
-
-// Input:22
-	mat4 n_out22p0 = PROJECTION_MATRIX;
-
-// TransformVectorMult:15
-	vec3 n_in15p1 = vec3(1.00000, 1.00000, 1.00000);
-	vec3 n_out15p0 = (n_out22p0 * vec4(n_in15p1, 1.0)).xyz;
-
-// Distance:8
-	float n_out8p0 = distance(n_out7p0, n_out15p0);
-
 // ScalarOp:21
+	float n_in21p0 = 0.00000;
 	float n_in21p1 = 2.00000;
-	float n_out21p0 = n_out8p0 + n_in21p1;
+	float n_out21p0 = n_in21p0 + n_in21p1;
 
 // ScalarClamp:20
 	float n_in20p1 = 3.00000;
@@ -83,24 +79,34 @@ void light() {
 
 }
 "
-graph_offset = Vector2( 0, 120.884 )
+graph_offset = Vector2( -235.188, -126.064 )
 nodes/fragment/0/position = Vector2( 1180, 80 )
-nodes/fragment/5/node = SubResource( 7 )
-nodes/fragment/5/position = Vector2( 60, 100 )
-nodes/fragment/7/node = SubResource( 8 )
-nodes/fragment/7/position = Vector2( 220, 100 )
-nodes/fragment/8/node = SubResource( 9 )
-nodes/fragment/8/position = Vector2( 480, 200 )
+nodes/fragment/5/node = SubResource( 8 )
+nodes/fragment/5/position = Vector2( 40, -20 )
+nodes/fragment/7/node = SubResource( 9 )
+nodes/fragment/7/position = Vector2( 40, 40 )
 nodes/fragment/13/node = SubResource( 1 )
 nodes/fragment/13/position = Vector2( 880, 80 )
 nodes/fragment/15/node = SubResource( 2 )
-nodes/fragment/15/position = Vector2( 220, 280 )
+nodes/fragment/15/position = Vector2( -20, 500 )
 nodes/fragment/19/node = SubResource( 3 )
-nodes/fragment/19/position = Vector2( 960, 200 )
+nodes/fragment/19/position = Vector2( 1000, 200 )
 nodes/fragment/20/node = SubResource( 4 )
-nodes/fragment/20/position = Vector2( 800, 200 )
+nodes/fragment/20/position = Vector2( 840, 200 )
 nodes/fragment/21/node = SubResource( 5 )
-nodes/fragment/21/position = Vector2( 640, 200 )
-nodes/fragment/22/node = SubResource( 6 )
-nodes/fragment/22/position = Vector2( 20, 260 )
-nodes/fragment/connections = PoolIntArray( 5, 0, 7, 0, 13, 0, 0, 0, 20, 0, 19, 0, 19, 0, 0, 1, 7, 0, 8, 0, 15, 0, 8, 1, 8, 0, 21, 0, 21, 0, 20, 0, 22, 0, 15, 0 )
+nodes/fragment/21/position = Vector2( 680, 200 )
+nodes/fragment/23/node = SubResource( 7 )
+nodes/fragment/23/position = Vector2( -20, 440 )
+nodes/fragment/24/node = SubResource( 10 )
+nodes/fragment/24/position = Vector2( 280, -20 )
+nodes/fragment/25/node = SubResource( 11 )
+nodes/fragment/25/position = Vector2( 220, 420 )
+nodes/fragment/26/node = SubResource( 12 )
+nodes/fragment/26/position = Vector2( -40, 180 )
+nodes/fragment/27/node = SubResource( 13 )
+nodes/fragment/27/position = Vector2( -60, 240 )
+nodes/fragment/28/node = SubResource( 14 )
+nodes/fragment/28/position = Vector2( -40, 300 )
+nodes/fragment/29/node = SubResource( 15 )
+nodes/fragment/29/position = Vector2( 220, 220 )
+nodes/fragment/connections = PoolIntArray( 13, 0, 0, 0, 20, 0, 19, 0, 19, 0, 0, 1, 21, 0, 20, 0, 23, 0, 15, 0, 5, 0, 7, 0, 7, 0, 24, 0, 15, 0, 25, 0, 26, 0, 28, 0, 27, 0, 28, 1, 28, 0, 29, 0 )

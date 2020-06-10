@@ -42,7 +42,8 @@ func _physics_process(delta):
 		waiting = true
 
 func move_to(target_pos):
-	path = nav.get_simple_path(global_transform.origin, target_pos)
+	if target_pos != null:
+		path = nav.get_simple_path(global_transform.origin, target_pos)
 	path_ind = 0
 
 func _on_WaitTimer_timeout():
