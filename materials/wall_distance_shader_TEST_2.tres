@@ -1,6 +1,7 @@
 [gd_resource type="VisualShader" load_steps=18 format=2]
 
 [sub_resource type="VisualShaderNodeScalarClamp" id=1]
+default_input_values = [ 0, 0.0, 1, 0.0, 2, 0.999 ]
 
 [sub_resource type="VisualShaderNodeInput" id=2]
 input_name = "vertex"
@@ -113,7 +114,7 @@ void fragment() {
 
 // ScalarClamp:20
 	float n_in20p1 = 0.00000;
-	float n_in20p2 = 1.00000;
+	float n_in20p2 = 0.99900;
 	float n_out20p0 = clamp(n_out38p0, n_in20p1, n_in20p2);
 
 // Output:0
@@ -126,7 +127,7 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -319.394, -115.642 )
+graph_offset = Vector2( 0, 150 )
 nodes/fragment/0/position = Vector2( 1180, 80 )
 nodes/fragment/5/node = SubResource( 16 )
 nodes/fragment/5/position = Vector2( -220, -60 )

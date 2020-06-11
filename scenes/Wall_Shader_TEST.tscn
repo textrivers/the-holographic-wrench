@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://meshes/wall_12x12_.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://materials/wall_distance_shader_TEST.tres" type="Material" id=2]
+[ext_resource path="res://materials/transparent_btw_player_and_camera.tres" type="Material" id=2]
 
 [node name="Node2D" type="MeshInstance"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Sarah.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/2000px-Map_of_the_world_by_the_US_Gov_as_of_2016_no_legend.svg.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Wall_Shader_TEST.tscn" type="PackedScene" id=5]
 [ext_resource path="res://materials/wall_distance_shader_TEST.tres" type="Material" id=6]
+[ext_resource path="res://materials/transparent_btw_player_and_camera.tres" type="Material" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 4 )
@@ -136,13 +137,13 @@ inner_radius = 35.0
 outer_radius = 45.0
 sides = 24
 ring_sides = 9
-material = ExtResource( 6 )
+material = ExtResource( 7 )
 
 [node name="TorusInside" type="CSGTorus" parent="TorusCombiner"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.35908, 0 )
 operation = 2
-inner_radius = 36.0
-outer_radius = 44.0
+inner_radius = 35.8
+outer_radius = 44.8
 sides = 24
 ring_sides = 9
 
@@ -191,6 +192,7 @@ transform = Transform( -0.296258, 0.0619729, -0.953095, 0.450169, 0.88916, -0.08
 width = 23.7078
 height = 0.475533
 depth = 7.60433
+material = ExtResource( 6 )
 
 [node name="Spatial" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.250363, 0, -0.968152, 0, 1, 0, 0.968152, 0, 0.250363, -25.7243, 0, 1.76229 )
