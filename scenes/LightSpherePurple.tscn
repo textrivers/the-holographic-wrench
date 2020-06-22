@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_unshaded = true
+albedo_color = Color( 0.709804, 0, 1, 1 )
+
+[node name="OmniLight2" type="OmniLight"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 4, 0 )
+light_color = Color( 0.784314, 0.0117647, 1, 1 )
+light_energy = 2.03
+shadow_enabled = true
+omni_range = 8.6
+omni_attenuation = 2.92817
+
+[node name="CSGSphere" type="CSGSphere" parent="."]
+radius = 0.830398
+rings = 12
+material = SubResource( 3 )
