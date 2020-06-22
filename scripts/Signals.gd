@@ -5,7 +5,7 @@ extends Node
 signal initiate_fun
 
 ## emitted by ItemBox_2x4_.gd
-## received by Reactor_Test.gd
+## received by GUI.gd
 signal item_found
 
 ## emitted by Wastebasket8x8_.gd

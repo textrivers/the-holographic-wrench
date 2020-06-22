@@ -1,12 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scripts/CameraCrane.gd" type="Script" id=1]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Eleni_ghost.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/PlayerPosIndicator.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Sarah.gd" type="Script" id=2]
+[ext_resource path="res://scenes/RayShapeForSlope.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/CameraCrane.gd" type="Script" id=4]
+[ext_resource path="res://materials/transparent_btw_player_and_camera.tres" type="Material" id=5]
+[ext_resource path="res://meshes/13073_Combination_Wrench_v1_l3.obj" type="ArrayMesh" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.694841
 height = 1.91909
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.313726, 0.54902, 0.941176, 1 )
+emission_enabled = true
+emission = Color( 0.313726, 0.54902, 0.941176, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="PlaneMesh" id=2]
 
 [node name="Eleni" type="KinematicBody" groups=[
 "player",
@@ -20,14 +33,42 @@ shape = SubResource( 1 )
 [node name="RotationOffset" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.984807, 0.173648, 0, -0.173648, 0.984807, 0, 0, 0 )
 
-[node name="Mesh" parent="RotationOffset" instance=ExtResource( 3 )]
+[node name="MeshInstance" type="MeshInstance" parent="RotationOffset"]
+transform = Transform( -6.51683e-08, 0.4, 0, -0.4, -6.51683e-08, 0, 0, 0, 0.4, 0, 1.667, 0 )
+mesh = ExtResource( 6 )
+material/0 = SubResource( 3 )
 
 [node name="CameraCrane" type="Position3D" parent="."]
-script = ExtResource( 1 )
+transform = Transform( 1, 0, 0, 0, 0.990268, 0.139173, 0, -0.139173, 0.990268, 0, 0, 0 )
+script = ExtResource( 4 )
 
 [node name="Camera" type="Camera" parent="CameraCrane"]
-transform = Transform( 1, 7.05527e-08, -4.83094e-08, -6.10921e-08, 0.984808, 0.173647, 5.98267e-08, -0.173647, 0.984808, 0, 3, 6.2 )
+transform = Transform( 1, 7.05527e-08, -4.83094e-08, -6.10921e-08, 0.984808, 0.173647, 5.98267e-08, -0.173647, 0.984808, 0, 3, 6 )
 cull_mask = 1048573
 current = true
-fov = 90.0
-size = 10.0
+fov = 100.0
+size = 6.0
+
+[node name="Listener" type="Listener" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64337, 0 )
+current = true
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.552416 )
+visible = false
+light_energy = 1.69
+light_indirect_energy = 3.24
+shadow_enabled = true
+spot_range = 7.71614
+spot_attenuation = 2.82843
+spot_angle = 13.2363
+spot_angle_attenuation = 2.82843
+
+[node name="RayShapeForSlope" parent="." instance=ExtResource( 3 )]
+
+[node name="PlayerPosIndicator" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.82954, -0.0167561 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = ExtResource( 5 )
+script = ExtResource( 1 )

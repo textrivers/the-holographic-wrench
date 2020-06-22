@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Reactor_Floor_1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Reactor_Floor_2.tscn" type="PackedScene" id=2]
@@ -6,26 +6,16 @@
 [ext_resource path="res://scenes/Reactor_Ceiling.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/FloorPlane12x12_.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scripts/Reactor_Test.gd" type="Script" id=7]
+[ext_resource path="res://scripts/Reactor_Test_extends.gd" type="Script" id=7]
+[ext_resource path="res://scenes/WorldEnvironment_DarkSky.tscn" type="PackedScene" id=8]
 [ext_resource path="res://navmeshes/reactor_navmesh.tres" type="NavigationMesh" id=9]
 [ext_resource path="res://scenes/Guard.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/star tiles/stars_tile_6.png" type="Texture" id=11]
 [ext_resource path="res://assets/qotsa_guy_2.PNG" type="Texture" id=12]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_unshaded = true
 albedo_color = Color( 0.0392157, 0.964706, 0.160784, 1 )
 albedo_texture = ExtResource( 12 )
-
-[sub_resource type="PanoramaSky" id=2]
-radiance_size = 1
-panorama = ExtResource( 11 )
-
-[sub_resource type="Environment" id=3]
-background_mode = 2
-background_sky = SubResource( 2 )
-ambient_light_energy = 2.76
-ambient_light_sky_contribution = 0.11
 
 [node name="Reactor_Test" type="Navigation"]
 script = ExtResource( 7 )
@@ -113,7 +103,6 @@ spot_range = 34.5
 
 [node name="GUI" parent="." instance=ExtResource( 6 )]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
+[node name="WorldEnvironment_DarkSky" parent="." instance=ExtResource( 8 )]
 
 [editable path="Guard2"]

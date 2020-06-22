@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/Player_ghost.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.929412, 0.898039, 0.482353, 1 )
+albedo_color = Color( 0.941176, 0.941176, 0.470588, 1 )
 metallic = 0.38
 metallic_specular = 0.18
 emission_enabled = true

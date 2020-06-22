@@ -16,6 +16,7 @@ var timing = false
 func _ready():
 	Signals.connect("initiate_fun", self, "mark_start")
 	Signals.connect("cease_and_desist_fun", self, "mark_stop")
+	Signals.connect("item_found", self, "increment_item_count")
 	
 	if game_data.scene_counter != 1:
 		print(str(game_data.scene_counter))
@@ -49,3 +50,6 @@ func mark_stop():
 	if elapsed > game_data.exit_elapsed:
 		game_data.exit_elapsed = elapsed
 		game_data.exit_string = str_elapsed
+
+func increment_item_count():
+	$Panel/CenterContainer/Label.set_text(str(game_data.items_found_counter) + " items found")

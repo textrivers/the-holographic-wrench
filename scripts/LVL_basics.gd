@@ -1,20 +1,30 @@
 extends Navigation
 
 var instance_counter = 1
-var instance_pos = Vector3(-27, 1.667, -7.5)
+var instance_pos_dict = {}
+var instance_rot_mod = 0
+
+var items_max
 
 func _ready():
 	randomize()
 	
+	## use this space in extending scripts to specify:
+	## instance_pos_dict = all four player start positions
+	## instance_rot_mod = change starting rotation if needed
+	## items_max = items available on the level
+	
 	Signals.connect("reset_level", self, "increment_player")
 	
-	$GUI/Panel/CenterContainer/Label.set_text(str(game_data.items_found_counter) + " items found")
+	$GUI/Panel/CenterContainer/Label.set_text("0 items found")
 	
-	while instance_counter < 5:
-		add_players()
+	## moved add_players() to extending scripts
+	## move populate_boxes() to extending scripts also
 	
 	$GUI/AnyKeyControl/Panel/RichTextLabel.set_text("Press CTRL to begin player " + str(game_data.scene_counter))
 	
+	
+func populate_boxes():
 	## POPULATE BOXES ------------------------------
 	## making sure all boxes know their box ID number
 	var box_counter = 0
@@ -26,11 +36,11 @@ func _ready():
 		var selected_box
 		var item_count = 0
 	
-		## create items dict, populate boxes
+		## populate items dict, populate boxes
 		for i in range(game_data.all_boxes.size()):
 			game_data.items_dict[i] = [-1, -1, 0]
 		
-		while item_count < 12:
+		while item_count < items_max:
 			selected_box = randi() % game_data.all_boxes.size()
 			if game_data.all_boxes[selected_box].has_item() == true:
 				continue
@@ -50,9 +60,8 @@ func add_players():
 	else: 
 		player = load(game_data.ghost_dict[instance_counter]).instance()
 		player.ghost_ID = instance_counter
-	player.translation = instance_pos
-	player.translation.z += 3 * instance_counter
-	player.rotation_degrees.y = -90
+	player.translation = instance_pos_dict[instance_counter]
+	player.rotation_degrees.y += instance_rot_mod
 	add_child(player)
 	instance_counter += 1
 	return
