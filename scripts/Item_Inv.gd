@@ -24,7 +24,6 @@ var four_directions = [
 ]
 export var lit = false
 var upstream_neighbor = null
-var already_propagated = false
 
 func _ready():
 	randomize()
@@ -52,13 +51,12 @@ func _ready():
 	if self.name == "Item_Inv_4":
 		connectors = [1, 1, 1, 1]
 	
-	for _x in range(randi() % 4):
-		rotate_left()
+	if parent.machine_box == false:
+		
+		for _x in range(randi() % 4):
+			rotate_left()
 
 func _process(_delta):
-	## CLEAR PROPAGATION
-	if already_propagated == true:
-		already_propagated = false
 		
 	## ROTATE PIECES ------------------------------------
 	if rotation_degrees != target_rot:
@@ -169,9 +167,6 @@ func make_connectivity():
 	var counter = 0
 	var lit_counter = 0
 	var opposite = (counter + 2) % 4
-	
-	##if already_propagated == false:
-		## already_propagated = true
 		
 	for connector in connectors:
 		if connector == 1:
@@ -213,9 +208,6 @@ func break_connectivity():
 	var neighbor
 	var counter = 0
 	var opposite = (counter + 2) % 4
-	
-	## if already_propagated == false:
-	## 	already_propagated = true
 	
 	for connector in connectors:
 		if connector == 1:
