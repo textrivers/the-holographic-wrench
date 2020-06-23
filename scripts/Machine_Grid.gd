@@ -1,8 +1,8 @@
 extends Node2D
 
 var box_grid = []
-var x_size = 4
-var y_size = 4
+export var x_size = 4
+export var y_size = 4
 
 func _ready():
 	for x in range(x_size):

@@ -46,7 +46,7 @@ func _unhandled_input(event):
 						$Item.hide()
 						game_data.items_dict[box_ID][1] = current_frame
 						$MachineSystem.show()
-						## game_data.items_found_counter += 1
+						## TODO send signal to pause play, pause time, free mouse, etc.
 
 
 func mark_game_start():
