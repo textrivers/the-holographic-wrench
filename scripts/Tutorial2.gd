@@ -9,8 +9,8 @@ func _ready():
 		3: Vector3(0, 8, 8),
 		4: Vector3(0, 8, 10)
 	}
-	instance_rot_mod = 0
-	items_max = 4
+	instance_rot_mod = -90
+	items_max = 5
 	
 	while instance_counter < 5:
 		add_players()

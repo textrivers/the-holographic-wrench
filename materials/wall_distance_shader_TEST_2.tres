@@ -51,7 +51,7 @@ default_input_values = [ 0, Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ), 1, 
 
 [resource]
 code = "shader_type spatial;
-render_mode depth_draw_alpha_prepass;
+render_mode depth_draw_alpha_prepass, vertex_lighting;
 
 uniform vec3 PlayerPos;
 
@@ -129,7 +129,9 @@ void light() {
 
 }
 "
+graph_offset = Vector2( 0, 75 )
 modes/depth_draw = 3
+flags/vertex_lighting = true
 nodes/fragment/0/position = Vector2( 1180, 80 )
 nodes/fragment/5/node = SubResource( 16 )
 nodes/fragment/5/position = Vector2( -220, -60 )
