@@ -131,7 +131,7 @@ func _process(_delta):
 				make_connectivity()
 			else:
 				$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
-	
+			
 	## AS YOU WERE ----------------------------------------------
 	else:
 		## $Sprite.modulate = Color(1, 1, 1, 1)
