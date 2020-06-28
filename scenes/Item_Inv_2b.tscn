@@ -10,7 +10,6 @@ extents = Vector2( 32.1198, 32.0569 )
 "item",
 ]]
 script = ExtResource( 1 )
-connectors = [ 1, 0, 1, 0 ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

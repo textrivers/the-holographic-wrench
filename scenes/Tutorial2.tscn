@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/star tiles/starry_skybox.png" type="Texture" id=1]
 [ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://scenes/WorldEnvironment_DarkSky.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/FloorPlane12x12_.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/Tutorial2.gd" type="Script" id=7]
-[ext_resource path="res://scenes/ItemBox_2x4_.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/LightSpherePurple.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/LightSphereGreen.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/LightSphere.tscn" type="PackedScene" id=11]
@@ -47,20 +46,20 @@ material/0 = ExtResource( 4 )
 [node name="CollisionShape" type="CollisionShape" parent="NavigationMeshInstance/LVL/StaticBody"]
 shape = SubResource( 2 )
 
-[node name="ItemBox_2x4_" parent="NavigationMeshInstance/LVL" instance=ExtResource( 8 )]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -6, 0, 0.95 )
-
-[node name="ItemBox_2x4_2" parent="NavigationMeshInstance/LVL" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -0.95 )
-
-[node name="ItemBox_2x4_3" parent="NavigationMeshInstance/LVL" instance=ExtResource( 8 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.95, 0, -6 )
-
-[node name="ItemBox_2x4_4" parent="NavigationMeshInstance/LVL" instance=ExtResource( 8 )]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.95, 0, 6 )
-
 [node name="ItemBox_2x4_w_Inventory" parent="NavigationMeshInstance/LVL" instance=ExtResource( 13 )]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -12, 0, 0.95 )
+
+[node name="ItemBox_2x4_w_Inventory2" parent="NavigationMeshInstance/LVL" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -6, 0, 0.95 )
+
+[node name="ItemBox_2x4_w_Inventory3" parent="NavigationMeshInstance/LVL" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -0.95 )
+
+[node name="ItemBox_2x4_w_Inventory4" parent="NavigationMeshInstance/LVL" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.95, 0, -6 )
+
+[node name="ItemBox_2x4_w_Inventory5" parent="NavigationMeshInstance/LVL" instance=ExtResource( 13 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.95, 0, 6 )
 
 [node name="Floor" type="Spatial" parent="NavigationMeshInstance"]
 transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0 )

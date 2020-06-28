@@ -9,7 +9,7 @@ var can_drop = false
 var drop_target
 var drop_targets = []
 
-var target_rot
+var target_rot = 0
 
 var parent
 
@@ -23,12 +23,12 @@ var four_directions = [
 	Vector2(-1, 0)
 ]
 export var lit = false
+export var pre_rot_left = 0
 var upstream_neighbor = null
 
 func _ready():
 	randomize()
-	target_rot = 0
-	parent = get_node("..")
+	parent = get_parent()
 	drop_targets.append(parent)
 	drop_target = drop_targets.back()
 	update_my_grid_pos()
@@ -51,8 +51,13 @@ func _ready():
 	if self.name == "Item_Inv_4":
 		connectors = [1, 1, 1, 1]
 	
-	if parent.machine_box == false:
-		
+	if parent.machine_box == true:
+		for _x in range(pre_rot_left):
+			rotate_left()
+		if is_in_group("source"):
+			call_deferred("make_connectivity")
+	
+	else:
 		for _x in range(randi() % 4):
 			rotate_left()
 
@@ -185,6 +190,9 @@ func make_connectivity():
 									downstream_neighbors.append(item)
 		counter += 1
 		opposite = (counter + 2) % 4
+	## hacky cheat to make source always on
+	if is_in_group("source"):
+		lit_counter = 1
 	
 	if lit_counter == 0:
 		lit = false

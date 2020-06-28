@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://materials/wall_orange-box.tres" type="Material" id=1]
 [ext_resource path="res://scenes/NavigationMeshInstance_Basic.tscn" type="PackedScene" id=2]
 [ext_resource path="res://meshes/wall_4x4_.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://assets/leia_hologram.png" type="Texture" id=4]
 [ext_resource path="res://scripts/ItemBox_2x4_w_Inventory.gd" type="Script" id=5]
-[ext_resource path="res://scenes/Machine_System.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConcavePolygonShape" id=1]
 data = PoolVector3Array( 2, 0, 0, -2, 0, 0, 2, 4, 0, 2, 4, 0, -2, 0, 0, -2, 4, 0, -2, 4, -0.01, -2, 0, -0.01, 2, 4, -0.01, 2, 4, -0.01, -2, 0, -0.01, 2, 0, -0.01, 2, 0, 0, 2, 4, 0, 2, 0, -0.01, 2, 0, -0.01, 2, 4, 0, 2, 4, -0.01, -2, 4, 0, -2, 0, 0, -2, 4, -0.01, -2, 4, -0.01, -2, 0, 0, -2, 0, -0.01, 2, 4, 0, -2, 4, 0, 2, 4, -0.01, 2, 4, -0.01, -2, 4, 0, -2, 4, -0.01, -2, 0, 0, 2, 0, 0, -2, 0, -0.01, -2, 0, -0.01, 2, 0, 0, 2, 0, -0.01 )
@@ -130,8 +129,5 @@ shape = SubResource( 7 )
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.18513 )
 shape = SubResource( 8 )
-
-[node name="MachineSystem" parent="." instance=ExtResource( 6 )]
-visible = false
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

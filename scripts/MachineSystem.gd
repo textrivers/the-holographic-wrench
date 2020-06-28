@@ -1,5 +1,7 @@
 extends Control
 
+export var testing = false
+
 func _ready():
 	populate_inventory()
 	print(game_data.player_inventory)
@@ -7,12 +9,19 @@ func _ready():
 func _on_ButtonCommit_pressed():
 	print("commit")
 	record_inventory()
-	print(game_data.player_inventory)
-	## self.hide()
+	if testing == false:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		queue_free()
+	else:
+		pass
 
 func _on_ButtonExit_pressed():
 	print("exit")
-	self.hide()
+	if testing == false:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		queue_free()
+	else:
+		print(game_data.player_inventory)
 
 func populate_inventory():
 	var inv_index = 0
@@ -28,7 +37,6 @@ func populate_inventory():
 		inv_index += 1
 		
 func record_inventory():
-	## TODO write contents of on-screen inventory to game_data.player_inventory when "commit" button is pressed:
 	## breakpoint
 	var inv_index = 0
 	## clear array
@@ -41,6 +49,5 @@ func record_inventory():
 		for j in i.get_children():
 			if j.is_in_group("item"):
 				game_data.player_inventory.append(j.filename)
-			
-	## if box has child, record child's filename in game_data.player_inventory
-	pass
+	print(game_data.player_inventory)
+

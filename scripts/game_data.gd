@@ -68,11 +68,4 @@ var guard_waypoints = [
 
 var machine_grid = []
 
-var player_inventory = ["res://scenes/Item_Inv_2a.tscn",
-"res://scenes/Item_Inv_3.tscn",
-"res://scenes/Item_Inv_3.tscn",
-"res://scenes/Item_Inv_3.tscn",
-"res://scenes/Item_Inv_3.tscn",
-"res://scenes/Item_Inv_1.tscn",
-"res://scenes/Item_Inv_3.tscn",
-]
+var player_inventory = []
