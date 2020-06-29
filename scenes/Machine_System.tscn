@@ -1,13 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scenes/Item_Inv_3.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Components/Component_SOURCE_4.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Item_Inv_2b.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Item_Inv_2a.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Item_Inv_4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Components/Component_numtest-3_2a.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Components/Component_numtest-2_2a.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Components/Component_numtest-4_2a.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/machine_background_alpha75.png" type="Texture" id=6]
 [ext_resource path="res://scripts/Machine_Grid.gd" type="Script" id=7]
-[ext_resource path="res://assets/item_source.png" type="Texture" id=8]
 [ext_resource path="res://scripts/MachineSystem.gd" type="Script" id=9]
 
 [node name="MachineSystem" type="Control"]
@@ -19,6 +18,7 @@ script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+testing = true
 
 [node name="TextureRect" type="Sprite" parent="."]
 texture = ExtResource( 6 )
@@ -97,25 +97,19 @@ machine_box = true
 position = Vector2( 63.9514, -0.0320282 )
 machine_box = true
 
-[node name="Item_Inv_3" parent="Machine_Grid/BoxArea2D2" instance=ExtResource( 1 )]
-
 [node name="BoxArea2D3" parent="Machine_Grid" instance=ExtResource( 2 )]
 position = Vector2( 127.951, -0.0320282 )
 machine_box = true
-
-[node name="Item_Inv_2b" parent="Machine_Grid/BoxArea2D3" instance=ExtResource( 3 )]
-pre_rot_left = 1
 
 [node name="BoxArea2D4" parent="Machine_Grid" instance=ExtResource( 2 )]
 position = Vector2( 191.951, -0.0320282 )
 machine_box = true
 
-[node name="Item_Inv_2a" parent="Machine_Grid/BoxArea2D4" instance=ExtResource( 4 )]
-pre_rot_left = 2
-
 [node name="BoxArea2D5" parent="Machine_Grid" instance=ExtResource( 2 )]
 position = Vector2( 191.951, 63.968 )
 machine_box = true
+
+[node name="Component_BASE_2a" parent="Machine_Grid/BoxArea2D5" instance=ExtResource( 5 )]
 
 [node name="BoxArea2D9" parent="Machine_Grid" instance=ExtResource( 2 )]
 position = Vector2( 191.951, 127.968 )
@@ -125,9 +119,13 @@ machine_box = true
 position = Vector2( 127.951, 127.968 )
 machine_box = true
 
+[node name="Component_SOURCE_4" parent="Machine_Grid/BoxArea2D10" instance=ExtResource( 1 )]
+
 [node name="BoxArea2D11" parent="Machine_Grid" instance=ExtResource( 2 )]
 position = Vector2( 63.9514, 127.968 )
 machine_box = true
+
+[node name="Component_BASE_2a" parent="Machine_Grid/BoxArea2D11" instance=ExtResource( 4 )]
 
 [node name="BoxArea2D12" parent="Machine_Grid" instance=ExtResource( 2 )]
 position = Vector2( -0.0486069, 127.968 )
@@ -157,17 +155,8 @@ machine_box = true
 position = Vector2( 63.9514, 63.968 )
 machine_box = true
 
-[node name="CollisionShape2D" parent="Machine_Grid/BoxArea2D7" index="0"]
-disabled = true
-
-[node name="Item_Inv_4" parent="Machine_Grid/BoxArea2D7" groups=[
-"source",
-] instance=ExtResource( 5 )]
-input_pickable = false
-lit = true
-
-[node name="Sprite" parent="Machine_Grid/BoxArea2D7/Item_Inv_4" index="1"]
-texture = ExtResource( 8 )
+[node name="Component_BASE_2a" parent="Machine_Grid/BoxArea2D7" instance=ExtResource( 3 )]
+pre_rot_left = 2
 
 [node name="BoxArea2D8" parent="Machine_Grid" instance=ExtResource( 2 )]
 position = Vector2( -0.0486069, 63.968 )
@@ -202,7 +191,3 @@ __meta__ = {
 }
 [connection signal="pressed" from="ButtonCommit" to="." method="_on_ButtonCommit_pressed"]
 [connection signal="pressed" from="ButtonExit" to="." method="_on_ButtonExit_pressed"]
-
-[editable path="Machine_Grid/BoxArea2D7"]
-
-[editable path="Machine_Grid/BoxArea2D7/Item_Inv_4"]

@@ -36,30 +36,37 @@ func _ready():
 	if lit == false:
 		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 	
-	if self.name == "Item_Inv_1":
-		connectors = [1, 0, 0, 0]
+	## if self.name == "Item_Inv_1":
+		## connectors = [1, 0, 0, 0]
 	
-	if self.name == "Item_Inv_2a":
-		connectors = [1, 1, 0, 0]
+	# if self.name == "Item_Inv_2a":
+		## connectors = [1, 1, 0, 0]
 	
-	if self.name == "Item_Inv_2b":
-		connectors = [1, 0, 1, 0]
+	## if self.name == "Item_Inv_2b":
+		## connectors = [1, 0, 1, 0]
 	
-	if self.name == "Item_Inv_3":
-		connectors = [1, 1, 1, 0]
+	## if self.name == "Item_Inv_3":
+		## connectors = [1, 1, 1, 0]
 	
-	if self.name == "Item_Inv_4":
-		connectors = [1, 1, 1, 1]
+	## if self.name == "Item_Inv_4":
+		## connectors = [1, 1, 1, 1]
 	
 	if parent.machine_box == true:
-		for _x in range(pre_rot_left):
-			rotate_left()
+		## call_deferred("pre_rotate")
 		if is_in_group("source"):
 			call_deferred("make_connectivity")
 	
-	else:
-		for _x in range(randi() % 4):
-			rotate_left()
+	## else:
+		## for _x in range(randi() % 4):
+			## rotate_left()
+
+func pre_rotate():
+	for _x in range(pre_rot_left):
+		rotate_left()
+	var target_rad = deg2rad(target_rot)
+	rotation = target_rad
+	if has_node("Sprite/ID_Sprite"):
+		$Sprite/ID_Sprite.rotation = -rotation
 
 func _process(_delta):
 		
@@ -68,6 +75,8 @@ func _process(_delta):
 		var curret_rad = deg2rad(rotation_degrees)
 		var target_rad = deg2rad(target_rot)
 		rotation = lerp_angle(curret_rad, target_rad, 0.2)
+		if has_node("Sprite/ID_Sprite"):
+			$Sprite/ID_Sprite.rotation = -rotation
 	
 	## CLICK -------------------------------------------
 	if can_click == true:
@@ -143,7 +152,8 @@ func _process(_delta):
 		$CollisionShape2D.scale = Vector2(0.9, 0.9)
 
 func _on_Item_Inv_mouse_entered():
-	can_click = true
+	if !is_in_group("source"):
+		can_click = true
 
 func _on_Item_Inv_mouse_exited():
 	can_click = false
