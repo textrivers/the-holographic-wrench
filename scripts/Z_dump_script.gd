@@ -119,3 +119,18 @@ func propagate_connectivity():
 								item.sources[1] = 0
 								item.get_node("Sprite").self_modulate = Color(0.5, 0.5, 0.5, 1)
 						item.propagate_connectivity()
+
+
+func save_self_scene():
+	for child in get_children():
+		child.set_owner(self)
+	var packedscene = PackedScene.new()
+	packedscene.pack(get_tree().get_current_scene())
+	var err = ResourceSaver.save("res://scenes/Machine_System.tscn", packedscene) 
+	if err:
+		print(str(err)) 
+	## TODO Must save with a unique filename that the game can find later? 
+	## Send this to the parent terminal? 
+
+
+
