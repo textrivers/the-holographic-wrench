@@ -1,0 +1,343 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/components/Component_BASE_2a.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Machine_Grid.gd" type="Script" id=2]
+[ext_resource path="res://scripts/MachineSystem.gd" type="Script" id=3]
+[ext_resource path="res://assets/machine_background_alpha75.png" type="Texture" id=4]
+[ext_resource path="res://scripts/components/Component_BASE_4.gd" type="Script" id=5]
+[ext_resource path="res://scripts/drag_area_square.gd" type="Script" id=6]
+[ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Components/Component_numtest-2_2a.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Components/Component_SOURCE_4.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Components/Component_numtest-3_2a.tscn" type="PackedScene" id=11]
+
+[node name="MachineSystem" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1024.0
+margin_bottom = -768.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+testing = true
+
+[node name="TextureRect" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Inventory" type="Node2D" parent="."]
+position = Vector2( 182.938, 537.91 )
+
+[node name="Label" type="Label" parent="Inventory"]
+margin_left = -56.0
+margin_top = 20.0
+margin_right = 37.0
+margin_bottom = 47.0
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoxArea2D17" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( -32.5681, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="BoxArea2D18" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 31.4319, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="BoxArea2D19" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 95.4319, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="BoxArea2D20" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 159.432, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="BoxArea2D21" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 223.432, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="BoxArea2D22" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 287.432, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="BoxArea2D23" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 351.432, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="BoxArea2D24" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 415.432, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="BoxArea2D25" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 479.432, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="BoxArea2D26" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 543.432, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="BoxArea2D27" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 607.432, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="BoxArea2D28" type="Area2D" parent="Inventory" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 671.432, 92.3284 )
+script = ExtResource( 6 )
+machine_box = false
+
+[node name="Machine_Grid" type="Node2D" parent="." groups=[
+"machine_grid",
+]]
+position = Vector2( 438.114, 223.736 )
+script = ExtResource( 2 )
+x_size = 4
+y_size = 4
+
+[node name="Label" type="Label" parent="Machine_Grid"]
+margin_left = -35.0486
+margin_top = -68.032
+margin_right = 98.9514
+margin_bottom = -34.032
+text = "Machine"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoxArea2D" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( -0.0486069, -0.0320282 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D2" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 63.9514, -0.0320282 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D3" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 127.951, -0.0320282 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D4" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 191.951, -0.0320282 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D5" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 191.951, 63.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D9" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 191.951, 127.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D10" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 127.951, 127.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="Component_SOURCE_4" type="Area2D" parent="Machine_Grid/BoxArea2D10" groups=[
+"item",
+"source",
+] instance=ExtResource( 10 )]
+script = ExtResource( 5 )
+lit = true
+pre_rot_left = 0
+
+[node name="BoxArea2D11" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 63.9514, 127.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="Component_BASE_2a" type="Area2D" parent="Machine_Grid/BoxArea2D11" groups=[
+"item",
+] instance=ExtResource( 9 )]
+script = ExtResource( 1 )
+lit = true
+pre_rot_left = 0
+
+[node name="BoxArea2D12" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( -0.0486069, 127.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D13" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 191.951, 191.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D14" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 127.951, 191.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D15" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 63.9514, 191.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D16" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( -0.0486069, 191.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D6" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 127.951, 63.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="BoxArea2D7" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( 63.9514, 63.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="Component_BASE_2a" type="Area2D" parent="Machine_Grid/BoxArea2D7" groups=[
+"item",
+] instance=ExtResource( 11 )]
+rotation = -3.14159
+script = ExtResource( 1 )
+lit = true
+pre_rot_left = 2
+
+[node name="BoxArea2D8" type="Area2D" parent="Machine_Grid" groups=[
+"box",
+] instance=ExtResource( 8 )]
+position = Vector2( -0.0486069, 63.968 )
+script = ExtResource( 6 )
+machine_box = true
+
+[node name="ButtonCommit" type="Button" parent="."]
+anchor_left = 0.829
+anchor_top = 0.14
+anchor_right = 0.891
+anchor_bottom = 0.14
+margin_left = 800.0
+margin_top = 200.0
+margin_right = -0.466248
+margin_bottom = 0.140236
+text = "Commit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonExit" type="Button" parent="."]
+anchor_left = 0.829
+anchor_top = 0.194
+anchor_right = 0.891
+anchor_bottom = 0.194
+margin_left = 800.0
+margin_top = 250.0
+margin_right = -0.466248
+margin_bottom = 0.140236
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSaveReload" type="Button" parent="."]
+anchor_left = 0.829
+anchor_top = 0.194
+anchor_right = 0.891
+anchor_bottom = 0.194
+margin_left = 800.0
+margin_top = 300.0
+margin_right = -0.466248
+margin_bottom = 0.140236
+pressed = true
+text = "Save and Reload"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_entered" from="Inventory/BoxArea2D17/Component_BASE_2a" to="Inventory/BoxArea2D17/Component_BASE_2a" method="_on_Item_Inv_area_entered"]
+[connection signal="area_exited" from="Inventory/BoxArea2D17/Component_BASE_2a" to="Inventory/BoxArea2D17/Component_BASE_2a" method="_on_Item_Inv_area_exited"]
+[connection signal="mouse_entered" from="Inventory/BoxArea2D17/Component_BASE_2a" to="Inventory/BoxArea2D17/Component_BASE_2a" method="_on_Item_Inv_mouse_entered"]
+[connection signal="mouse_exited" from="Inventory/BoxArea2D17/Component_BASE_2a" to="Inventory/BoxArea2D17/Component_BASE_2a" method="_on_Item_Inv_mouse_exited"]
+[connection signal="area_entered" from="Machine_Grid/BoxArea2D9/Component_BASE_2a" to="Machine_Grid/BoxArea2D9/Component_BASE_2a" method="_on_Item_Inv_area_entered"]
+[connection signal="area_exited" from="Machine_Grid/BoxArea2D9/Component_BASE_2a" to="Machine_Grid/BoxArea2D9/Component_BASE_2a" method="_on_Item_Inv_area_exited"]
+[connection signal="mouse_entered" from="Machine_Grid/BoxArea2D9/Component_BASE_2a" to="Machine_Grid/BoxArea2D9/Component_BASE_2a" method="_on_Item_Inv_mouse_entered"]
+[connection signal="mouse_exited" from="Machine_Grid/BoxArea2D9/Component_BASE_2a" to="Machine_Grid/BoxArea2D9/Component_BASE_2a" method="_on_Item_Inv_mouse_exited"]
+[connection signal="area_entered" from="Machine_Grid/BoxArea2D10/Component_SOURCE_4" to="Machine_Grid/BoxArea2D10/Component_SOURCE_4" method="_on_Item_Inv_area_entered"]
+[connection signal="area_exited" from="Machine_Grid/BoxArea2D10/Component_SOURCE_4" to="Machine_Grid/BoxArea2D10/Component_SOURCE_4" method="_on_Item_Inv_area_exited"]
+[connection signal="mouse_entered" from="Machine_Grid/BoxArea2D10/Component_SOURCE_4" to="Machine_Grid/BoxArea2D10/Component_SOURCE_4" method="_on_Item_Inv_mouse_entered"]
+[connection signal="mouse_exited" from="Machine_Grid/BoxArea2D10/Component_SOURCE_4" to="Machine_Grid/BoxArea2D10/Component_SOURCE_4" method="_on_Item_Inv_mouse_exited"]
+[connection signal="area_entered" from="Machine_Grid/BoxArea2D11/Component_BASE_2a" to="Machine_Grid/BoxArea2D11/Component_BASE_2a" method="_on_Item_Inv_area_entered"]
+[connection signal="area_exited" from="Machine_Grid/BoxArea2D11/Component_BASE_2a" to="Machine_Grid/BoxArea2D11/Component_BASE_2a" method="_on_Item_Inv_area_exited"]
+[connection signal="mouse_entered" from="Machine_Grid/BoxArea2D11/Component_BASE_2a" to="Machine_Grid/BoxArea2D11/Component_BASE_2a" method="_on_Item_Inv_mouse_entered"]
+[connection signal="mouse_exited" from="Machine_Grid/BoxArea2D11/Component_BASE_2a" to="Machine_Grid/BoxArea2D11/Component_BASE_2a" method="_on_Item_Inv_mouse_exited"]
+[connection signal="area_entered" from="Machine_Grid/BoxArea2D7/Component_BASE_2a" to="Machine_Grid/BoxArea2D7/Component_BASE_2a" method="_on_Item_Inv_area_entered"]
+[connection signal="area_exited" from="Machine_Grid/BoxArea2D7/Component_BASE_2a" to="Machine_Grid/BoxArea2D7/Component_BASE_2a" method="_on_Item_Inv_area_exited"]
+[connection signal="mouse_entered" from="Machine_Grid/BoxArea2D7/Component_BASE_2a" to="Machine_Grid/BoxArea2D7/Component_BASE_2a" method="_on_Item_Inv_mouse_entered"]
+[connection signal="mouse_exited" from="Machine_Grid/BoxArea2D7/Component_BASE_2a" to="Machine_Grid/BoxArea2D7/Component_BASE_2a" method="_on_Item_Inv_mouse_exited"]
+[connection signal="pressed" from="ButtonCommit" to="." method="_on_ButtonCommit_pressed"]
+[connection signal="pressed" from="ButtonExit" to="." method="_on_ButtonExit_pressed"]
+[connection signal="pressed" from="ButtonSaveReload" to="." method="_on_ButtonSaveReload_pressed"]

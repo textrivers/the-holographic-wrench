@@ -36,31 +36,13 @@ func _ready():
 	if lit == false:
 		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 	
-	## if self.name == "Item_Inv_1":
-		## connectors = [1, 0, 0, 0]
-	
-	# if self.name == "Item_Inv_2a":
-		## connectors = [1, 1, 0, 0]
-	
-	## if self.name == "Item_Inv_2b":
-		## connectors = [1, 0, 1, 0]
-	
-	## if self.name == "Item_Inv_3":
-		## connectors = [1, 1, 1, 0]
-	
-	## if self.name == "Item_Inv_4":
-		## connectors = [1, 1, 1, 1]
-	
 	if parent.machine_box == true:
 		## call_deferred("pre_rotate")
 		if is_in_group("source"):
 			call_deferred("make_connectivity")
-	
-	## else:
-		## for _x in range(randi() % 4):
-			## rotate_left()
 
 func pre_rotate():
+	## calls to pre_rotate() are found in inheriting scripts
 	for _x in range(pre_rot_left):
 		rotate_left()
 	var target_rad = deg2rad(target_rot)
@@ -121,6 +103,7 @@ func _process(_delta):
 								child.break_connectivity()
 							drop_target.remove_child(child)
 							parent.add_child(child)
+							## child.set_owner(parent)
 							child.drop_targets.clear()
 							child.drop_targets.append(parent)
 							child.parent = parent
@@ -134,6 +117,7 @@ func _process(_delta):
 				var drop_target_transitional = drop_target 
 				parent.remove_child(self)
 				drop_target_transitional.add_child(self)
+				## self.set_owner(drop_target_transitional)
 				parent = drop_target_transitional
 				drop_targets.clear()
 				drop_targets.append(parent)

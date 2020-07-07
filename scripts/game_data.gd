@@ -68,4 +68,6 @@ var guard_waypoints = [
 
 var machine_grid = []
 
-var player_inventory = []
+var player_inventory = [
+	"res://scenes/components/Component_numtest-3_2a.tscn"
+]

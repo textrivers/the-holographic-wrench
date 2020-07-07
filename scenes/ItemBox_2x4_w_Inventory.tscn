@@ -47,7 +47,6 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite3D" parent="FrontSide"]
 transform = Transform( 0.1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.14022, 2.10484, 0.0291839 )
-visible = false
 texture = ExtResource( 4 )
 
 [node name="NavigationMeshInstance" parent="FrontSide" instance=ExtResource( 2 )]
