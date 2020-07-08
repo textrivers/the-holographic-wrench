@@ -81,9 +81,9 @@ func populate_inventory():
 
 func populate_terminal():
 	## copy parent's manifest
-	if parent.get("terminal_contents"):
+	if parent.terminal_contents != []:
 		my_terminal_contents = parent.terminal_contents
-	print(my_terminal_contents)
+	## print(my_terminal_contents)
 	var term_index = 0
 	for i in $Machine_Grid.get_children():
 		## breakpoint
