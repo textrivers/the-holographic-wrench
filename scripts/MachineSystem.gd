@@ -47,6 +47,7 @@ func _on_ButtonCommit_pressed():
 	if testing == false:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		parent.can_be_opened = true
+		get_tree().paused = false
 		queue_free()
 	else:
 		print("commit")
@@ -55,6 +56,7 @@ func _on_ButtonExit_pressed():
 	if testing == false:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		## parent.can_be_opened = true
+		get_tree().paused = false
 		queue_free()
 	else:
 		print("exit")

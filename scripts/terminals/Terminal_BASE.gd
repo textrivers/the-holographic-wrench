@@ -50,6 +50,7 @@ func _unhandled_input(event):
 				## machine_system adjust parameters (add items in certain boxes, adjust size of machine, etc.)
 				add_child(machine_system)
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				get_tree().paused = true
 				## TODO send signal to pause play, pause time, etc.
 
 func mark_game_start():

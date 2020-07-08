@@ -83,7 +83,6 @@ func _process(_delta):
 		## GET ROTATION and ROTATE CONNECTORS
 		if Input.is_action_just_pressed("rotate_left"):
 			rotate_left()
-			
 		if Input.is_action_just_pressed("rotate_right"):
 			rotate_right()
 			
@@ -136,6 +135,7 @@ func _process(_delta):
 		$CollisionShape2D.scale = Vector2(0.9, 0.9)
 
 func _on_Item_Inv_mouse_entered():
+	print("area works")
 	if !is_in_group("source"):
 		can_click = true
 
@@ -191,20 +191,16 @@ func make_connectivity():
 	if lit_counter == 0:
 		lit = false
 		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
-		## for item in downstream_neighbors:
-			## item.make_connectivity()
-		downstream_neighbors.clear()
 	elif lit_counter == 1:
 		lit = true
 		$Sprite.modulate = Color(1, 1, 1, 1)
 		for item in downstream_neighbors:
 			item.make_connectivity()
-		downstream_neighbors.clear()
 	else: ## too many connections
 		upstream_neighbor = null
-		downstream_neighbors.clear()
 		lit = false
 		$Sprite.modulate = Color(0.5, 0, 0, 1)
+	downstream_neighbors.clear()
 
 func break_connectivity():
 	var neighbor
