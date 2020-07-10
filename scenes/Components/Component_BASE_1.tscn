@@ -9,6 +9,7 @@ extents = Vector2( 32.1198, 32.0569 )
 [node name="Component_BASE_1" type="Area2D" groups=[
 "item",
 ]]
+pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

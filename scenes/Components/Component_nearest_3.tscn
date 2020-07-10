@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/components/Component_BASE_4.gd" type="Script" id=1]
-[ext_resource path="res://assets/item_connect_4.png" type="Texture" id=2]
+[ext_resource path="res://scripts/components/Component_BASE_3.gd" type="Script" id=1]
+[ext_resource path="res://assets/item_connect_3.png" type="Texture" id=2]
+[ext_resource path="res://assets/component_ID_nearest3.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.1198, 32.0569 )
 
-[node name="Component_BASE_4" type="Area2D" groups=[
+[node name="Component_BASE_3" type="Area2D" groups=[
 "item",
 ]]
 pause_mode = 2
@@ -17,6 +18,9 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+texture = ExtResource( 3 )
 [connection signal="area_entered" from="." to="." method="_on_Item_Inv_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Item_Inv_area_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_Item_Inv_mouse_entered"]

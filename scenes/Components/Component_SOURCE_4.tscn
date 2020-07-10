@@ -21,6 +21,7 @@ shape = SubResource( 1 )
 "item",
 "source",
 ]]
+pause_mode = 2
 texture = ExtResource( 1 )
 
 [node name="ID_Sprite" type="Sprite" parent="Sprite"]
