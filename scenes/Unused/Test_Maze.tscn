@@ -1,0 +1,129 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Unused/Leia.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/FloorPlane4x4_.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Floor20x20.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Unused/BoxSmall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Floor10x10.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/FloorPlane2x2_.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Wall5x10.tscn" type="PackedScene" id=7]
+
+
+[node name="Test_Maze" type="Spatial"]
+
+[node name="Floor20x20" parent="." instance=ExtResource( 3 )]
+
+[node name="Floor10x10" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 20 )
+
+[node name="Floor10x12" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.5, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 25, 3.36979, 19.3838 )
+
+[node name="Floor10x11" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40 )
+
+[node name="Floor10x14" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 40 )
+
+[node name="Floor10x13" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.2, 20, 6.7961, 40.7391 )
+
+[node name="FloorPlane2x2_" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, 0 )
+
+[node name="FloorPlane2x2_2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, 0 )
+
+[node name="FloorPlane2x2_4" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, -2 )
+
+[node name="FloorPlane2x2_3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, -2 )
+
+[node name="FloorPlane4x4_" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2962, 1.79998, -5.72873 )
+
+[node name="Boxes" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.669751, 0, 0, 0, 1, 22.5557, 3.38419, 30 )
+
+[node name="BoxSmall" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1.49309, 0, 0, 0, 1, -22.5557, -2.06672, -29.5458 )
+
+[node name="BoxSmall2" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1.49309, 0, 0, 0, 1, -11.4938, -5.05291, -25 )
+
+[node name="BoxSmall3" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1.49309, 0, 0, 0, 1, -12.5557, -5.0529, 7 )
+
+[node name="BoxSmall4" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1.49309, 0, 0, 0, 1, -6.55568, 8.38493, 13 )
+
+[node name="BoxSmall5" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.1191 )
+
+[node name="BoxSmall6" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( -0.652407, 0.444333, -0.366368, -0.863695, -0.748238, -0.48502, -0.489641, 0, 0.871924, -11.308, -4.29847, -54.2165 )
+
+[node name="BoxSmall7" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8891, -1.20859, -52.8498 )
+
+[node name="Wall5x10" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -30 )
+
+[node name="Wall5x22" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0241, 5.02935, 10.1102 )
+
+[node name="Wall5x24" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, 30 )
+
+[node name="Wall5x26" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 0.669751, 0, 0, 0, 1, 22.5557, 3.38419, 30 )
+
+[node name="Wall5x11" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 5, -30 )
+
+[node name="Wall5x21" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 50.0685 )
+
+[node name="Wall5x20" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 5, 50.0685 )
+
+[node name="Wall5x12" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 30, 5, -20 )
+
+[node name="Wall5x13" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 30, 5, 0 )
+
+[node name="Wall5x14" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 30, 5, 20 )
+
+[node name="Wall5x15" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 30, 5, 40 )
+
+[node name="Wall5x19" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -10, 5, -20 )
+
+[node name="Wall5x18" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -10, 5, 0 )
+
+[node name="Wall5x17" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -10, 5, 20 )
+
+[node name="Wall5x23" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 5, 20 )
+
+[node name="Wall5x25" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 20, 5, 20 )
+
+[node name="Wall5x16" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -10, 5, 40 )
+
+[node name="Godette" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.2358 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.948628, -0.215117, -0.232013, 0.316394, 0.644974, 0.695631, 0, -0.733303, 0.679902, 2.8516, 22.5886, 0 )
+light_color = Color( 0.72549, 0.701961, 0.701961, 1 )
+shadow_enabled = true
+
+[editable path="Godette"]

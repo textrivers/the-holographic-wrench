@@ -17,6 +17,8 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+
+[node name="ID_Sprite" type="Sprite" parent="Sprite"]
 [connection signal="area_entered" from="." to="." method="_on_Item_Inv_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Item_Inv_area_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_Item_Inv_mouse_entered"]

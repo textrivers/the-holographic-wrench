@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.1198, 32.0569 )
 
-[node name="Component_light_2a" type="Area2D" groups=[
+[node name="Component_nearest_2a" type="Area2D" groups=[
 "item",
 ]]
 pause_mode = 2

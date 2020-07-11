@@ -10,6 +10,7 @@ extents = Vector3( 1.05423, 1.27798, 0.522984 )
 
 [node name="Terminal_BASE" type="Spatial" groups=[
 "box",
+"terminal",
 ]]
 pause_mode = 2
 script = ExtResource( 4 )

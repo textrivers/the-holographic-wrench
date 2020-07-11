@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="NavigationMesh" id=1]
+
+[node name="Navigation" type="Navigation"]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
+navmesh = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="NavigationMeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97451, 0 )
+height = 3.92756
+
+[node name="CSGTorus" type="CSGTorus" parent="NavigationMeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.43911, 3.41237, 0 )
+inner_radius = 4.88759
+outer_radius = 6.76386
+sides = 20
+ring_sides = 10
+
+[node name="CSGCylinder" type="CSGCylinder" parent="NavigationMeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0486, 3.53892, 5.65396 )
+operation = 2
+radius = 1.48419
+sides = 20
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00210094, 4.20907, -0.0816264 )

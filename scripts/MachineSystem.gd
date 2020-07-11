@@ -9,20 +9,20 @@ var my_terminal_contents = [
 	["res://scenes/components/Component_numtest-3_2a.tscn", 3],
 	[],
 	## row 2
-	[],
-	["res://scenes/Components/Component_SOURCE_4.tscn", 0],
-	[],
-	[],
-	## row 3
-	[],
-	[],
-	[],
+	["res://scenes/Components/Component_SOURCE_1.tscn", 3],
+	["res://scenes/Components/Component_light_2b.tscn", 1],
+	["res://scenes/Components/Component_nearest_2a.tscn", 2],
 	[],
 	## row 3
 	[],
 	[],
 	[],
-	[],
+	["res://scenes/Components/Component_circuit-complete_1.tscn", 0],
+	## row 3
+	["res://scenes/Components/Component_circuit-complete_1.tscn", 0],
+	["res://scenes/Components/Component_surveillance-bot_2a.tscn", 0],
+	["res://scenes/Components/Component_surveillance-bot_3.tscn", 0],
+	["res://scenes/Components/Component_surveillance-bot_4.tscn", 0]
 ]
 
 func _ready():
@@ -42,13 +42,14 @@ func set_children_owner(_passed_child):
 		set_children_owner(child)
 
 func _on_ButtonCommit_pressed():
-	record_inventory()
-	record_terminal()
+
 	if testing == false:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		parent.can_be_opened = true
 		get_tree().paused = false
 		queue_free()
+		record_inventory()
+		record_terminal()
 	else:
 		print("commit")
 
@@ -83,9 +84,8 @@ func populate_inventory():
 
 func populate_terminal():
 	## copy parent's manifest
-	if parent.terminal_contents != []:
+	if parent.is_in_group("terminal"):
 		my_terminal_contents = parent.terminal_contents
-	## print(my_terminal_contents)
 	var term_index = 0
 	for i in $Machine_Grid.get_children():
 		## breakpoint
@@ -135,4 +135,5 @@ func record_terminal():
 			if item_found == false:
 				my_terminal_contents.append([])
 			term_index += 1
-	parent.terminal_contents = my_terminal_contents
+	if parent.is_in_group("terminal"):
+		parent.terminal_contents = my_terminal_contents

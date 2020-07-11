@@ -10,8 +10,9 @@
 [ext_resource path="res://scenes/WorldEnvironment_DarkSky.tscn" type="PackedScene" id=8]
 [ext_resource path="res://navmeshes/reactor_navmesh.tres" type="NavigationMesh" id=9]
 [ext_resource path="res://scenes/Guard.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/blue-supergiants-in-the-night-sky.jpg" type="Texture" id=11]
+[ext_resource path="res://assets/star tiles/blue-supergiants-in-the-night-sky.jpg" type="Texture" id=11]
 [ext_resource path="res://assets/qotsa_guy_2.PNG" type="Texture" id=12]
+
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_unshaded = true

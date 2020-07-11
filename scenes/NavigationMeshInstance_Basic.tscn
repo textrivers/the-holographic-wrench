@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://navmeshes/Reactor_Test_Navmesh.tres" type="NavigationMesh" id=1]
-
-[node name="NavigationMeshInstance" type="NavigationMeshInstance"]
-navmesh = ExtResource( 1 )
-enabled = false
