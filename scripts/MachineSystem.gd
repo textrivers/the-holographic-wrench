@@ -29,20 +29,10 @@ func _ready():
 	parent = get_parent()
 	populate_inventory()
 	populate_terminal()
-	print(game_data.player_inventory)
-	for child in get_children():
-		## child.owner = self
-		print(str(child.name) + " | " + str(child.get_owner()))
 	if testing == false:
 		$ButtonSaveReload.hide()
 
-func set_children_owner(_passed_child):
-	for child in get_children():
-		child.owner = self
-		set_children_owner(child)
-
 func _on_ButtonCommit_pressed():
-
 	if testing == false:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		parent.can_be_opened = true

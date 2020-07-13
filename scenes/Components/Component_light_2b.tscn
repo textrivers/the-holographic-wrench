@@ -12,6 +12,7 @@ extents = Vector2( 32.1198, 32.0569 )
 ]]
 pause_mode = 2
 script = ExtResource( 1 )
+description = "Light; aids environmental perception for creatures who are equipped with photon receptors."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

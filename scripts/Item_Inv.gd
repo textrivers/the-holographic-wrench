@@ -24,11 +24,15 @@ var four_directions = [
 ]
 export var lit = false
 export var pre_rot_left = 0
+export var description = "Component"
+var description_label
+
 var upstream_neighbor = null
 
 func _ready():
 	randomize()
 	parent = get_parent()
+	description_label = parent.get_parent().get_parent().get_node("ItemDescription")
 	drop_targets.append(parent)
 	drop_target = drop_targets.back()
 	update_my_grid_pos()
@@ -72,7 +76,7 @@ func _process(_delta):
 			$Sprite.modulate = Color(0.5, 0.5, 0.5)
 			if parent.machine_box == true:
 				break_connectivity()
-			
+
 	## DRAG ---------------------------------------------
 	if dragging == true:
 		$Sprite.modulate = Color(1, 1, 1, 0.5)
@@ -96,7 +100,7 @@ func _process(_delta):
 				var target_children = drop_target.get_children()
 				for child in target_children:
 					if child != self:
-						if child.is_in_group("item") && !child.is_in_group("source"):
+						if child.is_in_group("item"): ## && !child.is_in_group("source"):
 							## breakpoint
 							if parent.machine_box == true:
 								child.break_connectivity()
@@ -110,6 +114,9 @@ func _process(_delta):
 							child.update_my_grid_pos()
 							if parent.machine_box == true:
 								child.make_connectivity()
+							else:
+								child.lit = false
+								$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 						
 				## item drop
 				## transitional necessary bc Area2D exit signal on reparent
@@ -135,10 +142,13 @@ func _process(_delta):
 		$CollisionShape2D.scale = Vector2(0.9, 0.9)
 
 func _on_Item_Inv_mouse_entered():
-	if !is_in_group("source"):
-		can_click = true
+	## if !is_in_group("source"):
+	## description
+	description_label.set_text(description)
+	can_click = true
 
 func _on_Item_Inv_mouse_exited():
+	description_label.set_text("")
 	can_click = false
 
 func _on_Item_Inv_area_entered(area):
@@ -176,7 +186,7 @@ func make_connectivity():
 						if item.is_in_group("item"):
 							if item.connectors[opposite] == 1:
 								## dropping (or dropped), setting upstream neighbor
-								if item.lit == true:
+								if item.lit == true && !is_in_group("source"):
 									lit_counter += 1
 									upstream_neighbor = item
 								else:
@@ -194,7 +204,8 @@ func make_connectivity():
 		lit = true
 		$Sprite.modulate = Color(1, 1, 1, 1)
 		for item in downstream_neighbors:
-			item.make_connectivity()
+			if !item.is_in_group("source"):
+				item.make_connectivity()
 	else: ## too many connections
 		upstream_neighbor = null
 		lit = false
@@ -216,7 +227,7 @@ func break_connectivity():
 						if item.is_in_group("item"):
 							if item.connectors[opposite] == 1:
 								## dragging, breaking connectivity except with "upstream_neighbor"
-								if upstream_neighbor != null:
+								if upstream_neighbor != null || is_in_group("source"):
 									if item != upstream_neighbor:
 										downstream_neighbors.append(item)
 		counter += 1
@@ -225,7 +236,8 @@ func break_connectivity():
 	lit = false
 	$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 	for item in downstream_neighbors:
-		item.break_connectivity()
+		if !item.is_in_group("source"):
+			item.break_connectivity()
 	downstream_neighbors.clear()
 	upstream_neighbor = null
 

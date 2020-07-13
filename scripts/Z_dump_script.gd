@@ -134,3 +134,7 @@ func save_self_scene():
 
 
 
+func set_children_owner(_passed_child):
+	for child in get_children():
+		child.owner = self
+		set_children_owner(child)

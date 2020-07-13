@@ -193,6 +193,16 @@ text = "Save and Reload"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ItemDescription" type="Label" parent="."]
+margin_left = 123.0
+margin_top = 169.0
+margin_right = 328.0
+margin_bottom = 483.0
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="ButtonCommit" to="." method="_on_ButtonCommit_pressed"]
 [connection signal="pressed" from="ButtonExit" to="." method="_on_ButtonExit_pressed"]
 [connection signal="pressed" from="ButtonSaveReload" to="." method="_on_ButtonSaveReload_pressed"]
