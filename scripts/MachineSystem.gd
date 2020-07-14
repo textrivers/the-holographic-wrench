@@ -37,9 +37,10 @@ func _on_ButtonCommit_pressed():
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		parent.can_be_opened = true
 		get_tree().paused = false
-		queue_free()
 		record_inventory()
 		record_terminal()
+		get_tree().call_group("source", "record_signal_chain", 0)
+		queue_free()
 	else:
 		print("commit")
 

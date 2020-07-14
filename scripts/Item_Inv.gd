@@ -12,6 +12,7 @@ var drop_targets = []
 var target_rot = 0
 
 var parent
+var terminal
 
 var my_grid_pos = Vector2()
 var connectors = [0, 0, 0, 0]
@@ -32,6 +33,7 @@ var upstream_neighbor = null
 func _ready():
 	randomize()
 	parent = get_parent()
+	terminal = get_parent().get_parent().get_parent().get_parent()
 	description_label = parent.get_parent().get_parent().get_node("ItemDescription")
 	drop_targets.append(parent)
 	drop_target = drop_targets.back()
@@ -100,7 +102,7 @@ func _process(_delta):
 				var target_children = drop_target.get_children()
 				for child in target_children:
 					if child != self:
-						if child.is_in_group("item"): ## && !child.is_in_group("source"):
+						if child.is_in_group("item") && !child.is_in_group("source"):
 							## breakpoint
 							if parent.machine_box == true:
 								child.break_connectivity()
@@ -142,10 +144,11 @@ func _process(_delta):
 		$CollisionShape2D.scale = Vector2(0.9, 0.9)
 
 func _on_Item_Inv_mouse_entered():
-	## if !is_in_group("source"):
+	
 	## description
 	description_label.set_text(description)
-	can_click = true
+	if !is_in_group("source"):
+		can_click = true
 
 func _on_Item_Inv_mouse_exited():
 	description_label.set_text("")
@@ -240,6 +243,32 @@ func break_connectivity():
 			item.break_connectivity()
 	downstream_neighbors.clear()
 	upstream_neighbor = null
+
+func record_signal_chain(chain_key):
+	## breakpoint
+	var neighbor
+	var counter = 0
+	var lit_counter = 0
+	var opposite = (counter + 2) % 4
+		
+	for connector in connectors:
+		if connector == 1:
+			var target_pos = my_grid_pos + four_directions[counter]
+			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
+				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
+					neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
+					for item in neighbor.get_children():
+						if item.is_in_group("item"):
+							if item.connectors[opposite] == 1 && item.lit == true:
+								if upstream_neighbor != null:
+									if item != upstream_neighbor:
+										downstream_neighbors.append(item)
+								## add item to signal chain array
+								## keep track of how many times per item this happens, 
+								## need contingency for branching
+								pass
+		counter += 1
+		opposite = (counter + 2) % 4
 
 func update_my_grid_pos():
 		my_grid_pos.x = abs(int(round(parent.position.x / 64)))

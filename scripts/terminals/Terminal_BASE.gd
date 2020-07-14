@@ -6,6 +6,10 @@ var game_underway = false
 var current_frame = 0
 export var terminal_contents = []
 
+var signal_chains = {
+	0: []
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
