@@ -4,15 +4,14 @@ var can_be_opened = false
 var box_ID = -1
 var game_underway = false
 var current_frame = 0
-export var terminal_contents = []
+var terminal_contents = [
+	["res://scenes/Components/Component_SOURCE_1.tscn", 3]
+	]
 
-var signal_chains = {
-	0: []
-}
+var signal_chains 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	game_data.all_boxes.append(self)
 	Signals.connect("initiate_fun", self, "mark_game_start")
 
@@ -49,12 +48,17 @@ func _unhandled_input(event):
 					##if $Item.visible == true:
 						## $Item.hide()
 				## game_data.items_dict[box_ID][1] = current_frame
+				
+				signal_chains = [[]]
+				
 				var machine_system = load("res://scenes/Machine_System.tscn").instance()
 				## TODO
 				## machine_system adjust parameters (add items in certain boxes, adjust size of machine, etc.)
 				add_child(machine_system)
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-				get_tree().paused = true
+				
+				## get_tree().paused = true
+				
 				## TODO send signal to pause play, pause time, etc.
 
 func mark_game_start():

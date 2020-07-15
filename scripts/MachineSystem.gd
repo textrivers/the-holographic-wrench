@@ -40,9 +40,11 @@ func _on_ButtonCommit_pressed():
 		record_inventory()
 		record_terminal()
 		get_tree().call_group("source", "record_signal_chain", 0)
+		print(parent.signal_chains)
 		queue_free()
 	else:
-		print("commit")
+		get_tree().call_group("source", "record_signal_chain", 0)
+		print(parent.signal_chains)
 
 func _on_ButtonExit_pressed():
 	if testing == false:
