@@ -75,4 +75,8 @@ var player_inventory = [
 	"res://scenes/Components/Component_light_2b.tscn",
 ]
 func _ready():
-	get_node("/root").pause_mode = PAUSE_MODE_PROCESS
+	## trying to get pause mode to work
+	## workaround for open issue in Godot where 2D Physics processes
+	## do not process correctly during pause
+	## get_node("/root").pause_mode = PAUSE_MODE_PROCESS
+	pass

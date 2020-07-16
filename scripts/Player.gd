@@ -7,6 +7,7 @@ extends KinematicBody
 const FLOOR_NORMAL = Vector3(0.0, 1.0, 0.0)
 
 var game_in_progress = false
+var input_paused = false
 
 var velocity = Vector3()
 var dir = Vector3()
@@ -38,6 +39,8 @@ func _ready():
 	
 	Signals.connect("initiate_fun", self, "begin_playing")
 	Signals.connect("cease_and_desist_fun", self, "stop_playing")
+	Signals.connect("open_terminal", self, "pause_input")
+	Signals.connect("close_terminal", self, "unpause_input")
 	
 	current_frame = 0
 	
@@ -52,7 +55,7 @@ func _physics_process(delta):
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	if game_in_progress == true:
+	if game_in_progress == true && input_paused == false:
 		
 		## RECORD POSITION FOR GHOST ## ---------------
 		ghost_pos_dict[current_frame] = [translation, rotation_degrees]
@@ -142,3 +145,9 @@ func stop_playing():
 	if game_data.scene_counter < 4:
 		Signals.emit_signal("reset_level")
 		get_tree().call_group("ghost", "deactivate_ghost_playback")
+
+func pause_input():
+	input_paused = true
+ 
+func unpause_input():
+	input_paused = false

@@ -12,12 +12,15 @@ var sec_label
 var msec_label
 
 var timing = false
+var time_paused = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Signals.connect("initiate_fun", self, "mark_start")
 	Signals.connect("cease_and_desist_fun", self, "mark_stop")
 	Signals.connect("item_found", self, "increment_item_count")
+	Signals.connect("open_terminal", self, "pause_time")
+	Signals.connect("close_terminal", self, "unpause_time")
 	
 	if game_data.scene_counter != 1:
 		print(str(game_data.scene_counter))
@@ -28,7 +31,7 @@ func _ready():
 	msec_label = $Panel2/HBoxContainer/MSecLabel
 
 func _physics_process(delta):
-	if get_tree().paused == true:
+	if time_paused == true:
 		pause_buffer += int(delta * 1000)
 		return
 		
@@ -58,3 +61,9 @@ func mark_stop():
 
 func increment_item_count():
 	$Panel/CenterContainer/Label.set_text(str(game_data.items_found_counter) + " items found")
+
+func pause_time():
+	time_paused = true
+
+func unpause_time():
+	time_paused = false

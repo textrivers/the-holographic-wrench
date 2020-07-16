@@ -15,3 +15,12 @@ signal cease_and_desist_fun
 ## emitted by Player.gd
 ## received by Reactor_Test
 signal reset_level
+
+## emitted by Terminal_BASE.gd
+## received by Player, GUI, others?
+signal open_terminal
+
+## emitted by MachineSystem.gd
+## received by Player, GUI, others? 
+## will probably have to be sent (with args) to carry out signal chain commits
+signal close_terminal

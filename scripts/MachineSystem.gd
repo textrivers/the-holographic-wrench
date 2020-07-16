@@ -36,7 +36,7 @@ func _on_ButtonCommit_pressed():
 	if testing == false:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		parent.can_be_opened = true
-		get_tree().paused = false
+		Signals.emit_signal("close_terminal")
 		record_inventory()
 		record_terminal()
 		get_tree().call_group("source", "record_signal_chain", 0)
@@ -49,7 +49,7 @@ func _on_ButtonExit_pressed():
 	if testing == false:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		## parent.can_be_opened = true
-		get_tree().paused = false
+		Signals.emit_signal("close_terminal")
 		queue_free()
 	else:
 		print("exit")
@@ -57,9 +57,7 @@ func _on_ButtonExit_pressed():
 func _on_ButtonSaveReload_pressed():
 	record_inventory()
 	record_terminal()
-	## save_self_scene()
-	if testing == true:
-		get_tree().reload_current_scene()
+	get_tree().reload_current_scene()
 	
 func populate_inventory():
 	var inv_index = 0
