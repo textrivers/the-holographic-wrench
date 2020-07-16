@@ -73,6 +73,10 @@ var player_inventory = [
 	"res://scenes/Components/Component_farthest_3.tscn",
 	"res://scenes/Components/Component_light_2b.tscn",
 	"res://scenes/Components/Component_light_2b.tscn",
+	"res://scenes/Components/Component_door_2a.tscn",
+	"res://scenes/Components/Component_farthest_2b.tscn",
+	"res://scenes/Components/Component_light_3.tscn",
+	"res://scenes/Components/Component_surveillance-bot_3.tscn"
 ]
 func _ready():
 	## trying to get pause mode to work

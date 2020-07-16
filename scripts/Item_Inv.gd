@@ -248,9 +248,10 @@ func record_signal_chain(chain_key):
 	var neighbor
 	var counter = 0
 	var opposite = (counter + 2) % 4
+	var lit_counter = 0
+	var branch_num = chain_key
 	
 	for connector in connectors:
-		var lit_counter = 0
 		if connector == 1:
 			var target_pos = my_grid_pos + four_directions[counter]
 			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
@@ -259,23 +260,24 @@ func record_signal_chain(chain_key):
 					for item in neighbor.get_children():
 						if item.is_in_group("item"):
 							if item.connectors[opposite] == 1 && item.lit == true:
-								#error prevention? may be able to remove this line?
-								## if upstream_neighbor != null: 
 								if item != upstream_neighbor:
-									## downstream_neighbors.append(item)
 									## keep track of how many lit connections there are
 									lit_counter += 1
 									## contingency for branching
 									if lit_counter > 1:
-										terminal.signal_chains[(chain_key + 1)] = terminal.signal_chains[chain_key]
-										chain_key += 1
+										## breakpoint
+										terminal.signal_chains[(branch_num + 1)] = terminal.signal_chains[branch_num].duplicate(true)
+										branch_num += 1
+										## print(terminal.signal_chains)
 									## add item to correct signal chain array
-									terminal.signal_chains[chain_key].append(item)
+									if !terminal.signal_chains.has(branch_num):
+										terminal.signal_chains[branch_num] = []
+									terminal.signal_chains[branch_num].append(item.my_grid_pos)
+									## terminal.signal_chains[branch_num].append(branch_num)
 									## propagate downstream
-									item.record_signal_chain(chain_key)
+									item.record_signal_chain(branch_num)
 		counter += 1
 		opposite = (counter + 2) % 4
-	print(terminal.signal_chains)
 
 func update_my_grid_pos():
 		my_grid_pos.x = abs(int(round(parent.position.x / 64)))

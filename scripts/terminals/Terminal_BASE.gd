@@ -5,7 +5,27 @@ var box_ID = -1
 var game_underway = false
 var current_frame = 0
 var terminal_contents = [
-	["res://scenes/Components/Component_SOURCE_1.tscn", 3]
+	## row 1
+	["res://scenes/Components/Component_SOURCE_1.tscn", 3],
+	[], 
+	[], 
+	[],
+	## row 2
+	[], 
+	[],
+	[], 
+	[],
+	## row 3
+	[], 
+	[],
+	[],
+	[], 
+	##["res://scenes/Components/Component_SOURCE_1.tscn", 1],
+	## row 4
+	[], 
+	[],
+	[], 
+	[],
 	]
 
 var signal_chains 
@@ -49,7 +69,7 @@ func _unhandled_input(event):
 						## $Item.hide()
 				## game_data.items_dict[box_ID][1] = current_frame
 				
-				signal_chains = [[]]
+				signal_chains = {}
 				
 				var machine_system = load("res://scenes/Machine_System.tscn").instance()
 				## TODO

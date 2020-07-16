@@ -39,7 +39,11 @@ func _on_ButtonCommit_pressed():
 		Signals.emit_signal("close_terminal")
 		record_inventory()
 		record_terminal()
-		get_tree().call_group("source", "record_signal_chain", 0)
+		var sources = get_tree().get_nodes_in_group("source")
+		var chain_key = 0
+		for source in sources:
+			source.record_signal_chain(chain_key)
+			chain_key = parent.signal_chains.size()
 		print(parent.signal_chains)
 		queue_free()
 	else:
@@ -90,7 +94,6 @@ func populate_terminal():
 			term_index += 1
 
 func record_inventory():
-	var inv_index = 0
 	## clear array
 	game_data.player_inventory.clear()
 	## iterate over children of $Inventory
