@@ -15,6 +15,7 @@ script = ExtResource( 1 )
 description = "Light; aids environmental perception for creatures who are equipped with photon receptors."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+pause_mode = 2
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

@@ -3,6 +3,7 @@ extends Control
 var start_moment
 var current_moment
 var end_moment
+var pause_buffer = 0
 var elapsed
 var str_elapsed
 
@@ -27,9 +28,13 @@ func _ready():
 	msec_label = $Panel2/HBoxContainer/MSecLabel
 
 func _physics_process(delta):
+	if get_tree().paused == true:
+		pause_buffer += int(delta * 1000)
+		return
+		
 	current_moment = OS.get_ticks_msec()
 	if timing == true:
-		elapsed = current_moment - start_moment
+		elapsed = (current_moment - start_moment) - pause_buffer
 		var minutes = (elapsed / 1000) / 60
 		var seconds = (elapsed / 1000) % 60
 		var milliseconds = elapsed % 1000

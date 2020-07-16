@@ -57,7 +57,10 @@ func _unhandled_input(event):
 				add_child(machine_system)
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				
-				## get_tree().paused = true
+				get_tree().paused = true
+				## this didn't work
+				## Physics2DServer.set_active(true)
+				
 				
 				## TODO send signal to pause play, pause time, etc.
 

@@ -25,6 +25,7 @@ centered = false
 [node name="Machine_Grid" type="Node2D" parent="." groups=[
 "machine_grid",
 ]]
+pause_mode = 2
 position = Vector2( 400, 200 )
 script = ExtResource( 7 )
 
@@ -103,6 +104,7 @@ position = Vector2( 191.951, 191.968 )
 machine_box = true
 
 [node name="Inventory" type="Node2D" parent="."]
+pause_mode = 2
 position = Vector2( 182.938, 537.91 )
 
 [node name="Label" type="Label" parent="Inventory"]

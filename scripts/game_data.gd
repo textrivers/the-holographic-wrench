@@ -74,3 +74,5 @@ var player_inventory = [
 	"res://scenes/Components/Component_light_2b.tscn",
 	"res://scenes/Components/Component_light_2b.tscn",
 ]
+func _ready():
+	get_node("/root").pause_mode = PAUSE_MODE_PROCESS

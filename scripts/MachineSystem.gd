@@ -44,7 +44,6 @@ func _on_ButtonCommit_pressed():
 		queue_free()
 	else:
 		get_tree().call_group("source", "record_signal_chain", 0)
-		print(parent.signal_chains)
 
 func _on_ButtonExit_pressed():
 	if testing == false:

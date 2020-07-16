@@ -144,7 +144,6 @@ func _process(_delta):
 		$CollisionShape2D.scale = Vector2(0.9, 0.9)
 
 func _on_Item_Inv_mouse_entered():
-	
 	## description
 	description_label.set_text(description)
 	if !is_in_group("source"):
