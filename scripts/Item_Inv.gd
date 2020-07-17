@@ -243,13 +243,11 @@ func break_connectivity():
 	downstream_neighbors.clear()
 	upstream_neighbor = null
 
-func record_signal_chain(chain_key):
-	## breakpoint
+func record_signal_chain(chain_array, chain_key):
 	var neighbor
 	var counter = 0
 	var opposite = (counter + 2) % 4
 	var lit_counter = 0
-	var branch_num = chain_key
 	
 	for connector in connectors:
 		if connector == 1:
@@ -265,19 +263,24 @@ func record_signal_chain(chain_key):
 									lit_counter += 1
 									## contingency for branching
 									if lit_counter > 1:
-										## breakpoint
-										terminal.signal_chains[(branch_num + 1)] = terminal.signal_chains[branch_num].duplicate(true)
-										branch_num += 1
-										## print(terminal.signal_chains)
-									## add item to correct signal chain array
-									if !terminal.signal_chains.has(branch_num):
-										terminal.signal_chains[branch_num] = []
-									terminal.signal_chains[branch_num].append(item.my_grid_pos)
-									## terminal.signal_chains[branch_num].append(branch_num)
+										chain_key += 1
+										## remove last item
+										chain_array.pop_back()
+									## add item to ongoing signal chain array
+									chain_array.append(item.my_grid_pos)
 									## propagate downstream
-									item.record_signal_chain(branch_num)
+									var temp_array = chain_array.duplicate(true)
+									item.record_signal_chain(temp_array, chain_key)
 		counter += 1
 		opposite = (counter + 2) % 4
+	
+	if lit_counter == 0:
+		for x in range(20):
+			if terminal.signal_chains.has(chain_key):
+				chain_key += 1
+			else:
+				terminal.signal_chains[chain_key] = chain_array
+				break
 
 func update_my_grid_pos():
 		my_grid_pos.x = abs(int(round(parent.position.x / 64)))

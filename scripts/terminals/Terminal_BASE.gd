@@ -19,7 +19,7 @@ var terminal_contents = [
 	[], 
 	[],
 	[],
-	[], 
+	["res://scenes/Components/Component_SOURCE_1.tscn", 1], 
 	##["res://scenes/Components/Component_SOURCE_1.tscn", 1],
 	## row 4
 	[], 

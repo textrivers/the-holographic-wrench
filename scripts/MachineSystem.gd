@@ -42,7 +42,7 @@ func _on_ButtonCommit_pressed():
 		var sources = get_tree().get_nodes_in_group("source")
 		var chain_key = 0
 		for source in sources:
-			source.record_signal_chain(chain_key)
+			source.record_signal_chain([], chain_key)
 			chain_key = parent.signal_chains.size()
 		print(parent.signal_chains)
 		queue_free()
