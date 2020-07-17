@@ -14,7 +14,7 @@ var my_terminal_contents = [
 	["res://scenes/Components/Component_nearest_2a.tscn", 2],
 	[],
 	## row 3
-	[],
+	["res://scenes/Components/COMPONENT.tscn", 3],
 	[],
 	[],
 	["res://scenes/Components/Component_circuit-complete_1.tscn", 0],
