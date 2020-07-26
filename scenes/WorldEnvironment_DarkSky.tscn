@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/star tiles/starry_skybox.png" type="Texture" id=1]
+[ext_resource path="res://assets/star tiles/blue-supergiants-in-the-night-sky.jpg" type="Texture" id=1]
 
 [sub_resource type="PanoramaSky" id=3]
 panorama = ExtResource( 1 )
@@ -9,8 +9,9 @@ panorama = ExtResource( 1 )
 resource_local_to_scene = true
 background_mode = 2
 background_sky = SubResource( 3 )
-ambient_light_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
-ambient_light_energy = 2.76
+background_color = Color( 0.188235, 0.368627, 0.466667, 1 )
+ambient_light_color = Color( 0.0941176, 0.105882, 0.101961, 0.364706 )
+ambient_light_energy = 0.45
 ambient_light_sky_contribution = 0.11
 
 [node name="WorldEnvironment_DarkSky" type="WorldEnvironment"]

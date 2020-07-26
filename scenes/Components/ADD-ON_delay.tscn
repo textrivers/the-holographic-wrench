@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/component_ID_delay.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Components/ADD-ON.tscn" type="PackedScene" id=2]
+
+[node name="ADD-ON_delay" instance=ExtResource( 2 )]
+pre_rot_left = 1
+description = "Delay; postpones the effects of the terminal by the number of seconds specified."
+
+[node name="ID_Sprite" parent="Sprite" index="0"]
+texture = ExtResource( 1 )

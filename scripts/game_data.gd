@@ -69,14 +69,12 @@ var guard_waypoints = [
 var machine_grid = []
 
 var player_inventory = [
-	"res://scenes/components/Component_numtest-3_2a.tscn",
-	"res://scenes/Components/Component_farthest_3.tscn",
-	"res://scenes/Components/Component_light_2b.tscn",
-	"res://scenes/Components/Component_light_2b.tscn",
-	"res://scenes/Components/Component_door_2a.tscn",
-	"res://scenes/Components/Component_farthest_2b.tscn",
-	"res://scenes/Components/Component_light_3.tscn",
-	"res://scenes/Components/Component_surveillance-bot_3.tscn"
+	["res://scenes/Components/COMPONENT_splitter_2.tscn", 3],
+	["res://scenes/Components/NOUN_light.tscn", 1],
+	["res://scenes/Components/COMPONENT_splitter_3.tscn", 4],
+	["res://scenes/Components/MODIFIER_nearest.tscn", 2],
+	["res://scenes/Components/VERB_destroy.tscn", 0],
+	["res://scenes/Components/ADD-ON_delay.tscn", 0],
 ]
 func _ready():
 	## trying to get pause mode to work

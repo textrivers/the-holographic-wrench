@@ -11,7 +11,6 @@ extents = Vector2( 32.1198, 32.0569 )
 ]]
 pause_mode = 2
 script = ExtResource( 1 )
-connect_config = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

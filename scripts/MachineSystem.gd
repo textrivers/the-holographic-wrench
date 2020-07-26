@@ -31,6 +31,8 @@ func _ready():
 	populate_terminal()
 	if testing == false:
 		$ButtonSaveReload.hide()
+	## modulate.a = 0
+	
 
 func _on_ButtonCommit_pressed():
 	if testing == false:
@@ -71,8 +73,9 @@ func populate_inventory():
 		if inv_index >= game_data.player_inventory.size():
 			break
 		## might need to error-check this:
-		var inv_item = game_data.player_inventory[inv_index]
+		var inv_item = game_data.player_inventory[inv_index][0]
 		var inv_inst = load(inv_item).instance()
+		inv_inst.connect_config = game_data.player_inventory[inv_index][1]
 		i.add_child(inv_inst)
 		inv_index += 1
 
@@ -80,6 +83,7 @@ func populate_terminal():
 	## copy parent's manifest
 	if parent.is_in_group("terminal"):
 		my_terminal_contents = parent.terminal_contents
+		## print(my_terminal_contents)
 	var term_index = 0
 	for i in $Machine_Grid.get_children():
 		## breakpoint
@@ -90,6 +94,7 @@ func populate_terminal():
 				var term_item = my_terminal_contents[term_index][0]
 				var term_item_inst = load(term_item).instance()
 				term_item_inst.pre_rot_left = my_terminal_contents[term_index][1]
+				term_item_inst.connect_config = my_terminal_contents[term_index][2]
 				i.add_child(term_item_inst)
 			term_index += 1
 
@@ -102,8 +107,8 @@ func record_inventory():
 			continue
 		## write items to inventory
 		for j in i.get_children():
-			if j.is_in_group("item"):
-				game_data.player_inventory.append(j.filename)
+			if j.is_in_group("component"):
+				game_data.player_inventory.append([j.filename, j.connect_config])
 	## print(game_data.player_inventory)
 
 func record_terminal():
@@ -115,18 +120,20 @@ func record_terminal():
 		if i.is_in_group("box"):
 			var item_found = false
 			for j in i.get_children():
-				if j.is_in_group("item"):
-					my_terminal_contents.append([j.filename, 0])
+				if j.is_in_group("component"):
+					my_terminal_contents.append([j.filename, 0, 0])
 					## convert rotation degrees to pre_rot_left integer
 					var pre_rot_temp 
 					## achieve negative degrees
 					while j.rotation_degrees > 0:
 						j.rotation_degrees -= 360
-					pre_rot_temp = abs(j.rotation_degrees / 90)
+					pre_rot_temp = int(abs(j.rotation_degrees / 90))
 					my_terminal_contents[term_index][1] = pre_rot_temp
+					my_terminal_contents[term_index][2] = j.connect_config
 					item_found = true
 			if item_found == false:
 				my_terminal_contents.append([])
 			term_index += 1
 	if parent.is_in_group("terminal"):
 		parent.terminal_contents = my_terminal_contents
+		## print(parent.terminal_contents)

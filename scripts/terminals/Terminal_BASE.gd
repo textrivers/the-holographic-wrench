@@ -6,7 +6,7 @@ var game_underway = false
 var current_frame = 0
 var terminal_contents = [
 	## row 1
-	["res://scenes/Components/Component_SOURCE_1.tscn", 3],
+	["res://scenes/Components/SOURCE.tscn", 3, 0],
 	[], 
 	[], 
 	[],
@@ -19,7 +19,7 @@ var terminal_contents = [
 	[], 
 	[],
 	[],
-	["res://scenes/Components/Component_SOURCE_1.tscn", 1], 
+	["res://scenes/Components/SOURCE.tscn", 2, 3], 
 	##["res://scenes/Components/Component_SOURCE_1.tscn", 1],
 	## row 4
 	[], 

@@ -70,12 +70,11 @@ func _ready():
 		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 	
 	if parent.machine_box == true:
-		## call_deferred("pre_rotate")
+		pre_rotate()
 		if is_in_group("source"):
 			call_deferred("make_connectivity")
 
 func pre_rotate():
-	## calls to pre_rotate() are found in inheriting scripts
 	for _x in range(pre_rot_left):
 		rotate_left()
 	var target_rad = deg2rad(target_rot)
@@ -141,7 +140,7 @@ func _process(_delta):
 							child.parent = parent
 							child.drop_target = parent
 							child.update_my_grid_pos()
-							if parent.machine_box == true:
+							if child.parent.machine_box == true:
 								child.make_connectivity()
 							else:
 								child.lit = false
@@ -200,6 +199,7 @@ func _on_Item_Inv_area_exited(area):
 				drop_target.highlight()
 
 func make_connectivity():
+	print(self.name)
 	## breakpoint
 	var neighbor
 	var counter = 0
