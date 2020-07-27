@@ -4,9 +4,10 @@
 [ext_resource path="res://scripts/MachineSystem.gd" type="Script" id=3]
 [ext_resource path="res://assets/machine_background_alpha75.png" type="Texture" id=4]
 [ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/Components/Component_numtest-2_2a.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/Components/Component_SOURCE_4.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/Components/Component_numtest-3_2a.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Unused/Component_numtest-2_2a.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Unused/Component_SOURCE_4.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Unused/Component_numtest-3_2a.tscn" type="PackedScene" id=11]
+
 
 [node name="MachineSystem" type="Control"]
 anchor_right = 1.0

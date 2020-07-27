@@ -2,18 +2,19 @@
 
 [ext_resource path="res://assets/leia_hologram.png" type="Texture" id=2]
 [ext_resource path="res://meshes/wall_4x4_.obj" type="ArrayMesh" id=3]
-[ext_resource path="res://scripts/terminals/Terminal_BASE.gd" type="Script" id=4]
+[ext_resource path="res://scripts/terminals/TERMINAL.gd" type="Script" id=4]
 [ext_resource path="res://materials/wall_orange-box.tres" type="Material" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.05423, 1.27798, 0.522984 )
 
-[node name="Terminal_BASE" type="Spatial" groups=[
+[node name="TERMINAL" type="Spatial" groups=[
 "box",
 "terminal",
 ]]
 pause_mode = 2
 script = ExtResource( 4 )
+my_grid = "res://scenes/Terminals/grids/GRID.tscn"
 
 [node name="FrontSide" type="MeshInstance" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 1 )

@@ -4,6 +4,7 @@ var can_be_opened = false
 var box_ID = -1
 var game_underway = false
 var current_frame = 0
+export var my_grid = ""
 var terminal_contents = [
 	## row 1
 	["res://scenes/Components/SOURCE.tscn", 3, 0],
@@ -20,7 +21,6 @@ var terminal_contents = [
 	[],
 	[],
 	["res://scenes/Components/SOURCE.tscn", 2, 3], 
-	##["res://scenes/Components/Component_SOURCE_1.tscn", 1],
 	## row 4
 	[], 
 	[],
@@ -71,7 +71,7 @@ func _unhandled_input(event):
 				
 				signal_chains = {}
 				
-				var machine_system = load("res://scenes/Machine_System.tscn").instance()
+				var machine_system = load(my_grid).instance()
 				## TODO
 				## machine_system adjust parameters (add items in certain boxes, adjust size of machine, etc.)
 				add_child(machine_system)

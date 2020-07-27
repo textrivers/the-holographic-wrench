@@ -209,18 +209,20 @@ func make_connectivity():
 	for connector in connectors:
 		if connector == 1:
 			var target_pos = my_grid_pos + four_directions[counter]
+			## if game_data.machine_grid[target_pos.x][target_pos.y].exists()
 			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
 				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
-					neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
-					for item in neighbor.get_children():
-						if item.is_in_group("component"):
-							if item.connectors[opposite] == 1:
-								## dropping (or dropped), setting upstream neighbor
-								if item.lit == true && !is_in_group("source"):
-									lit_counter += 1
-									upstream_neighbor = item
-								else:
-									downstream_neighbors.append(item)
+					if typeof(game_data.machine_grid[target_pos.x][target_pos.y]) == TYPE_OBJECT:
+						neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
+						for item in neighbor.get_children():
+							if item.is_in_group("component"):
+								if item.connectors[opposite] == 1:
+									## dropping (or dropped), setting upstream neighbor
+									if item.lit == true && !is_in_group("source"):
+										lit_counter += 1
+										upstream_neighbor = item
+									else:
+										downstream_neighbors.append(item)
 		counter += 1
 		opposite = (counter + 2) % 4
 	## hacky cheat to make source always on
@@ -252,14 +254,15 @@ func break_connectivity():
 			var target_pos = my_grid_pos + four_directions[counter]
 			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
 				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
-					neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
-					for item in neighbor.get_children():
-						if item.is_in_group("component"):
-							if item.connectors[opposite] == 1:
-								## dragging, breaking connectivity except with "upstream_neighbor"
-								if upstream_neighbor != null || is_in_group("source"):
-									if item != upstream_neighbor:
-										downstream_neighbors.append(item)
+					if typeof(game_data.machine_grid[target_pos.x][target_pos.y]) == TYPE_OBJECT:
+						neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
+						for item in neighbor.get_children():
+							if item.is_in_group("component"):
+								if item.connectors[opposite] == 1:
+									## dragging, breaking connectivity except with "upstream_neighbor"
+									if upstream_neighbor != null || is_in_group("source"):
+										if item != upstream_neighbor:
+											downstream_neighbors.append(item)
 		counter += 1
 		opposite = (counter + 2) % 4
 	
@@ -282,23 +285,24 @@ func record_signal_chain(chain_array, chain_key):
 			var target_pos = my_grid_pos + four_directions[counter]
 			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
 				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
-					neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
-					for item in neighbor.get_children():
-						if item.is_in_group("component"):
-							if item.connectors[opposite] == 1 && item.lit == true:
-								if item != upstream_neighbor:
-									## keep track of how many lit connections there are
-									lit_counter += 1
-									## contingency for branching
-									if lit_counter > 1:
-										chain_key += 1
-										## remove last item
-										chain_array.pop_back()
-									## add item to ongoing signal chain array
-									chain_array.append(item.my_grid_pos)
-									## propagate downstream
-									var temp_array = chain_array.duplicate(true)
-									item.record_signal_chain(temp_array, chain_key)
+					if typeof(game_data.machine_grid[target_pos.x][target_pos.y]) == TYPE_OBJECT:
+						neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
+						for item in neighbor.get_children():
+							if item.is_in_group("component"):
+								if item.connectors[opposite] == 1 && item.lit == true:
+									if item != upstream_neighbor:
+										## keep track of how many lit connections there are
+										lit_counter += 1
+										## contingency for branching
+										if lit_counter > 1:
+											chain_key += 1
+											## remove last item
+											chain_array.pop_back()
+										## add item to ongoing signal chain array
+										chain_array.append(item.my_grid_pos)
+										## propagate downstream
+										var temp_array = chain_array.duplicate(true)
+										item.record_signal_chain(temp_array, chain_key)
 		counter += 1
 		opposite = (counter + 2) % 4
 	

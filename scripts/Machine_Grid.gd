@@ -3,6 +3,7 @@ extends Node2D
 var box_grid = []
 export var x_size = 4
 export var y_size = 4
+var grid_parent
 
 func _ready():
 	for x in range(x_size):
@@ -17,6 +18,7 @@ func _ready():
 			box_grid[x][y] = box
 	
 	game_data.machine_grid = box_grid
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
