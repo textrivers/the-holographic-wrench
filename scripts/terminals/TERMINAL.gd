@@ -6,27 +6,8 @@ var game_underway = false
 var current_frame = 0
 export var my_grid = ""
 var terminal_contents = [
-	## row 1
-	["res://scenes/Components/SOURCE.tscn", 3, 0],
-	[], 
-	[], 
-	[],
-	## row 2
-	[], 
-	[],
-	[], 
-	[],
-	## row 3
-	[], 
-	[],
-	[],
-	["res://scenes/Components/SOURCE.tscn", 2, 3], 
-	## row 4
-	[], 
-	[],
-	[], 
-	[],
-	]
+	["res://scenes/Components/SOURCE.tscn", 3, 0]
+]
 
 var signal_chains 
 
@@ -61,27 +42,12 @@ func _unhandled_input(event):
 		if can_be_opened == true:
 			if $FrontSide.visible == true:
 				can_be_opened = false
-				## $FrontSide.hide()
-				## game_data.items_dict[box_ID][0] = current_frame
-			##else:
-				##if self.has_node("Item"):
-					##if $Item.visible == true:
-						## $Item.hide()
-				## game_data.items_dict[box_ID][1] = current_frame
-				
+
 				signal_chains = {}
 				
 				var machine_system = load(my_grid).instance()
-				## TODO
-				## machine_system adjust parameters (add items in certain boxes, adjust size of machine, etc.)
 				add_child(machine_system)
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-				
-				## this didn't work
-				## get_tree().paused = true
-				## Physics2DServer.set_active(true)
-			
-				## TODO send signal to pause play, pause time, etc.
 				Signals.emit_signal("open_terminal")
 
 func mark_game_start():

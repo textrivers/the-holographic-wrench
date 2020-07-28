@@ -61,6 +61,7 @@ machine_box = true
 
 [node name="BoxArea2D6" parent="Machine_Grid" instance=ExtResource( 4 )]
 position = Vector2( 64, 64 )
+machine_box = true
 
 [node name="BoxArea2D7" parent="Machine_Grid" instance=ExtResource( 4 )]
 position = Vector2( 128, 64 )

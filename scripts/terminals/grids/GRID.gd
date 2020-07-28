@@ -2,28 +2,7 @@ extends Control
 
 export var testing = false
 var parent
-var my_terminal_contents = [
-	## row 1 
-	[],
-	[],
-	[],
-	[],
-	## row 2
-	[],
-	[],
-	[],
-	[],
-	## row 3
-	[],
-	[],
-	[],
-	[],
-	## row 3
-	[],
-	[],
-	[],
-	[],
-]
+var my_terminal_contents = []
 
 func _ready():
 	parent = get_parent()
@@ -46,17 +25,19 @@ func _on_ButtonCommit_pressed():
 		for source in sources:
 			source.record_signal_chain([], chain_key)
 			chain_key = parent.signal_chains.size()
-		print(parent.signal_chains)
+		## print(parent.signal_chains)
 		queue_free()
+		## hide()
 	else:
 		get_tree().call_group("source", "record_signal_chain", 0)
 
 func _on_ButtonExit_pressed():
 	if testing == false:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		## parent.can_be_opened = true
+		parent.can_be_opened = true
 		Signals.emit_signal("close_terminal")
 		queue_free()
+		## hide()
 	else:
 		print("exit")
 
@@ -80,23 +61,23 @@ func populate_inventory():
 		inv_index += 1
 
 func populate_terminal():
-	## copy parent's manifest
-	if parent.is_in_group("terminal"):
+	## only populate if parent has up-to-date contents
+	if parent.is_in_group("terminal") && parent.terminal_contents != []:
 		my_terminal_contents = parent.terminal_contents
 		## print(my_terminal_contents)
-	var term_index = 0
-	for i in $Machine_Grid.get_children():
-		## breakpoint
-		if term_index >= my_terminal_contents.size():
-				break
-		if i.is_in_group("box"):
-			if my_terminal_contents[term_index] != []:
-				var term_item = my_terminal_contents[term_index][0]
-				var term_item_inst = load(term_item).instance()
-				term_item_inst.pre_rot_left = my_terminal_contents[term_index][1]
-				term_item_inst.connect_config = my_terminal_contents[term_index][2]
-				i.add_child(term_item_inst)
-			term_index += 1
+		var term_index = 0
+		for i in $Machine_Grid.get_children():
+			## breakpoint
+			if term_index >= my_terminal_contents.size():
+					break
+			if i.is_in_group("box"):
+				if my_terminal_contents[term_index] != []:
+					var term_item = my_terminal_contents[term_index][0]
+					var term_item_inst = load(term_item).instance()
+					term_item_inst.pre_rot_left = my_terminal_contents[term_index][1]
+					term_item_inst.connect_config = my_terminal_contents[term_index][2]
+					i.add_child(term_item_inst)
+				term_index += 1
 
 func record_inventory():
 	## clear array
@@ -109,6 +90,7 @@ func record_inventory():
 		for j in i.get_children():
 			if j.is_in_group("component"):
 				game_data.player_inventory.append([j.filename, j.connect_config])
+				j.queue_free()
 	## print(game_data.player_inventory)
 
 func record_terminal():
