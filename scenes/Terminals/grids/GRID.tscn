@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/machine_background_alpha75.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Machine_Grid.gd" type="Script" id=2]
 [ext_resource path="res://scripts/terminals/grids/GRID.gd" type="Script" id=3]
 [ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Components/MODIFIER_nearest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Components/VERB_destroy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Components/NOUN_light.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Components/SOURCE.tscn" type="PackedScene" id=8]
 
 [node name="GRID" type="Control" groups=[
 "terminal",
@@ -17,6 +21,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+testing = true
 
 [node name="TextureRect" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -43,17 +48,31 @@ __meta__ = {
 position = Vector2( -0.0486069, -0.0320282 )
 machine_box = true
 
+[node name="SOURCE" parent="Machine_Grid/BoxArea2D" instance=ExtResource( 8 )]
+pre_rot_left = 3
+
 [node name="BoxArea2D2" parent="Machine_Grid" instance=ExtResource( 4 )]
 position = Vector2( 63.9514, -0.0320282 )
 machine_box = true
+
+[node name="MODIFIER_nearest" parent="Machine_Grid/BoxArea2D2" instance=ExtResource( 5 )]
+pre_rot_left = 1
+connect_config = 2
 
 [node name="BoxArea2D3" parent="Machine_Grid" instance=ExtResource( 4 )]
 position = Vector2( 127.951, -0.0320282 )
 machine_box = true
 
+[node name="NOUN_light" parent="Machine_Grid/BoxArea2D3" instance=ExtResource( 7 )]
+pre_rot_left = 1
+connect_config = 2
+
 [node name="BoxArea2D4" parent="Machine_Grid" instance=ExtResource( 4 )]
 position = Vector2( 191.951, -0.0320282 )
 machine_box = true
+
+[node name="VERB_destroy" parent="Machine_Grid/BoxArea2D4" instance=ExtResource( 6 )]
+pre_rot_left = 1
 
 [node name="BoxArea2D5" parent="Machine_Grid" instance=ExtResource( 4 )]
 position = Vector2( 0, 64 )

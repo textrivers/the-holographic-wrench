@@ -199,7 +199,7 @@ func _on_Item_Inv_area_exited(area):
 				drop_target.highlight()
 
 func make_connectivity():
-	print(self.name)
+	## print(self.name)
 	## breakpoint
 	var neighbor
 	var counter = 0

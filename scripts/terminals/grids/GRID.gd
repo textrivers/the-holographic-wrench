@@ -44,6 +44,8 @@ func _on_ButtonExit_pressed():
 func _on_ButtonSaveReload_pressed():
 	record_inventory()
 	record_terminal()
+	for content in my_terminal_contents:
+		print(str(content) + ",")
 	get_tree().reload_current_scene()
 	
 func populate_inventory():
