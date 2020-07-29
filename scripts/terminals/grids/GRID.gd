@@ -44,8 +44,12 @@ func _on_ButtonExit_pressed():
 func _on_ButtonSaveReload_pressed():
 	record_inventory()
 	record_terminal()
-	for content in my_terminal_contents:
-		print(str(content) + ",")
+	## hilariously ineffective attempt to output text wrapped in quotes
+	for item in my_terminal_contents: 
+		for subitem in item:
+			if typeof(subitem) == TYPE_STRING:
+				subitem = "\"" + subitem + "\""
+		print(str(item) + ",")
 	get_tree().reload_current_scene()
 	
 func populate_inventory():

@@ -1,9 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/Terminals/TERMINAL.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/terminals/TERMINAL_4x4_donut.gd" type="Script" id=2]
-
+[ext_resource path="res://scripts/terminals/TERMINAL_4x4_donut_all-blanks.gd" type="Script" id=2]
 
 [node name="TERMINAL_4x4_donut" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-my_grid = "res://scenes/Terminals/grids/GRID_4x4_donut.tscn"
+my_grid = ""
