@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/WorldEnvironment_DarkSky.tscn" type="PackedScene" id=1]
 [ext_resource path="res://meshes/tutorial_lvl.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://materials/transparent_btw_player_and_camera.tres" type="Material" id=3]
 [ext_resource path="res://scripts/Tutorial3.gd" type="Script" id=4]
-[ext_resource path="res://scenes/Terminals/TERMINAL.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Terminals/TERMINAL_4x4_donut.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/FloorPlane12x12_.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/LightSphere.tscn" type="PackedScene" id=8]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/LightSpherePurple.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/star tiles/blue-supergiants-in-the-night-sky.jpg" type="Texture" id=11]
 [ext_resource path="res://scenes/LightSphereGreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Terminals/TERMINAL_4x4.tscn" type="PackedScene" id=13]
 
 [sub_resource type="NavigationMesh" id=1]
 
@@ -48,10 +49,10 @@ material/0 = ExtResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="NavigationMeshInstance/LVL/StaticBody"]
 shape = SubResource( 2 )
 
-[node name="Terminal_BASE" parent="NavigationMeshInstance/LVL" instance=ExtResource( 5 )]
+[node name="TERMINAL_4x4_donut" parent="NavigationMeshInstance/LVL" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10916e-06, 8.83708, -12.6109 )
 
-[node name="Terminal_BASE2" parent="NavigationMeshInstance/LVL" instance=ExtResource( 5 )]
+[node name="TERMINAL_4x4" parent="NavigationMeshInstance/LVL" instance=ExtResource( 13 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -6, 0, 2.9 )
 
 [node name="Floor" type="Spatial" parent="NavigationMeshInstance"]

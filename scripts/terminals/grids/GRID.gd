@@ -64,7 +64,7 @@ func populate_inventory():
 
 func populate_terminal():
 	## only populate if parent has up-to-date contents
-	if parent.is_in_group("terminal") && parent.terminal_contents != []:
+	if parent.is_in_group("terminal"):
 		my_terminal_contents = parent.terminal_contents
 		## print(my_terminal_contents)
 		var term_index = 0

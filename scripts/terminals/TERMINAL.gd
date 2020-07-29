@@ -1,5 +1,13 @@
 extends Spatial
 
+## for each different configuration or size of terminal, do the following:
+## - new inherited scene from TERMINAL.tscn, save
+## - new inherited scene from GRID.tscn, save
+## - copy path of new grid, paste into TERMINAL.my_grid, SAVE!!
+## - in terminal inherited scene, Extend script
+## - in _ready(), paste contents of grid if any
+
+
 var can_be_opened = false
 var box_ID = -1
 var game_underway = false
