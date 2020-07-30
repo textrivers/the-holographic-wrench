@@ -145,7 +145,8 @@ func _process(_delta):
 					if child != self:
 						if child.is_in_group("component") && child.moveable == true:
 							## breakpoint
-							if parent.machine_box == true:
+							## if parent.machine_box == true:
+							if drop_target.machine_box == true:
 								$AudioPowerDown.play()
 								child.break_connectivity()
 							drop_target.remove_child(child)
@@ -216,7 +217,6 @@ func _on_Item_Inv_area_exited(area):
 				drop_target.highlight()
 
 func make_connectivity():
-	yield(get_tree().create_timer(timer_float), "timeout")
 	## print(self.name)
 	## breakpoint
 	var neighbor
@@ -255,6 +255,8 @@ func make_connectivity():
 		$Sprite.modulate = Color(1, 1, 1, 1)
 		$AudioPowerUp.play()
 		rand_connectivity_effects()
+		## wait a short time before propagating
+		yield(get_tree().create_timer(timer_float), "timeout")
 		for item in downstream_neighbors:
 			if !item.is_in_group("source"):
 				item.make_connectivity()

@@ -8,10 +8,10 @@ func _ready():
 	["res://scenes/Components/COMPONENT_blank.tscn", 1, 2],
 	["res://scenes/Components/VERB_destroy.tscn", 2, 0],
 	["res://scenes/Components/COMPONENT_blank.tscn", 1, 2],
-	["res://scenes/Components/COMPONENT_blank.tscn", 3, 3],
-	["res://scenes/Components/COMPONENT_blank.tscn", 0, 4],
+	["res://scenes/Components/COMPONENT_blank.tscn", 3, 2],
+	["res://scenes/Components/COMPONENT_blank.tscn", 0, 2],
 	["res://scenes/Components/COMPONENT_blank.tscn", 1, 2],
-	["res://scenes/Components/COMPONENT_blank.tscn", 0, 4],
+	["res://scenes/Components/COMPONENT_blank.tscn", 0, 2],
 	["res://scenes/Components/COMPONENT_blank.tscn", 1, 2],
 	["res://scenes/Components/COMPONENT_blank.tscn", 0, 1]
 	]
