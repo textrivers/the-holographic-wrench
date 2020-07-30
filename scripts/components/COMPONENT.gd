@@ -25,6 +25,7 @@ var four_directions = [
 	Vector2(-1, 0)
 ]
 export var lit = false
+var timer_float = 0.1
 export var pre_rot_left = 0
 export var description = "Component"
 var description_label
@@ -55,6 +56,9 @@ var connector_array = [
 
 func _ready():
 	randomize()
+	
+	rand_connectivity_effects()
+	
 	var new_tex = config_sprites[connect_config]
 	$Sprite.set_texture(new_tex)
 	connectors = connector_array[connect_config]
@@ -82,6 +86,16 @@ func pre_rotate():
 	if has_node("Sprite/ID_Sprite"):
 		$Sprite/ID_Sprite.rotation = -rotation
 
+func rand_connectivity_effects():
+	timer_float = randf()
+	timer_float = clamp(timer_float, 0.05, 0.1)
+	var coinflip = (randi() % 3) - 1
+	var pitch_adjust = coinflip * timer_float
+	$AudioPowerUp.pitch_scale += pitch_adjust
+	$AudioPowerUp.pitch_scale = clamp($AudioPowerUp.pitch_scale, 0.8, 1.2)
+	$AudioPowerDown.pitch_scale += pitch_adjust
+	$AudioPowerDown.pitch_scale = clamp($AudioPowerDown.pitch_scale, 0.8, 1.2)
+
 func _process(_delta):
 		
 	## ROTATE PIECES ------------------------------------
@@ -103,6 +117,7 @@ func _process(_delta):
 			lit = false
 			$Sprite.modulate = Color(0.5, 0.5, 0.5)
 			if parent.machine_box == true:
+				$AudioPowerDown.play()
 				break_connectivity()
 
 	## DRAG ---------------------------------------------
@@ -124,13 +139,14 @@ func _process(_delta):
 			dragging = false
 			drag_offset = Vector2()
 			if can_drop == true:
-				## item swap
+				## SWAP -------------------------------------
 				var target_children = drop_target.get_children()
 				for child in target_children:
 					if child != self:
 						if child.is_in_group("component") && child.moveable == true:
 							## breakpoint
 							if parent.machine_box == true:
+								$AudioPowerDown.play()
 								child.break_connectivity()
 							drop_target.remove_child(child)
 							parent.add_child(child)
@@ -144,7 +160,8 @@ func _process(_delta):
 								child.make_connectivity()
 							else:
 								child.lit = false
-								$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
+								var child_sprite = child.get_node("Sprite")
+								child_sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 						
 				## item drop
 				## transitional necessary bc Area2D exit signal on reparent
@@ -199,6 +216,7 @@ func _on_Item_Inv_area_exited(area):
 				drop_target.highlight()
 
 func make_connectivity():
+	yield(get_tree().create_timer(timer_float), "timeout")
 	## print(self.name)
 	## breakpoint
 	var neighbor
@@ -235,10 +253,13 @@ func make_connectivity():
 	elif lit_counter == 1:
 		lit = true
 		$Sprite.modulate = Color(1, 1, 1, 1)
+		$AudioPowerUp.play()
+		rand_connectivity_effects()
 		for item in downstream_neighbors:
 			if !item.is_in_group("source"):
 				item.make_connectivity()
 	else: ## too many connections
+		$AudioPowerWrong.play()
 		upstream_neighbor = null
 		lit = false
 		$Sprite.modulate = Color(0.5, 0, 0, 1)
