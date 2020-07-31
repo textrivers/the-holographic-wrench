@@ -39,11 +39,11 @@ var signal_on_commit = [
 
 export var connect_config = 0
 var config_sprites = [
-	preload("res://assets/item_connect_1.png"),
-	preload("res://assets/item_connect_2a.png"),
-	preload("res://assets/item_connect_2b.png"),
-	preload("res://assets/item_connect_3.png"),
-	preload("res://assets/item_connect_4.png")
+	preload("res://assets/item_connect_1_gray.png"),
+	preload("res://assets/item_connect_2a_gray.png"),
+	preload("res://assets/item_connect_2b_gray.png"),
+	preload("res://assets/item_connect_3_gray.png"),
+	preload("res://assets/item_connect_4_gray.png")
 	]
 var connector_array = [
 		[1, 0, 0, 0], 
