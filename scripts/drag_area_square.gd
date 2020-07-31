@@ -17,3 +17,5 @@ func unhighlight():
 func highlight():
 	$Box.modulate = Color(1, 1, 1)
 
+func redlight():
+	$Box.modulate = Color(0.5, 0.1, 0.1)

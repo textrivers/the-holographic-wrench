@@ -109,16 +109,19 @@ func _process(_delta):
 	## CLICK -------------------------------------------
 	if can_click == true:
 		if Input.is_action_just_pressed("interact"):
-			drop_target.highlight()
-			dragging = true
-			drag_offset = position - get_viewport().get_mouse_position()
-			
-			## BREAK CONNECTIVITY
-			lit = false
-			$Sprite.modulate = Color(0.5, 0.5, 0.5)
-			if parent.machine_box == true:
-				$AudioPowerDown.play()
-				break_connectivity()
+			if moveable:
+				drop_target.highlight()
+				dragging = true
+				drag_offset = position - get_viewport().get_mouse_position()
+				
+				## BREAK CONNECTIVITY
+				lit = false
+				$Sprite.modulate = Color(0.5, 0.5, 0.5)
+				if parent.machine_box == true:
+					$AudioPowerDown.play()
+					break_connectivity()
+			else:
+				drop_target.redlight()
 
 	## DRAG ---------------------------------------------
 	if dragging == true:
@@ -186,13 +189,15 @@ func _process(_delta):
 	else:
 		## $Sprite.modulate = Color(1, 1, 1, 1)
 		$CollisionShape2D.scale = Vector2(0.9, 0.9)
+		if Input.is_action_just_released("interact"):
+			drop_target.unhighlight()
 
 func _on_Item_Inv_mouse_entered():
 	## description
 	description_label.set_text(description)
 	## if !is_in_group("source"):
-	if moveable:
-		can_click = true
+	## if moveable:
+	can_click = true
 
 func _on_Item_Inv_mouse_exited():
 	description_label.set_text("")
