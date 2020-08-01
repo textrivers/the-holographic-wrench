@@ -46,13 +46,13 @@ var config_sprites = [
 	preload("res://assets/item_connect_4_gray.png")
 	]
 var connector_array = [
-		[1, 0, 0, 0], 
-		[1, 1, 0, 0], 
-		[1, 0, 1, 0],
-		[1, 1, 1, 0],
-		[1, 1, 1, 1]
+		[[1, 0, 0, 0], -1], 
+		[[1, 1, 0, 0], -1], 
+		[[1, 0, 1, 0], -1],
+		[[1, 1, 1, 0], -1],
+		[[1, 1, 1, 1], -1], 
 	]
-
+var connector_toggle
 
 func _ready():
 	randomize()
@@ -61,7 +61,8 @@ func _ready():
 	
 	var new_tex = config_sprites[connect_config]
 	$Sprite.set_texture(new_tex)
-	connectors = connector_array[connect_config]
+	connectors = connector_array[connect_config][0]
+	connector_toggle = connector_array[connect_config][1]
 	
 	parent = get_parent()
 	terminal = get_parent().get_parent().get_parent().get_parent()
@@ -295,6 +296,7 @@ func break_connectivity():
 		opposite = (counter + 2) % 4
 	
 	lit = false
+	connectors = connector_array[connect_config][0]
 	$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 	for item in downstream_neighbors:
 		if !item.is_in_group("source"):
@@ -348,10 +350,18 @@ func update_my_grid_pos():
 
 func rotate_left():
 	target_rot -= 90
-	connectors.push_back(connectors.front())
-	connectors.pop_front()
+	## connectors.push_back(connectors.front())
+	## connectors.pop_front()
+	connector_array[connect_config][0].push_back(connector_array[connect_config][0].front())
+	connector_array[connect_config][0].pop_front()
+	if connector_toggle != -1:
+		connector_array[connector_toggle][0].push_back(connector_array[connector_toggle][0].front())
+		connector_array[connector_toggle][0].pop_front()
 
 func rotate_right():
 	target_rot += 90
-	connectors.push_front(connectors.back())
-	connectors.pop_back()
+	connector_array[connect_config][0].push_front(connector_array[connect_config][0].back())
+	connector_array[connect_config][0].pop_back()
+	if connector_toggle != -1:
+		connector_array[connector_toggle][0].push_front(connector_array[connector_toggle][0].back())
+		connector_array[connector_toggle][0].pop_back()
