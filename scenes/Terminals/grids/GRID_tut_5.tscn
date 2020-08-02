@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Terminals/grids/GRID.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/terminals/grids/GRID_tut.gd" type="Script" id=2]
+[ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/drag_area_square.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Components/SOURCE.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Components/COMPONENT_blank.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/components/COMPONENT.gd" type="Script" id=7]
+
+[node name="GRID_tut_5" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+next_tut = "res://scenes/Terminals/grids/GRID_tut_6.tscn"
+
+[node name="Machine_Grid" parent="." index="1"]
+x_size = 3
+
+[node name="BoxArea2D2" type="Area2D" parent="Machine_Grid" index="1" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 63.9514, -0.0320282 )
+script = ExtResource( 4 )
+machine_box = true
+
+[node name="BoxArea2D6" type="Area2D" parent="Machine_Grid" index="2" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 64, 64 )
+script = ExtResource( 4 )
+machine_box = true
+
+[node name="BoxArea2D9" type="Area2D" parent="Machine_Grid" index="3" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( -0.0486145, 127.968 )
+script = ExtResource( 4 )
+machine_box = true
+
+[node name="SOURCE" parent="Machine_Grid/BoxArea2D9" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 3
+
+[node name="BoxArea2D10" type="Area2D" parent="Machine_Grid" index="4" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 63.9514, 127.968 )
+script = ExtResource( 4 )
+machine_box = true
+
+[node name="BoxArea2D14" type="Area2D" parent="Machine_Grid" index="5" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 63.9514, 191.968 )
+script = ExtResource( 4 )
+machine_box = true
+
+[node name="BoxArea2D15" type="Area2D" parent="Machine_Grid" index="6" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 127.951, 191.968 )
+script = ExtResource( 4 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Inventory/BoxArea2D17" index="3" instance=ExtResource( 6 )]
+description = "Beyond Sacred River"
+connect_config = 2
+
+[node name="COMPONENT_blank" parent="Inventory/BoxArea2D18" index="3" instance=ExtResource( 6 )]
+description = "Hell"
+connect_config = 5
+
+[node name="COMPONENT_blank" parent="Inventory/BoxArea2D19" index="3" instance=ExtResource( 6 )]
+description = "Here"
+connect_config = 3
+
+[node name="COMPONENT_blank" parent="Inventory/BoxArea2D20" index="3" groups=[
+"verb",
+] instance=ExtResource( 6 )]
+description = "Is"
+
+[node name="COMPONENT_blank" type="Area2D" parent="Inventory/BoxArea2D21" index="3" groups=[
+"component",
+"verb",
+] instance=ExtResource( 6 )]
+pause_mode = 2
+script = ExtResource( 7 )
+description = "Is"
+
+[node name="COMPONENT_blank" parent="Inventory/BoxArea2D22" index="3" instance=ExtResource( 6 )]
+description = "Memory"
+connect_config = 6
+
+[node name="ButtonExit" parent="." index="4"]
+visible = false
+
+[node name="ButtonSaveReload" parent="." index="5"]
+visible = false
+[connection signal="area_entered" from="Inventory/BoxArea2D21/COMPONENT_blank" to="Inventory/BoxArea2D21/COMPONENT_blank" method="_on_Item_Inv_area_entered"]
+[connection signal="area_exited" from="Inventory/BoxArea2D21/COMPONENT_blank" to="Inventory/BoxArea2D21/COMPONENT_blank" method="_on_Item_Inv_area_exited"]
+[connection signal="mouse_entered" from="Inventory/BoxArea2D21/COMPONENT_blank" to="Inventory/BoxArea2D21/COMPONENT_blank" method="_on_Item_Inv_mouse_entered"]
+[connection signal="mouse_exited" from="Inventory/BoxArea2D21/COMPONENT_blank" to="Inventory/BoxArea2D21/COMPONENT_blank" method="_on_Item_Inv_mouse_exited"]

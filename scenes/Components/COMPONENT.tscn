@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/components/COMPONENT.gd" type="Script" id=1]
 [ext_resource path="res://assets/item_connect_1.png" type="Texture" id=2]
 [ext_resource path="res://audio/powerdown.wav" type="AudioStream" id=3]
 [ext_resource path="res://audio/powerup_2.wav" type="AudioStream" id=4]
 [ext_resource path="res://audio/powerwrong.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/rotate_left.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/rotate_right.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.1198, 32.0569 )
@@ -34,6 +36,13 @@ pitch_scale = 0.99
 [node name="AudioPowerWrong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = 3.029
+
+[node name="AudioRotateLeft" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -80.0
+
+[node name="AudioRotateRight" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 [connection signal="area_entered" from="." to="." method="_on_Item_Inv_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Item_Inv_area_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_Item_Inv_mouse_entered"]

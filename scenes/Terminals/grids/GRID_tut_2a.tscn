@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/terminals/grids/GRID_tut.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Terminals/grids/GRID.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Components/SOURCE.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Components/COMPONENT_blank.tscn" type="PackedScene" id=5]
+
+[node name="GRID_tut_2a" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+next_tut = "res://scenes/Terminals/grids/GRID_tut_3.tscn"
+
+[node name="Machine_Grid" parent="." index="1"]
+x_size = 3
+y_size = 1
+
+[node name="BoxArea2D" parent="Machine_Grid" index="1" instance=ExtResource( 3 )]
+position = Vector2( -0.0486069, -0.0320282 )
+machine_box = true
+
+[node name="SOURCE" parent="Machine_Grid/BoxArea2D" index="3" instance=ExtResource( 4 )]
+pre_rot_left = 3
+
+[node name="BoxArea2D2" parent="Machine_Grid" index="2" instance=ExtResource( 3 )]
+position = Vector2( 63.9514, -0.0320282 )
+machine_box = true
+
+[node name="BoxArea2D3" parent="Machine_Grid" index="3" instance=ExtResource( 3 )]
+position = Vector2( 127.951, -0.0320282 )
+machine_box = true
+
+[node name="SOURCE" parent="Machine_Grid/BoxArea2D3" index="3" instance=ExtResource( 4 )]
+pre_rot_left = 1
+
+[node name="COMPONENT_blank" parent="Inventory/BoxArea2D17" index="3" instance=ExtResource( 5 )]
+description = "Memory"
+connect_config = 2
+
+[node name="ButtonExit" parent="." index="4"]
+visible = false
+
+[node name="ButtonSaveReload" parent="." index="5"]
+visible = false

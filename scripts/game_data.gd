@@ -72,14 +72,15 @@ var player_inventory = [ ## each array item is a two-member array, filename then
 	["res://scenes/Components/ADD-ON_delay.tscn", 2],
 	["res://scenes/Components/NOUN_light.tscn", 4],
 	["res://scenes/Components/VERB_destroy.tscn", 0],
-	["res://scenes/Components/COMPONENT_splitter_2.tscn", 3],
-	["res://scenes/Components/COMPONENT_splitter_2.tscn", 3],
-	["res://scenes/Components/COMPONENT_splitter_2.tscn", 4],
-	["res://scenes/Components/COMPONENT_blank.tscn", 0],
 	["res://scenes/Components/COMPONENT_blank.tscn", 1],
 	["res://scenes/Components/COMPONENT_blank.tscn", 2],
-	["res://scenes/Components/COMPONENT_blank.tscn", 3],
-	["res://scenes/Components/COMPONENT_blank.tscn", 4],
+	["res://scenes/Components/COMPONENT_blank.tscn", 5],
+	["res://scenes/Components/COMPONENT_blank.tscn", 6],
+	["res://scenes/Components/COMPONENT_blank.tscn", 7],
+	["res://scenes/Components/COMPONENT_blank.tscn", 8],
+	["res://scenes/Components/COMPONENT_blank.tscn", 9],
+	["res://scenes/Components/COMPONENT_blank.tscn", 10],
+
 ]
 func _ready():
 	## trying to get pause mode to work

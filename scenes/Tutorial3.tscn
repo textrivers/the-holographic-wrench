@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/WorldEnvironment_DarkSky.tscn" type="PackedScene" id=1]
 [ext_resource path="res://meshes/tutorial_lvl.obj" type="ArrayMesh" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/star tiles/blue-supergiants-in-the-night-sky.jpg" type="Texture" id=11]
 [ext_resource path="res://scenes/LightSphereGreen.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/Terminals/TERMINAL_4x4.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Terminals/TERMINAL_tut.tscn" type="PackedScene" id=14]
 
 [sub_resource type="NavigationMesh" id=1]
 
@@ -54,6 +55,9 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -6, 0, 
 
 [node name="TERMINAL_4x4_donut_all-blanks" parent="NavigationMeshInstance/LVL" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10916e-06, 8.83708, -12.6109 )
+
+[node name="TERMINAL_tut" parent="NavigationMeshInstance/LVL" instance=ExtResource( 14 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 2.9, 0, 17 )
 
 [node name="Floor" type="Spatial" parent="NavigationMeshInstance"]
 transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0 )

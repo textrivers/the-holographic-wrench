@@ -1,0 +1,387 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/Terminals/grids/GRID.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/terminals/grids/GRID_tut.gd" type="Script" id=2]
+[ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Components/COMPONENT_blank.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Components/SOURCE.tscn" type="PackedScene" id=6]
+
+[node name="GRID_tut_7" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+next_tut = "res://scenes/Terminals/grids/GRID_tut_8.tscn"
+
+[node name="Machine_Grid" parent="." index="1"]
+position = Vector2( 150, 150 )
+x_size = 10
+y_size = 6
+
+[node name="BoxArea2D" parent="Machine_Grid" index="1" instance=ExtResource( 3 )]
+position = Vector2( -0.0486069, -0.0320282 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D" index="3" instance=ExtResource( 5 )]
+connect_config = 1
+
+[node name="BoxArea2D2" parent="Machine_Grid" index="2" instance=ExtResource( 3 )]
+position = Vector2( 63.9514, -0.0320282 )
+machine_box = true
+
+[node name="BoxArea2D3" parent="Machine_Grid" index="3" instance=ExtResource( 3 )]
+position = Vector2( 127.951, -0.0320282 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D3" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 1
+connect_config = 2
+
+[node name="BoxArea2D4" parent="Machine_Grid" index="4" instance=ExtResource( 3 )]
+position = Vector2( 191.951, -0.0320282 )
+machine_box = true
+
+[node name="BoxArea2D20" parent="Machine_Grid" index="5" instance=ExtResource( 3 )]
+position = Vector2( 256, -0.032 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D20" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 2
+connect_config = 3
+
+[node name="BoxArea2D19" parent="Machine_Grid" index="6" instance=ExtResource( 3 )]
+position = Vector2( 320, -0.032 )
+machine_box = true
+
+[node name="BoxArea2D18" parent="Machine_Grid" index="7" instance=ExtResource( 3 )]
+position = Vector2( 384, -0.032 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D18" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 3
+connect_config = 4
+
+[node name="BoxArea2D17" parent="Machine_Grid" index="8" instance=ExtResource( 3 )]
+position = Vector2( 448, -0.032 )
+machine_box = true
+
+[node name="BoxArea2D26" parent="Machine_Grid" index="9" instance=ExtResource( 3 )]
+position = Vector2( 512, -0.032 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D26" index="3" instance=ExtResource( 5 )]
+position = Vector2( 0, -1.22775 )
+connect_config = 5
+
+[node name="BoxArea2D25" parent="Machine_Grid" index="10" instance=ExtResource( 3 )]
+position = Vector2( 576, -0.032 )
+machine_box = true
+
+[node name="BoxArea2D5" parent="Machine_Grid" index="11" instance=ExtResource( 3 )]
+position = Vector2( 0, 64 )
+machine_box = true
+
+[node name="BoxArea2D6" parent="Machine_Grid" index="12" instance=ExtResource( 3 )]
+position = Vector2( 64, 64 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D6" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 1
+connect_config = 6
+
+[node name="BoxArea2D7" parent="Machine_Grid" index="13" instance=ExtResource( 3 )]
+position = Vector2( 128, 64 )
+machine_box = true
+
+[node name="BoxArea2D8" parent="Machine_Grid" index="14" instance=ExtResource( 3 )]
+position = Vector2( 191.951, 63.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D8" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 2
+connect_config = 7
+
+[node name="BoxArea2D24" parent="Machine_Grid" index="15" instance=ExtResource( 3 )]
+position = Vector2( 256, 64 )
+machine_box = true
+
+[node name="BoxArea2D23" parent="Machine_Grid" index="16" instance=ExtResource( 3 )]
+position = Vector2( 320, 64 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D23" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 3
+connect_config = 8
+
+[node name="BoxArea2D22" parent="Machine_Grid" index="17" instance=ExtResource( 3 )]
+position = Vector2( 384, 64 )
+machine_box = true
+
+[node name="BoxArea2D21" parent="Machine_Grid" index="18" instance=ExtResource( 3 )]
+position = Vector2( 447.951, 63.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D21" index="3" instance=ExtResource( 5 )]
+connect_config = 9
+
+[node name="BoxArea2D28" parent="Machine_Grid" index="19" instance=ExtResource( 3 )]
+position = Vector2( 512, 64 )
+machine_box = true
+
+[node name="BoxArea2D27" parent="Machine_Grid" index="20" instance=ExtResource( 3 )]
+position = Vector2( 576, 63.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D27" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 1
+connect_config = 10
+
+[node name="BoxArea2D9" parent="Machine_Grid" index="21" instance=ExtResource( 3 )]
+position = Vector2( -0.0486145, 127.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D9" index="3" groups=[
+"verb",
+] instance=ExtResource( 5 )]
+
+[node name="BoxArea2D10" parent="Machine_Grid" index="22" instance=ExtResource( 3 )]
+position = Vector2( 63.9514, 127.968 )
+machine_box = true
+
+[node name="BoxArea2D11" parent="Machine_Grid" index="23" instance=ExtResource( 3 )]
+position = Vector2( 127.951, 127.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D11" index="3" groups=[
+"verb",
+] instance=ExtResource( 5 )]
+pre_rot_left = 1
+
+[node name="BoxArea2D12" parent="Machine_Grid" index="24" instance=ExtResource( 3 )]
+position = Vector2( 191.951, 127.968 )
+machine_box = true
+
+[node name="BoxArea2D32" parent="Machine_Grid" index="25" instance=ExtResource( 3 )]
+position = Vector2( 255.951, 127.968 )
+machine_box = true
+
+[node name="SOURCE" parent="Machine_Grid/BoxArea2D32" index="3" instance=ExtResource( 6 )]
+pre_rot_left = 3
+connect_config = 4
+
+[node name="BoxArea2D31" parent="Machine_Grid" index="26" instance=ExtResource( 3 )]
+position = Vector2( 319.951, 127.968 )
+machine_box = true
+
+[node name="BoxArea2D30" parent="Machine_Grid" index="27" instance=ExtResource( 3 )]
+position = Vector2( 383.951, 127.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D30" index="3" groups=[
+"verb",
+] instance=ExtResource( 5 )]
+pre_rot_left = 2
+
+[node name="BoxArea2D29" parent="Machine_Grid" index="28" instance=ExtResource( 3 )]
+position = Vector2( 447.951, 127.968 )
+machine_box = true
+
+[node name="BoxArea2D34" parent="Machine_Grid" index="29" instance=ExtResource( 3 )]
+position = Vector2( 511.951, 127.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D34" index="3" groups=[
+"verb",
+] instance=ExtResource( 5 )]
+pre_rot_left = 3
+
+[node name="BoxArea2D33" parent="Machine_Grid" index="30" instance=ExtResource( 3 )]
+position = Vector2( 575.951, 127.968 )
+machine_box = true
+
+[node name="BoxArea2D13" parent="Machine_Grid" index="31" instance=ExtResource( 3 )]
+position = Vector2( -0.0486145, 191.968 )
+machine_box = true
+
+[node name="BoxArea2D14" parent="Machine_Grid" index="32" instance=ExtResource( 3 )]
+position = Vector2( 63.9514, 191.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D14" index="3" groups=[
+"verb",
+] instance=ExtResource( 5 )]
+pre_rot_left = 3
+
+[node name="BoxArea2D15" parent="Machine_Grid" index="33" instance=ExtResource( 3 )]
+position = Vector2( 127.951, 191.968 )
+machine_box = true
+
+[node name="BoxArea2D16" parent="Machine_Grid" index="34" instance=ExtResource( 3 )]
+position = Vector2( 191.951, 191.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D16" index="3" groups=[
+"verb",
+] instance=ExtResource( 5 )]
+pre_rot_left = 2
+
+[node name="BoxArea2D38" parent="Machine_Grid" index="35" instance=ExtResource( 3 )]
+position = Vector2( 255.951, 191.968 )
+machine_box = true
+
+[node name="BoxArea2D37" parent="Machine_Grid" index="36" instance=ExtResource( 3 )]
+position = Vector2( 319.951, 191.968 )
+machine_box = true
+
+[node name="SOURCE" parent="Machine_Grid/BoxArea2D37" index="3" instance=ExtResource( 6 )]
+connect_config = 4
+
+[node name="BoxArea2D36" parent="Machine_Grid" index="37" instance=ExtResource( 3 )]
+position = Vector2( 383.951, 191.968 )
+machine_box = true
+
+[node name="BoxArea2D35" parent="Machine_Grid" index="38" instance=ExtResource( 3 )]
+position = Vector2( 447.951, 191.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D35" index="3" groups=[
+"verb",
+] instance=ExtResource( 5 )]
+pre_rot_left = 1
+
+[node name="BoxArea2D40" parent="Machine_Grid" index="39" instance=ExtResource( 3 )]
+position = Vector2( 511.951, 191.968 )
+machine_box = true
+
+[node name="BoxArea2D39" parent="Machine_Grid" index="40" instance=ExtResource( 3 )]
+position = Vector2( 575.951, 191.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D39" index="3" groups=[
+"verb",
+] instance=ExtResource( 5 )]
+
+[node name="BoxArea2D60" parent="Machine_Grid" index="41" instance=ExtResource( 3 )]
+position = Vector2( -0.0486145, 255.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D60" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 2
+connect_config = 10
+
+[node name="BoxArea2D59" parent="Machine_Grid" index="42" instance=ExtResource( 3 )]
+position = Vector2( 63.9514, 255.968 )
+machine_box = true
+
+[node name="BoxArea2D58" parent="Machine_Grid" index="43" instance=ExtResource( 3 )]
+position = Vector2( 127.951, 255.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D58" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 3
+connect_config = 9
+
+[node name="BoxArea2D57" parent="Machine_Grid" index="44" instance=ExtResource( 3 )]
+position = Vector2( 191.951, 255.968 )
+machine_box = true
+
+[node name="BoxArea2D56" parent="Machine_Grid" index="45" instance=ExtResource( 3 )]
+position = Vector2( 255.951, 255.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D56" index="3" instance=ExtResource( 5 )]
+position = Vector2( -1.22772, 0 )
+connect_config = 8
+
+[node name="BoxArea2D55" parent="Machine_Grid" index="46" instance=ExtResource( 3 )]
+position = Vector2( 319.951, 255.968 )
+machine_box = true
+
+[node name="BoxArea2D54" parent="Machine_Grid" index="47" instance=ExtResource( 3 )]
+position = Vector2( 383.951, 255.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D54" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 1
+connect_config = 7
+
+[node name="BoxArea2D53" parent="Machine_Grid" index="48" instance=ExtResource( 3 )]
+position = Vector2( 447.951, 255.968 )
+machine_box = true
+
+[node name="BoxArea2D52" parent="Machine_Grid" index="49" instance=ExtResource( 3 )]
+position = Vector2( 511.951, 255.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D52" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 2
+connect_config = 6
+
+[node name="BoxArea2D51" parent="Machine_Grid" index="50" instance=ExtResource( 3 )]
+position = Vector2( 575.951, 255.968 )
+machine_box = true
+
+[node name="BoxArea2D50" parent="Machine_Grid" index="51" instance=ExtResource( 3 )]
+position = Vector2( -0.0486145, 319.968 )
+machine_box = true
+
+[node name="BoxArea2D49" parent="Machine_Grid" index="52" instance=ExtResource( 3 )]
+position = Vector2( 63.9514, 319.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D49" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 3
+connect_config = 5
+
+[node name="BoxArea2D48" parent="Machine_Grid" index="53" instance=ExtResource( 3 )]
+position = Vector2( 127.951, 319.968 )
+machine_box = true
+
+[node name="BoxArea2D47" parent="Machine_Grid" index="54" instance=ExtResource( 3 )]
+position = Vector2( 191.951, 319.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D47" index="3" instance=ExtResource( 5 )]
+connect_config = 4
+
+[node name="BoxArea2D46" parent="Machine_Grid" index="55" instance=ExtResource( 3 )]
+position = Vector2( 255.951, 319.968 )
+machine_box = true
+
+[node name="BoxArea2D45" parent="Machine_Grid" index="56" instance=ExtResource( 3 )]
+position = Vector2( 319.951, 319.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D45" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 1
+connect_config = 3
+
+[node name="BoxArea2D44" parent="Machine_Grid" index="57" instance=ExtResource( 3 )]
+position = Vector2( 383.951, 319.968 )
+machine_box = true
+
+[node name="BoxArea2D43" parent="Machine_Grid" index="58" instance=ExtResource( 3 )]
+position = Vector2( 447.951, 319.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D43" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 2
+connect_config = 2
+
+[node name="BoxArea2D42" parent="Machine_Grid" index="59" instance=ExtResource( 3 )]
+position = Vector2( 511.951, 319.968 )
+machine_box = true
+
+[node name="BoxArea2D41" parent="Machine_Grid" index="60" instance=ExtResource( 3 )]
+position = Vector2( 575.951, 319.968 )
+machine_box = true
+
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D41" index="3" instance=ExtResource( 5 )]
+pre_rot_left = 3
+connect_config = 1
+
+[node name="ButtonExit" parent="." index="4"]
+visible = false
+
+[node name="ButtonSaveReload" parent="." index="5"]
+visible = false
+
+[node name="ItemDescription" parent="." index="6"]
+visible = false

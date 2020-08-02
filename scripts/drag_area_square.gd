@@ -1,21 +1,31 @@
 extends Area2D
 
 export var machine_box = false
+var pinklit
+var pinklit_wait = 1.0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func unhighlight():
-	$Box.modulate = Color(0, 0, 0)
+	if pinklit == false:
+		$Box.modulate = Color(0, 0, 0)
 
 func highlight():
-	$Box.modulate = Color(1, 1, 1)
+	if pinklit == false:
+		$Box.modulate = Color(1, 1, 1)
 
 func redlight():
-	$Box.modulate = Color(0.5, 0.1, 0.1)
+	if pinklit == false:
+		$Box.modulate = Color(0.5, 0.1, 0.1)
+
+func pinklight():
+	$Box.modulate = Color(0.9, 0.3, 0.9)
+	pinklit = true
+	## wait a short time before unhighlighting
+	$PinklitTimer.wait_time = pinklit_wait
+	$PinklitTimer.start()
+
+func _on_PinklitTimer_timeout():
+	pinklit = false
+	unhighlight()

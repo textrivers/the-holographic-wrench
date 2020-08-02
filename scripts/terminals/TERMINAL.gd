@@ -5,7 +5,18 @@ extends Spatial
 ## - new inherited scene from GRID.tscn, save
 ## - copy path of new grid, paste into TERMINAL.my_grid, SAVE!!
 ## - in terminal inherited scene, Extend script
-## - in _ready(), paste contents of grid if any
+## - in extended script _ready(), paste contents of grid if any
+
+## for tutorial terminal:
+## XX one new scene that inherits TERMINAL (TERMINAL_tut)
+## XX several new GRIDS (GRID_tut_#)
+## XX copy path of GRID_tut_1 into TERMINAL_tut.my_grid, SAVE!!
+## XX on GRID_tut_1, extend GRID.gd, make sure all GRID_tuts get it
+## XX in each GRID, put path of next grid in the on-commit function, 
+## 		set TERMINAL_tut.my_grid to that if Commit successful,
+## 		load TERMINAL_tut.my_grid, free self (eventually smooth transition)
+## XX also in each GRID_tut, put the contents of terminal and inventory,
+## 		making sure they're not overwritten by GRID
 
 
 var can_be_opened = false
@@ -14,15 +25,15 @@ var game_underway = false
 var current_frame = 0
 export var my_grid = ""
 var terminal_contents = [
-	["res://scenes/Components/SOURCE.tscn", 3, 0]
 ]
 
 var signal_chains 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	game_data.all_boxes.append(self)
+	## game_data.all_boxes.append(self)
 	Signals.connect("initiate_fun", self, "mark_game_start")
+	game_data.player_inventory = []
 
 func _physics_process(delta):
 	if game_underway == true:
@@ -49,14 +60,17 @@ func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
 		if can_be_opened == true:
 			if $FrontSide.visible == true:
-				can_be_opened = false
+				open_terminal()
 
-				signal_chains = {}
-				
-				var machine_system = load(my_grid).instance()
-				add_child(machine_system)
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-				Signals.emit_signal("open_terminal")
+func open_terminal():
+	can_be_opened = false
+
+	signal_chains = {}
+	
+	var machine_system = load(my_grid).instance()
+	add_child(machine_system)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Signals.emit_signal("open_terminal")
 
 func mark_game_start():
 	game_underway = true

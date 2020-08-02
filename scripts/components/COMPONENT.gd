@@ -43,7 +43,13 @@ var config_sprites = [
 	preload("res://assets/item_connect_2a_gray.png"),
 	preload("res://assets/item_connect_2b_gray.png"),
 	preload("res://assets/item_connect_3_gray.png"),
-	preload("res://assets/item_connect_4_gray.png")
+	preload("res://assets/item_connect_4_gray.png"),
+	preload("res://assets/item_connect_5_gray.png"),
+	preload("res://assets/item_connect_6_gray.png"),
+	preload("res://assets/item_connect_7_gray.png"),
+	preload("res://assets/item_connect_8_gray.png"),
+	preload("res://assets/item_connect_9_gray.png"),
+	preload("res://assets/item_connect_10_gray.png"),
 	]
 var connector_array = [
 		[[1, 0, 0, 0], -1], 
@@ -51,6 +57,13 @@ var connector_array = [
 		[[1, 0, 1, 0], -1],
 		[[1, 1, 1, 0], -1],
 		[[1, 1, 1, 1], -1], 
+		## directional
+		[[1, 0, 0, 0], 1],
+		[[0, 1, 0, 0], 1],
+		[[1, 0, 0, 0], 3],
+		[[0, 0, 1, 0], 3],
+		[[0, 1, 0, 0], 3],
+		[[1, 0, 0, 0], 4],
 	]
 var connector_toggle
 
@@ -78,6 +91,8 @@ func _ready():
 		pre_rotate()
 		if is_in_group("source"):
 			call_deferred("make_connectivity")
+	
+	$AudioRotateLeft.call_deferred("set_volume_db", 0)
 
 func pre_rotate():
 	for _x in range(pre_rot_left):
@@ -126,7 +141,7 @@ func _process(_delta):
 
 	## DRAG ---------------------------------------------
 	if dragging == true:
-		$Sprite.modulate = Color(1, 1, 1, 0.5)
+		$Sprite.modulate = Color(1, 1, 1, 0.8)
 		$CollisionShape2D.scale = Vector2(0.5, 0.5)
 		drag_dest = get_viewport().get_mouse_position() + drag_offset
 		position = lerp(position, drag_dest, 0.5)
@@ -235,7 +250,7 @@ func make_connectivity():
 			var target_pos = my_grid_pos + four_directions[counter]
 			## if game_data.machine_grid[target_pos.x][target_pos.y].exists()
 			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
-				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
+				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid[0].size() - 1:
 					if typeof(game_data.machine_grid[target_pos.x][target_pos.y]) == TYPE_OBJECT:
 						neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
 						for item in neighbor.get_children():
@@ -244,6 +259,11 @@ func make_connectivity():
 									## dropping (or dropped), setting upstream neighbor
 									if item.lit == true && !is_in_group("source"):
 										lit_counter += 1
+										## toggle directional components and start over?
+										if connector_toggle != -1 && connectors != connector_array[connector_toggle][0]:
+											connectors = connector_array[connector_toggle][0]
+											make_connectivity()
+											return
 										upstream_neighbor = item
 									else:
 										downstream_neighbors.append(item)
@@ -254,6 +274,7 @@ func make_connectivity():
 		lit_counter = 1
 	
 	if lit_counter == 0:
+		connectors = connector_array[connect_config][0]
 		lit = false
 		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 	elif lit_counter == 1:
@@ -261,12 +282,15 @@ func make_connectivity():
 		$Sprite.modulate = Color(1, 1, 1, 1)
 		$AudioPowerUp.play()
 		rand_connectivity_effects()
+		if is_in_group("verb"):
+			upstream_highlight()
 		## wait a short time before propagating
 		yield(get_tree().create_timer(timer_float), "timeout")
 		for item in downstream_neighbors:
 			if !item.is_in_group("source"):
 				item.make_connectivity()
 	else: ## too many connections
+		connectors = connector_array[connect_config][0]
 		$AudioPowerWrong.play()
 		upstream_neighbor = null
 		lit = false
@@ -282,7 +306,7 @@ func break_connectivity():
 		if connector == 1:
 			var target_pos = my_grid_pos + four_directions[counter]
 			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
-				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
+				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid[0].size() - 1:
 					if typeof(game_data.machine_grid[target_pos.x][target_pos.y]) == TYPE_OBJECT:
 						neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
 						for item in neighbor.get_children():
@@ -304,6 +328,11 @@ func break_connectivity():
 	downstream_neighbors.clear()
 	upstream_neighbor = null
 
+func upstream_highlight():
+	get_parent().pinklight()
+	if upstream_neighbor != null:
+		upstream_neighbor.upstream_highlight()
+
 func record_signal_chain(chain_array, chain_key):
 	var neighbor
 	var counter = 0
@@ -314,7 +343,7 @@ func record_signal_chain(chain_array, chain_key):
 		if connector == 1:
 			var target_pos = my_grid_pos + four_directions[counter]
 			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
-				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid.size() - 1:
+				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid[0].size() - 1:
 					if typeof(game_data.machine_grid[target_pos.x][target_pos.y]) == TYPE_OBJECT:
 						neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
 						for item in neighbor.get_children():
@@ -349,6 +378,8 @@ func update_my_grid_pos():
 		my_grid_pos.y = abs(int(round(parent.position.y / 64)))
 
 func rotate_left():
+	if dragging:
+		$AudioRotateLeft.play()
 	target_rot -= 90
 	## connectors.push_back(connectors.front())
 	## connectors.pop_front()
@@ -359,6 +390,8 @@ func rotate_left():
 		connector_array[connector_toggle][0].pop_front()
 
 func rotate_right():
+	if dragging:
+		$AudioRotateRight.play()
 	target_rot += 90
 	connector_array[connect_config][0].push_front(connector_array[connect_config][0].back())
 	connector_array[connect_config][0].pop_back()
