@@ -25,7 +25,7 @@ var four_directions = [
 	Vector2(-1, 0)
 ]
 export var lit = false
-var timer_float = 0.1
+var timer_float = 0.68
 export var pre_rot_left = 0
 export var description = "Component"
 var description_label
@@ -39,17 +39,17 @@ var signal_on_commit = [
 
 export var connect_config = 0
 var config_sprites = [
-	preload("res://assets/item_connect_1_gray.png"),
-	preload("res://assets/item_connect_2a_gray.png"),
-	preload("res://assets/item_connect_2b_gray.png"),
-	preload("res://assets/item_connect_3_gray.png"),
-	preload("res://assets/item_connect_4_gray.png"),
-	preload("res://assets/item_connect_5_gray.png"),
-	preload("res://assets/item_connect_6_gray.png"),
-	preload("res://assets/item_connect_7_gray.png"),
-	preload("res://assets/item_connect_8_gray.png"),
-	preload("res://assets/item_connect_9_gray.png"),
-	preload("res://assets/item_connect_10_gray.png"),
+	preload("res://assets/item_connect_1_darkblue.png"),
+	preload("res://assets/item_connect_2a_darkblue.png"),
+	preload("res://assets/item_connect_2b_darkblue.png"),
+	preload("res://assets/item_connect_3_darkblue.png"),
+	preload("res://assets/item_connect_4_darkblue.png"),
+	preload("res://assets/item_connect_5_darkblue.png"),
+	preload("res://assets/item_connect_6_darkblue.png"),
+	preload("res://assets/item_connect_7_darkblue.png"),
+	preload("res://assets/item_connect_8_darkblue.png"),
+	preload("res://assets/item_connect_9_darkblue.png"),
+	preload("res://assets/item_connect_10_darkblue.png"),
 	]
 var connector_array = [
 		[[1, 0, 0, 0], -1], 
@@ -103,8 +103,8 @@ func pre_rotate():
 		$Sprite/ID_Sprite.rotation = -rotation
 
 func rand_connectivity_effects():
-	timer_float = randf()
-	timer_float = clamp(timer_float, 0.05, 0.1)
+	## timer_float = randf()
+	## timer_float = clamp(timer_float, 0.05, 0.1)
 	var coinflip = (randi() % 3) - 1
 	var pitch_adjust = coinflip * timer_float
 	$AudioPowerUp.pitch_scale += pitch_adjust
@@ -163,14 +163,11 @@ func _process(_delta):
 				for child in target_children:
 					if child != self:
 						if child.is_in_group("component") && child.moveable == true:
-							## breakpoint
-							## if parent.machine_box == true:
 							if drop_target.machine_box == true:
 								$AudioPowerDown.play()
 								child.break_connectivity()
 							drop_target.remove_child(child)
 							parent.add_child(child)
-							## child.set_owner(parent)
 							child.drop_targets.clear()
 							child.drop_targets.append(parent)
 							child.parent = parent
@@ -221,6 +218,11 @@ func _on_Item_Inv_mouse_exited():
 
 func _on_Item_Inv_area_entered(area):
 	if area.is_in_group("box"):
+		var box_children = area.get_children()
+		for child in box_children:
+			if child.is_in_group("component") && child.moveable == false:
+				can_drop = false
+				return
 		can_drop = true
 		drop_targets.append(area)
 		drop_target.unhighlight()
@@ -372,6 +374,15 @@ func record_signal_chain(chain_array, chain_key):
 			else:
 				terminal.signal_chains[chain_key] = chain_array
 				break
+
+func trace_signal():
+	if self.is_in_group("source"):
+		print(terminal.signal_chains.back())
+		return
+	if self.is_in_group("verb"):
+		terminal.signal_chains.append([])
+	terminal.signal_chains.back().append(my_grid_pos)
+	upstream_neighbor.trace_signal()
 
 func update_my_grid_pos():
 		my_grid_pos.x = abs(int(round(parent.position.x / 64)))

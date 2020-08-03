@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/Components/COMPONENT.tscn" type="PackedScene" id=1]
+[ext_resource path="res://audio/powerup_verb.wav" type="AudioStream" id=2]
 
 [node name="VERB" groups=[
 "verb",
 ] instance=ExtResource( 1 )]
 description = "Verb"
+
+[node name="AudioPowerUp" parent="." index="2"]
+stream = ExtResource( 2 )
+volume_db = 3.0
+pitch_scale = 1.0

@@ -1,7 +1,7 @@
 extends Area2D
 
 export var machine_box = false
-var pinklit
+var pinklit = false
 var pinklit_wait = 1.0
 
 func _ready():
@@ -20,7 +20,7 @@ func redlight():
 		$Box.modulate = Color(0.5, 0.1, 0.1)
 
 func pinklight():
-	$Box.modulate = Color(0.9, 0.3, 0.9)
+	$Box.modulate = Color(1, 0.13, 0.67)
 	pinklit = true
 	## wait a short time before unhighlighting
 	$PinklitTimer.wait_time = pinklit_wait

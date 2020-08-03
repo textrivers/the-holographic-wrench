@@ -65,7 +65,7 @@ func _unhandled_input(event):
 func open_terminal():
 	can_be_opened = false
 
-	signal_chains = {}
+	signal_chains = []
 	
 	var machine_system = load(my_grid).instance()
 	add_child(machine_system)

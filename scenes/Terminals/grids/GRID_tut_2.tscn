@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Terminals/grids/GRID.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/terminals/grids/GRID_tut.gd" type="Script" id=2]
-[ext_resource path="res://scripts/drag_area_square.gd" type="Script" id=3]
 [ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Components/COMPONENT_blank.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Components/SOURCE.tscn" type="PackedScene" id=6]
@@ -14,47 +13,29 @@ next_tut = "res://scenes/Terminals/grids/GRID_tut_3.tscn"
 [node name="Machine_Grid" parent="." index="1"]
 y_size = 1
 
-[node name="BoxArea2D" type="Area2D" parent="Machine_Grid" index="1" groups=[
-"box",
-] instance=ExtResource( 4 )]
-pause_mode = 2
+[node name="BoxArea2D" parent="Machine_Grid" index="1" instance=ExtResource( 4 )]
 position = Vector2( -0.0486069, -0.0320282 )
-script = ExtResource( 3 )
 machine_box = true
 
 [node name="SOURCE" parent="Machine_Grid/BoxArea2D" index="3" instance=ExtResource( 6 )]
 pre_rot_left = 3
 
-[node name="BoxArea2D2" type="Area2D" parent="Machine_Grid" index="2" groups=[
-"box",
-] instance=ExtResource( 4 )]
-pause_mode = 2
+[node name="BoxArea2D2" parent="Machine_Grid" index="2" instance=ExtResource( 4 )]
 position = Vector2( 63.9514, -0.0320282 )
-script = ExtResource( 3 )
 machine_box = true
 
-[node name="BoxArea2D3" type="Area2D" parent="Machine_Grid" index="3" groups=[
-"box",
-] instance=ExtResource( 4 )]
-pause_mode = 2
+[node name="BoxArea2D3" parent="Machine_Grid" index="3" instance=ExtResource( 4 )]
 position = Vector2( 127.951, -0.0320282 )
-script = ExtResource( 3 )
 machine_box = true
 
-[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D3" index="3" groups=[
-"verb",
-] instance=ExtResource( 5 )]
+[node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D3" index="3" instance=ExtResource( 5 )]
 moveable = false
 pre_rot_left = 1
 description = "Problem(s)"
 connect_config = 2
 
-[node name="BoxArea2D4" type="Area2D" parent="Machine_Grid" index="4" groups=[
-"box",
-] instance=ExtResource( 4 )]
-pause_mode = 2
+[node name="BoxArea2D4" parent="Machine_Grid" index="4" instance=ExtResource( 4 )]
 position = Vector2( 191.951, -0.0320282 )
-script = ExtResource( 3 )
 machine_box = true
 
 [node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D4" index="3" groups=[
