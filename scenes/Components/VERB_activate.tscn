@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/component_ID_circuit-complete.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Components/VERB.tscn" type="PackedScene" id=2]
+
+[node name="VERB_activate" instance=ExtResource( 2 )]
+description = "Activate"
+
+[node name="ID_Sprite" parent="Sprite" index="0"]
+texture = ExtResource( 1 )

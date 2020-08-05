@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/components/COMPONENT.gd" type="Script" id=1]
 [ext_resource path="res://assets/item_connect_1.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://audio/powerwrong.wav" type="AudioStream" id=5]
 [ext_resource path="res://audio/rotate_left.wav" type="AudioStream" id=6]
 [ext_resource path="res://audio/rotate_right.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/component_pink_ring.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.1198, 32.0569 )
@@ -19,6 +20,13 @@ script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Pinklight" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 8 )
+
+[node name="PinkTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

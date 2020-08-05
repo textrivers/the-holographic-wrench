@@ -69,17 +69,16 @@ var guard_waypoints = [
 var machine_grid = []
 
 var player_inventory = [ ## each array item is a two-member array, filename then connect_config integer
-	["res://scenes/Components/ADD-ON_delay.tscn", 2],
-	["res://scenes/Components/NOUN_light.tscn", 4],
-	["res://scenes/Components/VERB_destroy.tscn", 0],
 	["res://scenes/Components/COMPONENT_blank.tscn", 1],
-	["res://scenes/Components/COMPONENT_blank.tscn", 2],
-	["res://scenes/Components/COMPONENT_blank.tscn", 5],
-	["res://scenes/Components/COMPONENT_blank.tscn", 6],
-	["res://scenes/Components/COMPONENT_blank.tscn", 7],
-	["res://scenes/Components/COMPONENT_blank.tscn", 8],
-	["res://scenes/Components/COMPONENT_blank.tscn", 9],
-	["res://scenes/Components/COMPONENT_blank.tscn", 10],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
 
 ]
 func _ready():

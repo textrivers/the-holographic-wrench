@@ -25,7 +25,7 @@ var four_directions = [
 	Vector2(-1, 0)
 ]
 export var lit = false
-var timer_float = 0.68
+var timer_float = 0.102
 export var pre_rot_left = 0
 export var description = "Component"
 var description_label
@@ -204,6 +204,9 @@ func _process(_delta):
 		$CollisionShape2D.scale = Vector2(0.9, 0.9)
 		if Input.is_action_just_released("interact"):
 			drop_target.unhighlight()
+		
+	## PINK OUTLINE EFFECT ----------------------------------------
+	$Pinklight.modulate.a = $PinkTimer.time_left
 
 func _on_Item_Inv_mouse_entered():
 	## description
@@ -331,7 +334,9 @@ func break_connectivity():
 	upstream_neighbor = null
 
 func upstream_highlight():
-	get_parent().pinklight()
+	## get_parent().pinklight()
+	$PinkTimer.wait_time = 2.0
+	$PinkTimer.start()
 	if upstream_neighbor != null:
 		upstream_neighbor.upstream_highlight()
 
