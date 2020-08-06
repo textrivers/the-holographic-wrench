@@ -237,7 +237,7 @@ func _on_Item_Inv_area_exited(area):
 	if area.is_in_group("box"):
 		area.unhighlight()
 		drop_targets.erase(area)
-		if area == drop_target:
+		if area == drop_target && !drop_targets.empty():
 			drop_target = drop_targets.back()
 			if dragging == true:
 				drop_target.highlight()

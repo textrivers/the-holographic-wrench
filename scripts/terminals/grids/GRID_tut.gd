@@ -21,7 +21,6 @@ func _on_ButtonCommit_pressed():
 		for verb in verbs:
 			if verb.lit == true:
 				verb.trace_signal()
-		queue_free()
 		
 		queue_free()
 		## hide()
@@ -31,4 +30,8 @@ func _on_ButtonCommit_pressed():
 		for verb in verbs:
 			if verb.lit == true:
 				verb.trace_signal()
-		queue_free()
+			queue_free()
+
+
+func _on_ButtonExitTut_pressed():
+	get_tree().change_scene("res://scenes/Tutorial3.tscn")

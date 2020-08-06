@@ -13,7 +13,7 @@ signal item_found
 signal cease_and_desist_fun
 
 ## emitted by Player.gd
-## received by Reactor_Test
+## received by LVL_basics.gd
 signal reset_level
 
 ## emitted by Terminal_BASE.gd

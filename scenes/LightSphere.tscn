@@ -2,17 +2,18 @@
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_unshaded = true
-albedo_color = Color( 0.945098, 1, 0, 1 )
 
-[node name="OmniLight3" type="OmniLight"]
+[node name="CSGSphere" type="CSGSphere"]
+radius = 0.830398
+rings = 12
+material = SubResource( 1 )
+
+[node name="LightSphere" type="OmniLight" parent="." groups=[
+"light",
+]]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 4, 0 )
-light_color = Color( 1, 0.984314, 0.0117647, 1 )
+visible = false
 light_energy = 2.03
 shadow_enabled = true
 omni_range = 8.6
 omni_attenuation = 2.82843
-
-[node name="CSGSphere" type="CSGSphere" parent="."]
-radius = 0.830398
-rings = 12
-material = SubResource( 1 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Components/NOUN_light.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Terminals/grids/GRID.tscn" type="PackedScene" id=2]
@@ -6,8 +6,11 @@
 [ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Components/SOURCE.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Components/MODIFIER_nearest.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/terminals/grids/GRID_tut.gd" type="Script" id=7]
 
 [node name="GRID_tut_13" instance=ExtResource( 2 )]
+script = ExtResource( 7 )
+next_tut = "res://scenes/Tutorial3.tscn"
 
 [node name="BoxArea2D" parent="Machine_Grid" index="1" instance=ExtResource( 4 )]
 position = Vector2( -0.0486069, -0.0320282 )
@@ -37,8 +40,22 @@ connect_config = 2
 [node name="MODIFIER_nearest" parent="Inventory/BoxArea2D19" index="3" instance=ExtResource( 6 )]
 connect_config = 2
 
-[node name="ButtonExit" parent="." index="4"]
+[node name="ButtonCommit" parent="." index="3"]
 visible = false
 
-[node name="ButtonSaveReload" parent="." index="5"]
+[node name="ButtonExitTut" type="Button" parent="." index="4"]
+margin_left = 800.0
+margin_top = 100.0
+margin_right = 865.0
+margin_bottom = 120.0
+text = "Commit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonExit" parent="." index="5"]
 visible = false
+
+[node name="ButtonSaveReload" parent="." index="6"]
+visible = false
+[connection signal="pressed" from="ButtonExitTut" to="." method="_on_ButtonExitTut_pressed"]

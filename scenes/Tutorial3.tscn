@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/WorldEnvironment_DarkSky.tscn" type="PackedScene" id=1]
 [ext_resource path="res://meshes/tutorial_lvl.obj" type="ArrayMesh" id=2]
@@ -8,12 +8,13 @@
 [ext_resource path="res://scenes/FloorPlane12x12_.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/LightSphere.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/LightSphereBlue.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/LightSpherePurple.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/LightSphere_yellow.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/LightSphere_green.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/star tiles/blue-supergiants-in-the-night-sky.jpg" type="Texture" id=11]
-[ext_resource path="res://scenes/LightSphereGreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/LightSphere_blue.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/Terminals/TERMINAL_4x4.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Terminals/TERMINAL_tut.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/LightSphere_purple.tscn" type="PackedScene" id=15]
 
 [sub_resource type="NavigationMesh" id=1]
 
@@ -88,21 +89,30 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12 )
 [node name="FloorPlane12x12_4" parent="NavigationMeshInstance/Floor" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
 
+[node name="OmniLight" parent="NavigationMeshInstance" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 9.98157, -0.306718 )
+
 [node name="GUI" parent="." instance=ExtResource( 7 )]
 
-[node name="OmniLight3" parent="." instance=ExtResource( 8 )]
-transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 4, -19.5 )
+[node name="LightSphere_yellow" parent="." groups=[
+"light",
+] instance=ExtResource( 9 )]
+transform = Transform( 1, 0, -6.51682e-07, 0, 1, 0, 6.51682e-07, 0, 1, 0, 3.99333, -19.5 )
 
-[node name="OmniLight2" parent="." instance=ExtResource( 12 )]
-transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 4, 19.5 )
+[node name="LightSphere_green" parent="." groups=[
+"light",
+] instance=ExtResource( 10 )]
+transform = Transform( -1.6292e-07, 0, -1, 0, 1, 0, 1, 0, -1.6292e-07, 0, 3.93159, 19.5 )
 
-[node name="OmniLight" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 4, 0 )
+[node name="LightSphere_blue" parent="." groups=[
+"light",
+] instance=ExtResource( 12 )]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 19.5, 3.98238, 0 )
 
-[node name="OmniLight4" parent="." instance=ExtResource( 10 )]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -19.5, 4, 0 )
+[node name="LightSphere_purple" parent="." groups=[
+"light",
+] instance=ExtResource( 15 )]
+transform = Transform( 4.88762e-07, 0, 1, 0, 1, 0, -1, 0, 4.88762e-07, -19.5, 3.99287, 0 )
 
 [node name="WorldEnvironment_DarkSky" parent="." instance=ExtResource( 1 )]
 environment = SubResource( 4 )
-
-[editable path="OmniLight4"]

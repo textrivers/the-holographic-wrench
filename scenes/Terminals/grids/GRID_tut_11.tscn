@@ -93,6 +93,7 @@ position = Vector2( 191.951, 191.968 )
 machine_box = true
 
 [node name="MODIFIER_further" parent="Inventory/BoxArea2D17" index="3" instance=ExtResource( 7 )]
+connect_config = 6
 
 [node name="NOUN_saboteur" parent="Inventory/BoxArea2D18" index="3" instance=ExtResource( 8 )]
 description = "Saboteur; intruder; you"
