@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/Components/MODIFIER.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/component_ID_nearest3.png" type="Texture" id=2]
+[ext_resource path="res://assets/component_ID_nearest_darkblue.png" type="Texture" id=2]
 
 [node name="MODIFIER_nearest" instance=ExtResource( 1 )]
 description = "Nearest; applies the specified effect to the nearest specified target."

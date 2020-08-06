@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/Components/NOUN.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/component_ID_light_darkblue.png" type="Texture" id=2]
+[ext_resource path="res://assets/component_ID_intruder.png" type="Texture" id=2]
 
-[node name="NOUN_light" instance=ExtResource( 1 )]
-description = "Light; provides illumination"
+[node name="NOUN_saboteur" instance=ExtResource( 1 )]
+description = "Saboteur/intruder (i.e., you)"
 
 [node name="ID_Sprite" parent="Sprite" index="0"]
 texture = ExtResource( 2 )

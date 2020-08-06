@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Components/VERB.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/component_ID_remember.png" type="Texture" id=2]
+[ext_resource path="res://assets/item_connect_1.png" type="Texture" id=3]
+
+[node name="VERB_remember" instance=ExtResource( 1 )]
+description = "Remember"
+
+[node name="Sprite" parent="." index="3"]
+texture = ExtResource( 3 )
+
+[node name="ID_Sprite" parent="Sprite" index="0"]
+texture = ExtResource( 2 )

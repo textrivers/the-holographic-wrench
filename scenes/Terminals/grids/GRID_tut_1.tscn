@@ -8,8 +8,7 @@
 
 [node name="GRID_tut_1" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-testing = true
-next_tut = "res://scenes/Terminals/grids/GRID_tut_2.tscn"
+next_tut = "res://scenes/Terminals/grids/GRID_tut_10.tscn"
 
 [node name="Machine_Grid" parent="." index="1"]
 x_size = 2

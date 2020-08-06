@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/components/COMPONENT.gd" type="Script" id=1]
-[ext_resource path="res://assets/item_connect_1.png" type="Texture" id=2]
+[ext_resource path="res://assets/item_connect_1_darkblue.png" type="Texture" id=2]
 [ext_resource path="res://audio/powerdown.wav" type="AudioStream" id=3]
 [ext_resource path="res://audio/powerup_2.wav" type="AudioStream" id=4]
 [ext_resource path="res://audio/powerwrong.wav" type="AudioStream" id=5]
