@@ -28,6 +28,7 @@ export var lit = false
 var timer_float = 0.102
 export var pre_rot_left = 0
 export var description = "Component"
+export var meaning = ""
 var description_label
 
 var upstream_neighbor = null
@@ -340,53 +341,20 @@ func upstream_highlight():
 	if upstream_neighbor != null:
 		upstream_neighbor.upstream_highlight()
 
-func record_signal_chain(chain_array, chain_key):
-	var neighbor
-	var counter = 0
-	var opposite = (counter + 2) % 4
-	var lit_counter = 0
-	
-	for connector in connectors:
-		if connector == 1:
-			var target_pos = my_grid_pos + four_directions[counter]
-			if target_pos.x >= 0 && target_pos.x <= game_data.machine_grid.size() - 1:
-				if target_pos.y >= 0 && target_pos.y <= game_data.machine_grid[0].size() - 1:
-					if typeof(game_data.machine_grid[target_pos.x][target_pos.y]) == TYPE_OBJECT:
-						neighbor = game_data.machine_grid[target_pos.x][target_pos.y]
-						for item in neighbor.get_children():
-							if item.is_in_group("component"):
-								if item.connectors[opposite] == 1 && item.lit == true:
-									if item != upstream_neighbor:
-										## keep track of how many lit connections there are
-										lit_counter += 1
-										## contingency for branching
-										if lit_counter > 1:
-											chain_key += 1
-											## remove last item
-											chain_array.pop_back()
-										## add item to ongoing signal chain array
-										chain_array.append(item.my_grid_pos)
-										## propagate downstream
-										var temp_array = chain_array.duplicate(true)
-										item.record_signal_chain(temp_array, chain_key)
-		counter += 1
-		opposite = (counter + 2) % 4
-	
-	if lit_counter == 0:
-		for x in range(20):
-			if terminal.signal_chains.has(chain_key):
-				chain_key += 1
-			else:
-				terminal.signal_chains[chain_key] = chain_array
-				break
-
 func trace_signal():
+	var part_of_speech = ""
+	for group in self.get_groups():
+		if group == "component":
+			continue
+		else:
+			part_of_speech = group
 	if self.is_in_group("source"):
-		print(terminal.signal_chains.back())
+		## print(terminal.signal_chains.back())
 		return
 	if self.is_in_group("verb"):
 		terminal.signal_chains.append([])
-	terminal.signal_chains.back().append(my_grid_pos)
+	## add to front of array just appended: a) part of speech, b) meaning
+	terminal.signal_chains.back().push_front([part_of_speech, meaning])
 	upstream_neighbor.trace_signal()
 
 func update_my_grid_pos():

@@ -32,9 +32,11 @@ var signal_chains
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	## game_data.all_boxes.append(self)
+# warning-ignore:return_value_discarded
 	Signals.connect("initiate_fun", self, "mark_game_start")
 	game_data.player_inventory = []
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	if game_underway == true:
 		if game_data.items_dict.has(box_ID):
@@ -75,12 +77,33 @@ func open_terminal():
 func mark_game_start():
 	game_underway = true
 
-func has_item():
-	if self.has_node("Item"):
-		return true
-	else:
-		return false
+func parse_signal_path():
+	var targets
+	var modifiers = []
+	var verb
+	var signal_dict = {
+		}
+	if !signal_chains.empty(): 
+		for chain in signal_chains: 
+			
+			var mod_index = 0
+			## each link should be a two-member array consisting of either
+			## ["part_of_speech", "meaning"] or
+			## ["", ""]
+			for link in chain:
+				if link[0] == "":
+					continue
+				elif link[0] == "noun":
+					targets = get_tree().get_nodes_in_group(link[1])
+				elif link[0] == "modifier":
+					modifiers.append[link[1]]
+				elif link[0] == "verb":
+					verb = link[1]
+				else:
+					continue
+	## now do the modifiers to the array of targets
+	## then call the verb function on the remaining target(s)
+	
 
-func add_item():
-	var added_item = load("res://scenes/Item.tscn").instance()
-	add_child(added_item)
+
+

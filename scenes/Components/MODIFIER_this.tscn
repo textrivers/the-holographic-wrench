@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Components/MODIFIER.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/component_ID_this.png" type="Texture" id=2]
+
+[node name="MODIFIER_this" instance=ExtResource( 1 )]
+description = "This; the current instance of whatever target"
+meaning = "this"
+
+[node name="ID_Sprite" parent="Sprite" index="0"]
+texture = ExtResource( 2 )
