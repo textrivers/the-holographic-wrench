@@ -4,7 +4,8 @@
 [ext_resource path="res://scenes/Components/VERB.tscn" type="PackedScene" id=2]
 
 [node name="VERB_activate" instance=ExtResource( 2 )]
-description = "Activate"
+description = "Activate (a target)"
+meaning = "activate"
 
 [node name="ID_Sprite" parent="Sprite" index="0"]
 texture = ExtResource( 1 )

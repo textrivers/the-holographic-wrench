@@ -4,7 +4,8 @@
 [ext_resource path="res://assets/component_ID_destroy.png" type="Texture" id=2]
 
 [node name="VERB_destroy" instance=ExtResource( 1 )]
-description = "Destroy; permanently disables a target."
+description = "Destroy (permanently disable) a target"
+meaning = "destroy"
 
 [node name="ID_Sprite" parent="Sprite" index="0"]
 texture = ExtResource( 2 )

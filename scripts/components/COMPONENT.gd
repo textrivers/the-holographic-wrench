@@ -349,12 +349,14 @@ func trace_signal():
 		else:
 			part_of_speech = group
 	if self.is_in_group("source"):
-		## print(terminal.signal_chains.back())
+		print(terminal.signal_chains.back())
 		return
 	if self.is_in_group("verb"):
-		terminal.signal_chains.append([])
-	## add to front of array just appended: a) part of speech, b) meaning
-	terminal.signal_chains.back().push_front([part_of_speech, meaning])
+		## create new dictionary
+		terminal.signal_chains.append({})
+	## add to dictionary: key) part of speech, value) meaning
+	## TODO adapt this for multiple modifiers
+	terminal.signal_chains.back()[part_of_speech] = meaning
 	upstream_neighbor.trace_signal()
 
 func update_my_grid_pos():

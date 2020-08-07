@@ -5,7 +5,7 @@
 
 [node name="MODIFIER_this" instance=ExtResource( 1 )]
 description = "This; the current instance of whatever target"
-meaning = "this"
+meaning = "get_this"
 
 [node name="ID_Sprite" parent="Sprite" index="0"]
 texture = ExtResource( 2 )

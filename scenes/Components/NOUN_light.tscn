@@ -5,6 +5,7 @@
 
 [node name="NOUN_light" instance=ExtResource( 1 )]
 description = "Light; provides illumination"
+meaning = "light"
 
 [node name="ID_Sprite" parent="Sprite" index="0"]
 texture = ExtResource( 2 )

@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/component_ID_blank.png" type="Texture" id=2]
 
 [node name="COMPONENT_blank" instance=ExtResource( 1 )]
-description = "Blank component; transmits signal but has no other effect"
+description = "Blank component; power passes through with no other effect"
 
 [node name="ID_Sprite" parent="Sprite" index="0"]
 texture = ExtResource( 2 )

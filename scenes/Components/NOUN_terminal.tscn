@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Components/NOUN.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/component_ID_terminal_darkblue.png" type="Texture" id=2]
+
+[node name="NOUN_terminal" instance=ExtResource( 1 )]
+description = "Terminal; the grid, with the pieces you can snap together. You're using one right now."
+meaning = "terminal"
+
+[node name="ID_Sprite" parent="Sprite" index="0"]
+texture = ExtResource( 2 )

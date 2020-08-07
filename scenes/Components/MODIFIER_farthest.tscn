@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Components/MODIFIER.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/component_ID_farthest_darkblue.png" type="Texture" id=2]
+
+[node name="MODIFIER_farthest" instance=ExtResource( 1 )]
+description = "Farthest target (from this terminal)"
+meaning = "get_farthest"
+
+[node name="ID_Sprite" parent="Sprite" index="0"]
+texture = ExtResource( 2 )

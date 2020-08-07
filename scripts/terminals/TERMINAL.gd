@@ -27,7 +27,9 @@ export var my_grid = ""
 var terminal_contents = [
 ]
 
-var signal_chains 
+var signal_chains = []
+var targets = []
+var target = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -78,32 +80,52 @@ func mark_game_start():
 	game_underway = true
 
 func parse_signal_path():
-	var targets
-	var modifiers = []
-	var verb
-	var signal_dict = {
-		}
 	if !signal_chains.empty(): 
 		for chain in signal_chains: 
-			
-			var mod_index = 0
-			## each link should be a two-member array consisting of either
-			## ["part_of_speech", "meaning"] or
-			## ["", ""]
-			for link in chain:
-				if link[0] == "":
-					continue
-				elif link[0] == "noun":
-					targets = get_tree().get_nodes_in_group(link[1])
-				elif link[0] == "modifier":
-					modifiers.append[link[1]]
-				elif link[0] == "verb":
-					verb = link[1]
-				else:
-					continue
-	## now do the modifiers to the array of targets
-	## then call the verb function on the remaining target(s)
-	
+			## each chain should be a series of key-value pairs:
+			## "part_of_speech": "meaning"
+			if chain.has("noun"):
+				targets = get_tree().get_nodes_in_group(chain["noun"])
+				if chain.has("modifier") && targets != []:
+					target = call(chain["modifier"], targets)
+				if target != null:
+					target.call(chain["verb"])
 
+## MODIFIER FUNCTIONS-----------------------------
+func get_nearest(target_array):
+	var min_dist = 999999999.0
+	var nearest = target_array[0]
+	for targ in target_array:
+		if targ == nearest:
+			continue
+		var dist = self.get_global_transform().origin.distance_to(targ.get_global_transform.origin)
+		if dist < min_dist:
+			min_dist = dist
+			nearest = targ
+	return nearest
 
+func get_farthest(target_array):
+	var max_dist = 0.05
+	var farthest = target_array[0]
+	for targ in target_array:
+		if targ == farthest:
+			continue
+		var dist = self.get_global_transform().origin.distance_to(targ.get_global_transform.origin)
+		if dist > max_dist:
+			max_dist = dist
+			farthest = targ
+	return farthest
 
+func get_this():
+	return self
+
+## VERB FUNCTIONS-----------------------------------
+func activate():
+	$Area.show()
+
+func deactivate():
+	$Area.hide()
+
+func destroy():
+	$Area.queue_free()
+	$FrontSide/Sprite.texture = load("res://assets/terminal_front_destroyed.png")
