@@ -87,11 +87,15 @@ func parse_signal_path():
 				if chain.has("modifier") && targets != []:
 					target = self.call(chain["modifier"], targets)
 				if target != null:
+					## bad debug process here, yuck, terrible
+					## breakpoint
+					## target = get_node(get_path_to(target))
+					## var targ_script = target.get_script()
+					## print("Target " + str(target.get_method_list()))
+					## print("Script " + str(targ_script.get_script_method_list()))
 					## target.call_deferred(chain["verb"])
-					if target.has_method(chain["verb"]):
-						target.call(chain["verb"])
-					else:
-						print("apparently I'm just fucked")
+					if target.has_method(str(chain["verb"])):
+						target.call(str(chain["verb"]))
 					## var outcome = funcref(target, chain["verb"])
 					## outcome.call_func()
 					
@@ -110,8 +114,6 @@ func get_nearest(target_array):
 	var min_dist = 999999999.0
 	var nearest = target_array[0]
 	for targ in target_array:
-		if targ == nearest:
-			continue
 		var dist = self.get_global_transform().origin.distance_to(targ.get_global_transform().origin)
 		if dist < min_dist:
 			min_dist = dist
@@ -122,8 +124,6 @@ func get_farthest(target_array):
 	var max_dist = 0.05
 	var farthest = target_array[0]
 	for targ in target_array:
-		if targ == farthest:
-			continue
 		var dist = self.get_global_transform().origin.distance_to(targ.get_global_transform().origin)
 		if dist > max_dist:
 			max_dist = dist

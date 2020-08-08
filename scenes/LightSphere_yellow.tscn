@@ -9,5 +9,5 @@ albedo_color = Color( 0.945098, 0.933333, 0.0705882, 1 )
 [node name="LightSphere_yellow" instance=ExtResource( 1 )]
 material = SubResource( 1 )
 
-[node name="LightSphere" parent="." index="0"]
-light_color = Color( 0.92549, 0.913725, 0.0588235, 1 )
+[node name="Light" parent="." index="0"]
+light_color = Color( 0.933333, 0.898039, 0.0392157, 1 )

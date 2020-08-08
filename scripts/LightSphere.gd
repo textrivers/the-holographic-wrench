@@ -10,10 +10,10 @@ func _process(delta):
 
 func activate():
 	print("light activated")
-	$LightSphere.show()
+	$Light.show()
 
 func deactivate():
-	$LightSphere.hide()
+	$Light.hide()
 
 func destroy():
 	queue_free()
