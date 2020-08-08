@@ -36,7 +36,7 @@ func _ready():
 	## game_data.all_boxes.append(self)
 # warning-ignore:return_value_discarded
 	Signals.connect("initiate_fun", self, "mark_game_start")
-	game_data.player_inventory = []
+	## game_data.player_inventory = []
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
@@ -68,9 +68,7 @@ func _unhandled_input(event):
 
 func open_terminal():
 	can_be_opened = false
-
 	signal_chains = []
-	
 	var machine_system = load(my_grid).instance()
 	add_child(machine_system)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -87,9 +85,25 @@ func parse_signal_path():
 			if chain.has("noun"):
 				targets = get_tree().get_nodes_in_group(chain["noun"])
 				if chain.has("modifier") && targets != []:
-					target = call(chain["modifier"], targets)
+					target = self.call(chain["modifier"], targets)
 				if target != null:
-					target.call(chain["verb"])
+					## target.call_deferred(chain["verb"])
+					if target.has_method(chain["verb"]):
+						target.call(chain["verb"])
+					else:
+						print("apparently I'm just fucked")
+					## var outcome = funcref(target, chain["verb"])
+					## outcome.call_func()
+					
+
+func parse_tutorial_path():
+	if !signal_chains.empty():
+		for chain in signal_chains:
+			if chain.has("verb"):
+				tutorial_proceed()
+				return true
+			else:
+				return false
 
 ## MODIFIER FUNCTIONS-----------------------------
 func get_nearest(target_array):
@@ -98,7 +112,7 @@ func get_nearest(target_array):
 	for targ in target_array:
 		if targ == nearest:
 			continue
-		var dist = self.get_global_transform().origin.distance_to(targ.get_global_transform.origin)
+		var dist = self.get_global_transform().origin.distance_to(targ.get_global_transform().origin)
 		if dist < min_dist:
 			min_dist = dist
 			nearest = targ
@@ -110,7 +124,7 @@ func get_farthest(target_array):
 	for targ in target_array:
 		if targ == farthest:
 			continue
-		var dist = self.get_global_transform().origin.distance_to(targ.get_global_transform.origin)
+		var dist = self.get_global_transform().origin.distance_to(targ.get_global_transform().origin)
 		if dist > max_dist:
 			max_dist = dist
 			farthest = targ
@@ -129,3 +143,6 @@ func deactivate():
 func destroy():
 	$Area.queue_free()
 	$FrontSide/Sprite.texture = load("res://assets/terminal_front_destroyed.png")
+
+func tutorial_proceed():
+	open_terminal()

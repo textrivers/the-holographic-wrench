@@ -7,7 +7,19 @@ var neighbor
 var lit
 var already_propagated
 
+var player_inventory = [ ## each array item is a two-member array, filename then connect_config integer
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
+	["res://scenes/Components/COMPONENT_blank.tscn", 1],
 
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

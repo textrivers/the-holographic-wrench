@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/WorldEnvironment_DarkSky.tscn" type="PackedScene" id=1]
 [ext_resource path="res://meshes/tutorial_lvl.obj" type="ArrayMesh" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://assets/star tiles/blue-supergiants-in-the-night-sky.jpg" type="Texture" id=11]
 [ext_resource path="res://scenes/LightSphere_blue.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/Terminals/TERMINAL_4x4.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/Terminals/TERMINAL_tut.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/LightSphere_purple.tscn" type="PackedScene" id=15]
 
 [sub_resource type="NavigationMesh" id=1]
@@ -55,10 +54,7 @@ shape = SubResource( 2 )
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -6, 0, 2.9 )
 
 [node name="TERMINAL_4x4_donut_all-blanks" parent="NavigationMeshInstance/LVL" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10916e-06, 8.83708, -12.6109 )
-
-[node name="TERMINAL_tut" parent="NavigationMeshInstance/LVL" instance=ExtResource( 14 )]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 2.9, 0, 17 )
+transform = Transform( -0.00811572, 0, -0.999967, 0, 1, 0, 0.999967, 0, -0.00811572, 2.92056, 8.83708, -5.23905 )
 
 [node name="Floor" type="Spatial" parent="NavigationMeshInstance"]
 transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0 )
@@ -94,25 +90,21 @@ transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 9.98
 
 [node name="GUI" parent="." instance=ExtResource( 7 )]
 
-[node name="LightSphere_yellow" parent="." groups=[
-"light",
-] instance=ExtResource( 9 )]
+[node name="LightSphere_yellow" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, -6.51682e-07, 0, 1, 0, 6.51682e-07, 0, 1, 0, 3.99333, -19.5 )
+script = null
 
-[node name="LightSphere_green" parent="." groups=[
-"light",
-] instance=ExtResource( 10 )]
+[node name="LightSphere_green" parent="." instance=ExtResource( 10 )]
 transform = Transform( -1.6292e-07, 0, -1, 0, 1, 0, 1, 0, -1.6292e-07, 0, 3.93159, 19.5 )
+script = null
 
-[node name="LightSphere_blue" parent="." groups=[
-"light",
-] instance=ExtResource( 12 )]
+[node name="LightSphere_blue" parent="." instance=ExtResource( 12 )]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 19.5, 3.98238, 0 )
+script = null
 
-[node name="LightSphere_purple" parent="." groups=[
-"light",
-] instance=ExtResource( 15 )]
+[node name="LightSphere_purple" parent="." instance=ExtResource( 15 )]
 transform = Transform( 4.88762e-07, 0, 1, 0, 1, 0, -1, 0, 4.88762e-07, -19.5, 3.99287, 0 )
+script = null
 
 [node name="WorldEnvironment_DarkSky" parent="." instance=ExtResource( 1 )]
 environment = SubResource( 4 )

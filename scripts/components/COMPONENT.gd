@@ -344,10 +344,10 @@ func upstream_highlight():
 func trace_signal():
 	var part_of_speech = ""
 	for group in self.get_groups():
-		if group == "component":
-			continue
-		else:
+		if group == "noun" || group == "modifier" || group == "verb":
 			part_of_speech = group
+		else:
+			continue
 	if self.is_in_group("source"):
 		print(terminal.signal_chains.back())
 		return

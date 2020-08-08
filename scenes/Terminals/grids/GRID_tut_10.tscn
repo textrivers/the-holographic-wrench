@@ -9,7 +9,7 @@
 
 [node name="GRID_tut_10" instance=ExtResource( 3 )]
 script = ExtResource( 1 )
-next_tut = "res://scenes/Terminals/grids/GRID_tut_11.tscn"
+next_tut = "res://scenes/Terminals/grids/GRID_tut_12.tscn"
 
 [node name="BoxArea2D2" parent="Machine_Grid" index="1" instance=ExtResource( 4 )]
 position = Vector2( 63.9514, -0.0320282 )
@@ -97,7 +97,4 @@ connect_config = 1
 connect_config = 1
 
 [node name="ButtonExit" parent="." index="4"]
-visible = false
-
-[node name="ButtonSaveReload" parent="." index="5"]
 visible = false

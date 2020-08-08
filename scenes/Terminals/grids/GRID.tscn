@@ -104,15 +104,14 @@ __meta__ = {
 }
 
 [node name="ButtonExit" type="Button" parent="."]
-visible = false
 anchor_left = 0.829
 anchor_top = 0.194
 anchor_right = 0.891
 anchor_bottom = 0.194
-margin_left = 800.0
-margin_top = 150.0
-margin_right = -0.466248
-margin_bottom = 0.140236
+margin_left = 870.0
+margin_top = 240.0
+margin_right = 937.0
+margin_bottom = 260.0
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -142,6 +141,10 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="mouse_entered" from="ButtonCommit" to="." method="_on_ButtonCommit_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonCommit" to="." method="_on_ButtonCommit_mouse_exited"]
 [connection signal="pressed" from="ButtonCommit" to="." method="_on_ButtonCommit_pressed"]
+[connection signal="mouse_entered" from="ButtonExit" to="." method="_on_ButtonExit_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonExit" to="." method="_on_ButtonExit_mouse_exited"]
 [connection signal="pressed" from="ButtonExit" to="." method="_on_ButtonExit_pressed"]
 [connection signal="pressed" from="ButtonSaveReload" to="." method="_on_ButtonSaveReload_pressed"]

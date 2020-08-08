@@ -69,17 +69,7 @@ var guard_waypoints = [
 var machine_grid = []
 
 var player_inventory = [ ## each array item is a two-member array, filename then connect_config integer
-	["res://scenes/Components/COMPONENT_blank.tscn", 1],
-	["res://scenes/Components/COMPONENT_blank.tscn", 1],
-	["res://scenes/Components/COMPONENT_blank.tscn", 1],
-	["res://scenes/Components/COMPONENT_blank.tscn", 1],
-	["res://scenes/Components/COMPONENT_blank.tscn", 1],
-	["res://scenes/Components/COMPONENT_blank.tscn", 1],
-	["res://scenes/Components/COMPONENT_blank.tscn", 1],
-	["res://scenes/Components/COMPONENT_blank.tscn", 1],
-	["res://scenes/Components/COMPONENT_blank.tscn", 1],
-	["res://scenes/Components/COMPONENT_blank.tscn", 1],
-
+	
 ]
 func _ready():
 	## trying to get pause mode to work

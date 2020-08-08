@@ -30,6 +30,7 @@ func _on_ButtonCommit_pressed():
 		for verb in verbs:
 			if verb.lit == true:
 				verb.trace_signal()
+		parent.parse_signal_path()
 		queue_free()
 		## hide()
 	else:
@@ -133,3 +134,15 @@ func record_terminal():
 	if parent.is_in_group("terminal"):
 		parent.terminal_contents = my_terminal_contents
 		## print(parent.terminal_contents)
+
+func _on_ButtonCommit_mouse_entered():
+	$ItemDescription.set_text("Apply changes and exit")
+
+func _on_ButtonCommit_mouse_exited():
+	$ItemDescription.set_text("")
+
+func _on_ButtonExit_mouse_entered():
+	$ItemDescription.set_text("Exit terminal without applying changes")
+
+func _on_ButtonExit_mouse_exited():
+	$ItemDescription.set_text("")

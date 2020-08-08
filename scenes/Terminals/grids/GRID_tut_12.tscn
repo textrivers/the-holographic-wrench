@@ -16,7 +16,7 @@
 
 [node name="GRID_tut_12" instance=ExtResource( 3 )]
 script = ExtResource( 1 )
-next_tut = "res://scenes/Terminals/grids/GRID_tut_13.tscn"
+next_tut = "res://scenes/Terminals/grids/GRID_tut_11.tscn"
 
 [node name="Machine_Grid" parent="." index="1"]
 position = Vector2( 150, 150 )
@@ -61,7 +61,6 @@ machine_box = true
 
 [node name="COMPONENT_blank" parent="Machine_Grid/BoxArea2D26" index="3" instance=ExtResource( 9 )]
 moveable = false
-pre_rot_left = 1
 connect_config = 2
 
 [node name="BoxArea2D25" parent="Machine_Grid" index="8" instance=ExtResource( 2 )]
@@ -313,7 +312,4 @@ pre_rot_left = 1
 connect_config = 1
 
 [node name="ButtonExit" parent="." index="4"]
-visible = false
-
-[node name="ButtonSaveReload" parent="." index="5"]
 visible = false

@@ -12,6 +12,9 @@
 script = ExtResource( 7 )
 next_tut = "res://scenes/Tutorial3.tscn"
 
+[node name="Machine_Grid" parent="." index="1"]
+y_size = 1
+
 [node name="BoxArea2D" parent="Machine_Grid" index="1" instance=ExtResource( 4 )]
 position = Vector2( -0.0486069, -0.0320282 )
 machine_box = true
@@ -24,30 +27,31 @@ connect_config = 4
 position = Vector2( 63.9514, -0.0320282 )
 machine_box = true
 
+[node name="MODIFIER_nearest" parent="Machine_Grid/BoxArea2D2" index="3" instance=ExtResource( 6 )]
+pre_rot_left = 1
+connect_config = 2
+
 [node name="BoxArea2D3" parent="Machine_Grid" index="3" instance=ExtResource( 4 )]
 position = Vector2( 127.951, -0.0320282 )
 machine_box = true
+
+[node name="NOUN_light" parent="Machine_Grid/BoxArea2D3" index="3" instance=ExtResource( 1 )]
+pre_rot_left = 1
+connect_config = 2
 
 [node name="BoxArea2D4" parent="Machine_Grid" index="4" instance=ExtResource( 4 )]
 position = Vector2( 191.951, -0.0320282 )
 machine_box = true
 
-[node name="VERB_activate" parent="Inventory/BoxArea2D17" index="3" instance=ExtResource( 3 )]
-
-[node name="NOUN_light" parent="Inventory/BoxArea2D18" index="3" instance=ExtResource( 1 )]
-connect_config = 2
-
-[node name="MODIFIER_nearest" parent="Inventory/BoxArea2D19" index="3" instance=ExtResource( 6 )]
-connect_config = 2
+[node name="VERB_activate" parent="Machine_Grid/BoxArea2D4" index="3" instance=ExtResource( 3 )]
+pre_rot_left = 1
 
 [node name="ButtonCommit" parent="." index="3"]
 visible = false
 
 [node name="ButtonExitTut" type="Button" parent="." index="4"]
 margin_left = 800.0
-margin_top = 100.0
-margin_right = 865.0
-margin_bottom = 120.0
+margin_top = 240.0
 text = "Commit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -56,6 +60,13 @@ __meta__ = {
 [node name="ButtonExit" parent="." index="5"]
 visible = false
 
-[node name="ButtonSaveReload" parent="." index="6"]
-visible = false
+[node name="Label" type="Label" parent="." index="8"]
+margin_left = 312.0
+margin_top = 356.0
+margin_right = 897.0
+margin_bottom = 503.0
+text = "- DRAG the components into your inventory -
+
+- You're going to need them - 
+"
 [connection signal="pressed" from="ButtonExitTut" to="." method="_on_ButtonExitTut_pressed"]

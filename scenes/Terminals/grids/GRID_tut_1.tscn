@@ -45,18 +45,20 @@ connect_config = 2
 [node name="ButtonExit" parent="." index="4"]
 visible = false
 
-[node name="ButtonSaveReload" parent="." index="5"]
-visible = false
-
 [node name="Label" type="Label" parent="." index="7"]
 margin_left = 312.0
 margin_top = 356.0
 margin_right = 897.0
-margin_bottom = 503.0
+margin_bottom = 514.0
 text = "- mouse over components for a description -
 
 - CLICK / DRAG to move - 
 
 - Q and E to rotate - 
 
+- Form complete statements -
+
 - \"Commit\" your grid changes to proceed -"
+__meta__ = {
+"_edit_use_anchors_": false
+}
