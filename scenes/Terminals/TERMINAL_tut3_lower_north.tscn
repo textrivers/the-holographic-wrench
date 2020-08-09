@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Terminals/TERMINAL.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/terminals/TERMINAL_tut3_lower_north.gd" type="Script" id=2]
+
+[node name="TERMINAL_tut3_lower_north" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+my_grid = ""

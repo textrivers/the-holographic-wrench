@@ -1,0 +1,135 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/drag_area_square.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Terminals/grids/GRID.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=3]
+
+[node name="GRID_tut3_upper_south" instance=ExtResource( 2 )]
+
+[node name="BoxArea2D" type="Area2D" parent="Machine_Grid" index="1" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( -0.0486069, -0.0320282 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D2" type="Area2D" parent="Machine_Grid" index="2" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 63.9514, -0.0320282 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D3" type="Area2D" parent="Machine_Grid" index="3" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 127.951, -0.0320282 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D4" type="Area2D" parent="Machine_Grid" index="4" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 191.951, -0.0320282 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D5" type="Area2D" parent="Machine_Grid" index="5" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 0, 64 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D6" type="Area2D" parent="Machine_Grid" index="6" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 64, 64 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D7" type="Area2D" parent="Machine_Grid" index="7" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 128, 64 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D8" type="Area2D" parent="Machine_Grid" index="8" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 191.951, 63.968 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D9" type="Area2D" parent="Machine_Grid" index="9" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( -0.0486145, 127.968 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D10" type="Area2D" parent="Machine_Grid" index="10" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 63.9514, 127.968 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D11" type="Area2D" parent="Machine_Grid" index="11" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 127.951, 127.968 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D12" type="Area2D" parent="Machine_Grid" index="12" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 191.951, 127.968 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D13" type="Area2D" parent="Machine_Grid" index="13" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( -0.0486145, 191.968 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D14" type="Area2D" parent="Machine_Grid" index="14" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 63.9514, 191.968 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D15" type="Area2D" parent="Machine_Grid" index="15" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 127.951, 191.968 )
+script = ExtResource( 1 )
+machine_box = true
+
+[node name="BoxArea2D16" type="Area2D" parent="Machine_Grid" index="16" groups=[
+"box",
+] instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( 191.951, 191.968 )
+script = ExtResource( 1 )
+machine_box = true

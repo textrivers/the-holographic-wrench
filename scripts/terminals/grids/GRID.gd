@@ -86,12 +86,18 @@ func populate_terminal():
 			if term_index >= my_terminal_contents.size():
 					break
 			if i.is_in_group("box"):
+				var occupied = false
 				if my_terminal_contents[term_index] != []:
-					var term_item = my_terminal_contents[term_index][0]
-					var term_item_inst = load(term_item).instance()
-					term_item_inst.pre_rot_left = my_terminal_contents[term_index][1]
-					term_item_inst.connect_config = my_terminal_contents[term_index][2]
-					i.add_child(term_item_inst)
+					for child in i.get_children():
+						if child.is_in_group("component"):
+							occupied = true
+					if occupied == false:
+						var term_item = my_terminal_contents[term_index][0]
+						var term_item_inst = load(term_item).instance()
+						term_item_inst.pre_rot_left = my_terminal_contents[term_index][1]
+						term_item_inst.connect_config = my_terminal_contents[term_index][2]
+						term_item_inst.moveable = my_terminal_contents[term_index][3]
+						i.add_child(term_item_inst)
 				term_index += 1
 
 func record_inventory():
@@ -118,7 +124,7 @@ func record_terminal():
 			var item_found = false
 			for j in i.get_children():
 				if j.is_in_group("component"):
-					my_terminal_contents.append([j.filename, 0, 0])
+					my_terminal_contents.append([j.filename, 0, 0, false])
 					## convert rotation degrees to pre_rot_left integer
 					var pre_rot_temp 
 					## achieve negative degrees
@@ -127,6 +133,7 @@ func record_terminal():
 					pre_rot_temp = int(abs(j.rotation_degrees / 90))
 					my_terminal_contents[term_index][1] = pre_rot_temp
 					my_terminal_contents[term_index][2] = j.connect_config
+					my_terminal_contents[term_index][3] = j.moveable
 					item_found = true
 			if item_found == false:
 				my_terminal_contents.append([])

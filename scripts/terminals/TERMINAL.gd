@@ -1,8 +1,8 @@
 extends Spatial
 
 ## for each different configuration or size of terminal, do the following:
-## - new inherited scene from TERMINAL.tscn, save
-## - new inherited scene from GRID.tscn, save
+## - new inherited scene from TERMINAL.tscn, save as form TERMINAL_[specific].tscn
+## - new inherited scene from GRID.tscn, save as form GRID_[specific].tscn
 ## - copy path of new grid, paste into TERMINAL.my_grid, SAVE!!
 ## - in terminal inherited scene, Extend script
 ## - in extended script _ready(), paste contents of grid if any

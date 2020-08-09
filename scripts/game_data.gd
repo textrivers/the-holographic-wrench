@@ -71,9 +71,4 @@ var machine_grid = []
 var player_inventory = [ ## each array item is a two-member array, filename then connect_config integer
 	
 ]
-func _ready():
-	## trying to get pause mode to work
-	## workaround for open issue in Godot where 2D Physics processes
-	## do not process correctly during pause
-	## get_node("/root").pause_mode = PAUSE_MODE_PROCESS
-	pass
+

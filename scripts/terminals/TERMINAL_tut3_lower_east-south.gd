@@ -1,25 +1,18 @@
 extends "res://scripts/terminals/TERMINAL.gd"
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	terminal_contents = [
 		## row 1
-		["res://scenes/Components/SOURCE.tscn", 3, 0, false],
 		[],
 		[],
 		[],
 		## row 2
 		[], 
-		[],
-		[], 
+		["res://scenes/Components/NOUN_door.tscn", 0, 6, true],
 		[], 
 		## row 3
 		[], 
 		[],
 		[], 
-		[], 
-		## row 4
-		[],
-		[], 
-		[],
-		["res://scenes/Components/SOURCE.tscn", 1, 0, false],
 	]

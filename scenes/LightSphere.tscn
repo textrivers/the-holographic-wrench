@@ -16,7 +16,7 @@ script = ExtResource( 1 )
 [node name="Light" type="OmniLight" parent="."]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 4, 0 )
 visible = false
-light_energy = 2.03
+light_energy = 5.0
 shadow_enabled = true
 omni_range = 8.6
 omni_attenuation = 2.82843
