@@ -111,7 +111,7 @@ func record_inventory():
 		for j in i.get_children():
 			if j.is_in_group("component"):
 				game_data.player_inventory.append([j.filename, j.connect_config])
-				j.queue_free()
+				## j.queue_free()
 	## print(game_data.player_inventory)
 
 func record_terminal():

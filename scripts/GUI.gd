@@ -67,3 +67,7 @@ func pause_time():
 
 func unpause_time():
 	time_paused = false
+
+
+func _on_Button_pressed():
+	get_tree().change_scene("res://scenes/Tutorial3.tscn")

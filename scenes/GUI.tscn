@@ -33,10 +33,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -146.0
-margin_top = -20.0
-margin_right = 146.0
-margin_bottom = 20.0
+margin_left = -145.5
+margin_top = -163.0
+margin_right = 146.5
+margin_bottom = 79.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -46,14 +46,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -104.5
-margin_top = -9.0
-margin_right = 104.5
-margin_bottom = 9.0
+margin_left = -126.0
+margin_top = -104.0
+margin_right = 130.0
+margin_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-text = "Press CTRL to start"
+text = "- ESC to free/capture the mouse -
+
+- WASD to move -
+
+- space to jump -
+
+- click to start and interact -
+
+- OPEN THE DOOR AND LEAVE -"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -78,6 +86,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Panel/CenterContainer"]
+visible = false
 margin_left = 45.0
 margin_top = 23.0
 margin_right = 134.0
@@ -85,6 +94,13 @@ margin_bottom = 37.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "0 items found"
+
+[node name="Button" type="Button" parent="Panel/CenterContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 160.0
+margin_bottom = 40.0
+text = "Click to restart level"
 
 [node name="Panel2" type="Panel" parent="."]
 anchor_top = 1.0
@@ -181,3 +197,4 @@ text = "00 : 00 : 000"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Panel/CenterContainer/Button" to="." method="_on_Button_pressed"]

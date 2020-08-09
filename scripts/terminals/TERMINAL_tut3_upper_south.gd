@@ -18,8 +18,8 @@ func _ready():
 		["res://scenes/Components/VERB_activate.tscn", 3, 0, false], 
 		[], 
 		## row 4
-		["res://scenes/Components/SOURCE.tscn", 1, 0, false],
+		["res://scenes/Components/SOURCE.tscn", 0, 0, false],
 		[], 
 		[],
-		["res://scenes/Components/SOURCE.tscn", 0, 0, false],
+		["res://scenes/Components/SOURCE.tscn", 1, 0, false],
 	]

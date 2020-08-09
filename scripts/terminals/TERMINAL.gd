@@ -20,6 +20,7 @@ extends Spatial
 
 
 var can_be_opened = false
+var destroyed = false
 var box_ID = -1
 var game_underway = false
 var current_frame = 0
@@ -58,7 +59,9 @@ func _on_Area_body_entered(body):
 func _on_Area_body_exited(body):
 	if body.is_in_group("player"):
 		can_be_opened = false
-		$FrontSide/Sprite.hide()
+		if destroyed == false:
+			$FrontSide/Sprite.hide()
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
@@ -85,20 +88,11 @@ func parse_signal_path():
 			if chain.has("noun"):
 				targets = get_tree().get_nodes_in_group(chain["noun"])
 				if chain.has("modifier") && targets != []:
-					target = self.call(chain["modifier"], targets)
+					target = call(chain["modifier"], targets)
 				if target != null:
-					## bad debug process here, yuck, terrible
-					## breakpoint
-					## target = get_node(get_path_to(target))
-					## var targ_script = target.get_script()
-					## print("Target " + str(target.get_method_list()))
-					## print("Script " + str(targ_script.get_script_method_list()))
-					## target.call_deferred(chain["verb"])
+
 					if target.has_method(str(chain["verb"])):
 						target.call(str(chain["verb"]))
-					## var outcome = funcref(target, chain["verb"])
-					## outcome.call_func()
-					
 
 func parse_tutorial_path():
 	if !signal_chains.empty():
@@ -114,6 +108,8 @@ func get_nearest(target_array):
 	var min_dist = 999999999.0
 	var nearest = target_array[0]
 	for targ in target_array:
+		if targ == self:
+			continue
 		var dist = self.get_global_transform().origin.distance_to(targ.get_global_transform().origin)
 		if dist < min_dist:
 			min_dist = dist
@@ -124,25 +120,36 @@ func get_farthest(target_array):
 	var max_dist = 0.05
 	var farthest = target_array[0]
 	for targ in target_array:
+		if targ == self:
+			continue
 		var dist = self.get_global_transform().origin.distance_to(targ.get_global_transform().origin)
 		if dist > max_dist:
 			max_dist = dist
 			farthest = targ
 	return farthest
 
-func get_this():
-	return self
+func get_this(target_array):
+		return self
 
 ## VERB FUNCTIONS-----------------------------------
 func activate():
-	$Area.show()
+	if destroyed == false:
+		$Area/CollisionShape.disabled = false
+		$AudioStreamPlayer3D.play()
 
 func deactivate():
-	$Area.hide()
+	$Area/CollisionShape.disabled = true
+	can_be_opened = false
 
 func destroy():
-	$Area.queue_free()
-	$FrontSide/Sprite.texture = load("res://assets/terminal_front_destroyed.png")
+	if destroyed == false:
+		destroyed = true
+		can_be_opened = false
+		$Area/CollisionShape.disabled = true
+		$FrontSide/Sprite.texture = load("res://assets/terminal_front_destroyed.png")
+		$FrontSide/Sprite.call_deferred("show")
+		$AudioStreamPlayer3D.stream = load("res://audio/destroy.wav")
+		$AudioStreamPlayer3D.play()
 
 func tutorial_proceed():
 	open_terminal()

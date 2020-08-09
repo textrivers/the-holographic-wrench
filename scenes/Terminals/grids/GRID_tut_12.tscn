@@ -313,3 +313,13 @@ connect_config = 1
 
 [node name="ButtonExit" parent="." index="4"]
 visible = false
+
+[node name="Label" type="Label" parent="." index="7"]
+margin_left = 284.0
+margin_top = 519.0
+margin_right = 897.0
+margin_bottom = 552.0
+text = "- feel free to experiment for a moment or two... -"
+__meta__ = {
+"_edit_use_anchors_": false
+}

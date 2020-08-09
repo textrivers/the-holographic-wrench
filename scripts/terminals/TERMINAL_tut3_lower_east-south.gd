@@ -2,6 +2,8 @@ extends "res://scripts/terminals/TERMINAL.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	deactivate()
+	
 	terminal_contents = [
 		## row 1
 		[],

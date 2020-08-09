@@ -5,4 +5,4 @@
 
 [node name="TERMINAL_tut3_lower_north" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-my_grid = ""
+my_grid = "res://scenes/Terminals/grids/GRID_tut3_lower_north.tscn"

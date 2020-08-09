@@ -16,12 +16,12 @@ func _ready():
 	
 	Signals.connect("reset_level", self, "increment_player")
 	
-	$GUI/Panel/CenterContainer/Label.set_text("0 items found")
+	## $GUI/Panel/CenterContainer/Label.set_text("0 items found")
 	
 	## moved add_players() to extending scripts
 	## move populate_boxes() to extending scripts also
 	
-	$GUI/AnyKeyControl/Panel/RichTextLabel.set_text("Press CTRL to begin player " + str(game_data.scene_counter))
+	## $GUI/AnyKeyControl/Panel/RichTextLabel.set_text("Press CTRL to begin player " + str(game_data.scene_counter))
 	
 	
 func populate_boxes():

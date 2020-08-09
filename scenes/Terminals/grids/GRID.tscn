@@ -5,9 +5,7 @@
 [ext_resource path="res://scripts/terminals/grids/GRID.gd" type="Script" id=3]
 [ext_resource path="res://scenes/drag_area_square.tscn" type="PackedScene" id=4]
 
-[node name="GRID" type="Control" groups=[
-"terminal",
-]]
+[node name="GRID" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
