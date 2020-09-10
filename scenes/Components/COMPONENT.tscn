@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/component_pink_ring.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.1198, 32.0569 )
+extents = Vector2( 27.8992, 27.917 )
 
 [node name="COMPONENT" type="Area2D" groups=[
 "component",

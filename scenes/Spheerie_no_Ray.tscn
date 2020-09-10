@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/Spheerie.gd" type="Script" id=1]
+[ext_resource path="res://scripts/CameraCrane.gd" type="Script" id=2]
+[ext_resource path="res://assets/qotsa_guy_green-cap.png" type="Texture" id=3]
+[ext_resource path="res://meshes/player_default_sphere.obj" type="ArrayMesh" id=4]
+
+[sub_resource type="SphereShape" id=1]
+radius = 1.13343
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 3 )
+
+[node name="Spheerie_no_Ray" type="KinematicBody" groups=[
+"player",
+]]
+script = ExtResource( 1 )
+rotation_snap = true
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 1.66528, 0 )
+shape = SubResource( 1 )
+
+[node name="RotationOffset" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0 )
+
+[node name="Mesh" type="MeshInstance" parent="RotationOffset"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 1.61814, 0.277093 )
+mesh = ExtResource( 4 )
+material/0 = SubResource( 2 )
+
+[node name="CameraCrane" type="Position3D" parent="."]
+script = ExtResource( 2 )
+grid_snap = true
+
+[node name="Camera" type="Camera" parent="CameraCrane"]
+transform = Transform( 1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 3, 6.2 )
+cull_mask = 1048573
+current = true
+fov = 90.0
+size = 10.0
+
+[node name="Listener" type="Listener" parent="."]
+current = true

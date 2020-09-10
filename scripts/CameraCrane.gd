@@ -12,7 +12,7 @@ export var grid_snap = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	grid_size = Vector3(12, 1, 12)
+	grid_size = Vector3(12, 8, 12)
 	set_as_toplevel(true) ## so camera crane doesn't inherit parent position
 	update_grid_position()
 
@@ -30,8 +30,8 @@ func _physics_process(delta):
 
 func update_grid_position():
 	var x = round(parent.translation.x / grid_size.x)
-	## var y = round(parent.translation.y / grid_size.y)
-	var y = parent.translation.y
+	var y = round((parent.translation.y + 0.1) / grid_size.y)
+	## var y = parent.translation.y
 	var z = round(parent.translation.z / grid_size.z)
 	var new_grid_position = Vector3(x, y, z)
 	if grid_position == new_grid_position:

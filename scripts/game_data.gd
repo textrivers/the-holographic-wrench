@@ -5,7 +5,7 @@ var scene_counter = 1
 var ghost_pos_dict = {}
 
 var player_dict = {
-	1: "res://scenes/Sarah.tscn",
+	1: "res://scenes/Spheerie_no_Ray.tscn",
 	2: "res://scenes/Chaplain.tscn",
 	3: "res://scenes/Eleni.tscn",
 	4: "res://scenes/HR.tscn"

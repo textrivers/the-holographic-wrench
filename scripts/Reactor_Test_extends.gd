@@ -13,7 +13,7 @@ func _ready():
 	instance_rot_mod = -90
 	items_max = 12
 	
-	while instance_counter < 5:
+	while instance_counter < 2:
 		add_players()
 	
 	populate_boxes()

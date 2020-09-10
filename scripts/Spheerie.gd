@@ -16,6 +16,8 @@ var ACCEL = 5
 var DEACCEL = 10
 var gravity = 36.0
 var jump_force = 24.0
+var snap = Vector3.ZERO
+var up = Vector3.UP
 
 var velocity_y := 0.0
 
@@ -61,13 +63,19 @@ func _physics_process(delta):
 		ghost_pos_dict[current_frame] = [translation, rotation_degrees]
 		current_frame += 1
 		
+		## JUMPING ## -----------------------------------
+		if is_on_floor():
+			if Input.is_action_pressed("jump"):
+				velocity_y = jump_force
+				snap = Vector3.ZERO
+		
 		## MOVEMENT ## --------------------------------
 		dir = Vector3()
 		var direction_ground = Vector2(
 			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).normalized()
 		
-		if not is_on_floor():
+		if snap == Vector3.ZERO:
 			velocity_y -= gravity * delta
 		
 		## moved velocity declaration to top level from here
@@ -98,20 +106,23 @@ func _physics_process(delta):
 		velocity.x = hvel.x
 		velocity.z = hvel.z
 		
-		velocity = move_and_slide(velocity, Vector3.UP)
+		velocity = move_and_slide_with_snap(velocity, snap, up, true, 4, 0.8)
+		if get_slide_count() != 0:
+			var last_collision = get_slide_collision(get_slide_count() - 1)
+			up = last_collision.normal
+			snap = -up
+			## $RotationOffset/Mesh.transform = $RotationOffset/Mesh.transform.looking_at($RotationOffset/Mesh.transform.basis.z, up)
+		
 		if is_on_floor() or is_on_ceiling():
 			velocity_y = 0.0
 		
-		## JUMPING ## -----------------------------------
-		if is_on_floor():
-			if Input.is_action_pressed("jump"):
-				velocity_y = jump_force
+		
 		
 		## ROTATION ## -----------------------------------
-		## if Input.is_action_just_pressed("rotate_left"):
-		## 	new_rot -= 90
-		## if Input.is_action_just_pressed("rotate_right"):
-		## 	new_rot += 90
+		if Input.is_action_just_pressed("rotate_left"):
+			y_rot_feeler -= 90
+		if Input.is_action_just_pressed("rotate_right"):
+			y_rot_feeler += 90
 		
 		## snap player's y-rotation to 90-degree intervals
 		if rotation_snap == true:

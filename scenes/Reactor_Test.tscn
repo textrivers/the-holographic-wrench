@@ -13,7 +13,6 @@
 [ext_resource path="res://assets/star tiles/blue-supergiants-in-the-night-sky.jpg" type="Texture" id=11]
 [ext_resource path="res://assets/qotsa_guy_2.PNG" type="Texture" id=12]
 
-
 [sub_resource type="SpatialMaterial" id=1]
 flags_unshaded = true
 albedo_color = Color( 0.0392157, 0.964706, 0.160784, 1 )

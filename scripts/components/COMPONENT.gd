@@ -84,7 +84,7 @@ func _ready():
 	drop_targets.append(parent)
 	drop_target = drop_targets.back()
 	update_my_grid_pos()
-	$CollisionShape2D.scale = Vector2(0.9, 0.9)
+	## $CollisionShape2D.scale = Vector2(0.9, 0.9)
 	if lit == false:
 		$Sprite.modulate = Color(0.5, 0.5, 0.5, 1)
 	
@@ -126,6 +126,7 @@ func _process(_delta):
 	## CLICK -------------------------------------------
 	if can_click == true:
 		if Input.is_action_just_pressed("interact"):
+			description_label.set_text(description)
 			if moveable:
 				drop_target.highlight()
 				dragging = true
@@ -202,7 +203,7 @@ func _process(_delta):
 	## AS YOU WERE ----------------------------------------------
 	else:
 		## $Sprite.modulate = Color(1, 1, 1, 1)
-		$CollisionShape2D.scale = Vector2(0.9, 0.9)
+		$CollisionShape2D.scale = Vector2(1.0, 1.0)
 		if Input.is_action_just_released("interact"):
 			drop_target.unhighlight()
 		
